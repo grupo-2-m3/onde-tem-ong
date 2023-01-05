@@ -9,7 +9,7 @@ export const StyledInput = styled.div`
   border-bottom: 1px solid var(--Color-primary);
 
   label {
-    font-size: 14px;
+    font-size: var(--font14);
   }
 
   div {
