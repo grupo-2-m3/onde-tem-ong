@@ -68,6 +68,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
   .information {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
     width: 100%;
     height: 100%;
@@ -88,7 +89,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     background-color: var(--Black50);
 
-    margin-top: 20px;
+    margin-top: 50px;
 
     div {
       gap: 10px;

@@ -1,7 +1,6 @@
 import { CardCarousel } from "./CardCarousel";
 import { StyledCarousel } from "./styled";
-import test from "../../../assets/Imgs/test.svg";
-import React from "react";
+import test from "../../../assets/imgs/test.svg";
 
 export const Carousel = () => {
   return (

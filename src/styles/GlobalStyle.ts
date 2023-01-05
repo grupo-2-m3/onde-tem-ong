@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   --Withe: #ffff;
   --Blue:  #3b5998;
   --Black: #000;
-  --Black50: rgb(0,0,0,0.5);
+  --Black50: #808080;
 
   /*Feedback Palette*/
 
