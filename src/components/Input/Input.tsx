@@ -6,12 +6,12 @@ interface iInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, iInputProps>(
-  ({ label, src, placeholder, ...rest }, ref) => {
+  ({ label, src, alt, placeholder, ...rest }, ref) => {
     return (
       <StyledInput>
         <label>{label}</label>
         <div>
-          <img src={src} alt="" />
+          <img src={src} alt="{alt}" />
           <input placeholder={placeholder} ref={ref} {...rest} />
         </div>
       </StyledInput>
