@@ -11,7 +11,7 @@ const Input = forwardRef<HTMLInputElement, iInputProps>(
       <StyledInput>
         <label>{label}</label>
         <div>
-          <img src={src} alt="{alt}" />
+          <img src={src} alt={alt} />
           <input placeholder={placeholder} ref={ref} {...rest} />
         </div>
       </StyledInput>
