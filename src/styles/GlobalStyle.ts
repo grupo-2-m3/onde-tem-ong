@@ -29,6 +29,15 @@ export const GlobalStyle = createGlobalStyle`
   --Sucess: #168821;
   --Information: #155bcb;
 
+
+  --font12: 0.7rem
+  --font14: 0.875
+  --font16: 1rem;
+  --font20: 1.25rem
+  --font24: 2.5rem
+  --fon32:2rem;
+  --font40: 2.5rem; 
+
 }
 
 /* Text sizes */
