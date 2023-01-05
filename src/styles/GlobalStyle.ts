@@ -18,8 +18,8 @@ export const GlobalStyle = createGlobalStyle`
 
 
   --Withe: #ffff;
-  --Black: #000
-  --Black50: rgb(0,0,0,0.5)
+  --Black: #000;
+  --Black50: rgb(0,0,0,0.5);
 
   /*Feedback Palette*/
 
