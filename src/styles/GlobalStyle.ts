@@ -83,12 +83,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 @keyframes App-logo-spin {
-  from {
+  from { 
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+
+
+  
 }
 
 
