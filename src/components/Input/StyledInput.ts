@@ -6,7 +6,7 @@ export const StyledInput = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-bottom: 1px solid #6f2a86;
+  border-bottom: 1px solid var(--Color-primary);
 
   label {
     font-size: 14px;
