@@ -110,6 +110,8 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
       text-align: center;
 
+      font-size: var(--font20);
+
       margin-bottom: 20px;
 
       @media (min-width: 700px) {
