@@ -1,10 +1,10 @@
 import { Header } from "../../components/Header";
 import { Carousel } from "./Carousel";
-import OndeTemOng from "../../assets/Imgs/onde-tem-ong2.svg";
-import vetor from "../../assets/Imgs/vector1.svg";
-import vetor3 from "../../assets/Imgs/vector3.svg";
-import vetor2 from "../../assets/Imgs/vector2.svg";
-import home from "../../assets/Imgs/home.svg";
+import OndeTemOng from "../../assets/imgs/onde-tem-ong2.svg";
+import vetor from "../../assets/imgs/vector1.svg";
+import vetor3 from "../../assets/imgs/vector3.svg";
+import vetor2 from "../../assets/imgs/vector2.svg";
+import home from "../../assets/imgs/home.svg";
 import { ListCardInfo } from "./ListCardsInfo";
 import { StyledDashboardVisitorPage } from "./styled";
 import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
@@ -27,29 +27,29 @@ const DashboardVisitorPage = () => {
           <img className="home" src={home} alt="" />
         </div>
       </div>
-
+      aa
       <div className="information">
         <ListCardInfo />
-      </div>
 
-      <footer>
-        <div>
+        <footer>
           <div>
-            <button>
-              <AiOutlineGithub />
-            </button>
-            <button className="blue">
-              <BsFacebook />
-            </button>
-            <button className="blue">
-              <AiFillLinkedin />
-            </button>
+            <div>
+              <button>
+                <AiOutlineGithub />
+              </button>
+              <button className="blue">
+                <BsFacebook />
+              </button>
+              <button className="blue">
+                <AiFillLinkedin />
+              </button>
+            </div>
+            <h3 className="paragraph">
+              Todos Direitos Reservados a Onde Tem Ong
+            </h3>
           </div>
-          <h3 className="paragraph">
-            Todos Direitos Reservados a Onde Tem Ong
-          </h3>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </StyledDashboardVisitorPage>
   );
 };

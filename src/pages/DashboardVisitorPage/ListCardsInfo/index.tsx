@@ -1,4 +1,3 @@
-import React from "react";
 import { CardInfo } from "./CardInfo";
 import { StyledListCardsInfo } from "./syled";
 
