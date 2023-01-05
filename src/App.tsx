@@ -1,5 +1,11 @@
+import { RoutesComponent } from "./routes";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div>
+      <RoutesComponent />
+    </div>
+  );
 }
 
 export default App;
