@@ -107,4 +107,16 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 1200px;
   } 
+
+  button {
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `;
