@@ -18,9 +18,8 @@ export const GlobalStyle = createGlobalStyle`
 
 
   --Withe: #ffff;
-  --Blue:  #3b5998;
-  --Black: #000;
-  --Black50: rgb(0,0,0,0.5);
+  --Black: #000
+  --Black50: rgb(0,0,0,0.5)
 
   /*Feedback Palette*/
 
@@ -40,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .Heading2{
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 24px;
     letter-spacing: 0em;
 
@@ -73,12 +72,7 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: 600;
   line-height: 1.5rem;
   letter-spacing: 0em;
-}
 
-.paragraph{
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: auto ;
 }
 .App,#root{
   width: 100%;
