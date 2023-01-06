@@ -20,6 +20,7 @@ export const StyledLink = styled(Link)<iPropsStyledLink>`
           justify-content: center;
           font-size: 20px;
           font-weight: 400;
+          color: var(--Color-primary);
         `;
       case "link":
         return css`

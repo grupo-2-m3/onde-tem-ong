@@ -134,7 +134,7 @@ export const StyledLoginPage = styled.div`
       border-radius: 8px;
 
       color: var(--Color-primary);
-      background-color: white;
+      background-color: var(--White);
     }
   }
 
@@ -146,6 +146,7 @@ export const StyledLoginPage = styled.div`
 
   @media (min-width: 390px) {
     background-image: url("assets/Background Desktop.svg");
+    background-size: cover;
     background-position: center;
     transition: background-image 2s ease;
   }
