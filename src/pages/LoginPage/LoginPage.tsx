@@ -1,12 +1,10 @@
 import { useContext } from "react";
 
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-
 import { RiErrorWarningLine } from "react-icons/ri";
-
-import { Error } from "../../components/Input/StyledInput";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   AuthContext,
@@ -14,6 +12,9 @@ import {
 } from "../../contexts/AuthContext/AuthContext";
 
 import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import { Error } from "../../components/Input/StyledInput";
+import { StyledLink } from "../../components/StyledLink/StyledLink";
 
 import User from "../../assets/imgs/User.svg";
 import Logo from "../../assets/imgs/Logo.svg";
@@ -41,13 +42,17 @@ const LoginPage = () => {
   return (
     <StyledLoginPage>
       <figure>
-        <img className="upLeftImage" src={UpLeft} alt="" />
+        <Link to="/">
+          <img className="upLeftImage" src={UpLeft} alt="" />
+        </Link>
       </figure>
       <div className="container">
         <h1 className="loginMobile">Login</h1>
         <div className="loginContainer">
           <h1>Login</h1>
-          <button className="returnButton">Voltar</button>
+          <StyledLink to="/" type="button">
+            Voltar
+          </StyledLink>
         </div>
         <div className="formContainer">
           <form onSubmit={handleSubmit(userLogin)}>
@@ -89,10 +94,14 @@ const LoginPage = () => {
                 </Error>
               )}
             </div>
-            <button type="submit">Entrar</button>
+            <Button styled="filled" type="submit">
+              Entrar
+            </Button>
           </form>
           <span>Ainda não possui conta?</span>
-          <button className="registerButton">Cadastre-se</button>
+          <StyledLink to="/register" type="button" className="registerButton">
+            Cadastre-se
+          </StyledLink>
         </div>
       </div>
       <img className="logoImage" src={Logo} alt="" />
