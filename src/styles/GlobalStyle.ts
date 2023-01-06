@@ -30,85 +30,15 @@ export const GlobalStyle = createGlobalStyle`
   --Information: #155bcb;
 
 
-  --font12: 0.7rem
-  --font14: 0.875
+  --font12: 0.7rem;
+  --font14: 0.875;
   --font16: 1rem;
-  --font20: 1.25rem
-  --font24: 2.5rem
+  --font20: 1.25rem;
+  --font24: 2.5rem;
   --fon32:2rem;
   --font40: 2.5rem; 
 
 }
-
-/* Text sizes */
-  .Heading1{
-    font-size: 1.625rem;
-    font-weight: 700;
-    line-height: 34px;
-    letter-spacing: 0em;
-  }
-  .Heading2{
-    font-size: 1.3rem;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0em;
-
-  }
-  .Heading3{
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0em;
-  }
-  .Heading4{
-    font-size: 0.875;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0em;
-  }
-  .Headline{
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5rem;
-    letter-spacing: 0em;
-  }
-  .Caption{
-    font-size: 0.75rem;
-    font-weight: 400;
-    line-height: 1rem;
-    letter-spacing: 0em;
-}
-.Simples{
-  font-size: 0.875;
-  font-weight: 600;
-  line-height: 1.5rem;
-  letter-spacing: 0em;
-}
-
-.paragraph{
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: auto ;
-}
-.App,#root{
-  width: 100%;
-  height: 100%;
-}
-.girar {
-    animation: App-logo-spin infinite 1s linear;
-  }
-
-@keyframes App-logo-spin {
-  from { 
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-
-
-  
-}
-
 
 *{
     margin: 0;
