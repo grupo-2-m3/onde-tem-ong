@@ -24,9 +24,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
 
   const userLogin: SubmitHandler<iLoginData> = (data) => {
     api
-      .post("/users", data)
+      .post("/login", data)
       .then((response) => {
-        navigate("/dashboard");
+        navigate("/profile");
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
         // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
