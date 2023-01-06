@@ -59,6 +59,7 @@ const LoginPage = () => {
               <Input
                 label="EMAIL"
                 src={User}
+                type="email"
                 placeholder="Digite seu email"
                 {...register("email")}
               />
@@ -77,6 +78,7 @@ const LoginPage = () => {
               <Input
                 label="SENHA"
                 src={Password}
+                type="password"
                 placeholder="Digite sua senha"
                 {...register("password")}
               />
