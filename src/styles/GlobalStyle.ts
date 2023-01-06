@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   --Color-primary: #6F2A86;
   --Color-primary-50: #AD72C0;
   --Color-secondary: rgb(111,42,134,0.8);
+  --Color-terciary: #f1ebf3;
 
   /*Grey Scale Palette*/
 
