@@ -1,14 +1,14 @@
-import { Header } from "../../components/Header";
 import { Carousel } from "./Carousel/Carousel";
-import OndeTemOng from "../../assets/imgs/onde-tem-ong2.svg";
-import vetor from "../../assets/imgs/vector1.svg";
-import vetor3 from "../../assets/imgs/vector3.svg";
-import vetor2 from "../../assets/imgs/vector2.svg";
+import OndeTemOng from "../../assets/imgs/ondeTemOng2.svg";
+import vetor from "../../assets/imgs/vectorPrimario.svg";
+import vetor3 from "../../assets/imgs/vectorTerciario.svg";
+import vetor2 from "../../assets/imgs/vectorSecundario.svg";
 import home from "../../assets/imgs/home.svg";
 import { ListCardInfo } from "./ListCardsInfo/ListCardInfo";
-import { StyledDashboardVisitorPage } from "./styled";
 import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
+import { Header } from "../../components/Header/Header";
+import { StyledDashboardVisitorPage } from "./StyledDashboardVisitorPage";
 
 const DashboardVisitorPage = () => {
   return (
