@@ -11,10 +11,10 @@ import {
 
 import Input from "../../components/Input/Input";
 
-import User from "../../assets/User.svg";
-import Logo from "../../assets/Logo.svg";
-import UpLeft from "../../assets/Up Left.svg";
-import Password from "../../assets/Password.svg";
+import User from "../../assets/imgs/User.svg";
+import Logo from "../../assets/imgs/Logo.svg";
+import UpLeft from "../../assets/imgs/Up Left.svg";
+import Password from "../../assets/imgs/Password.svg";
 
 import { StyledLoginPage } from "./StyledLoginPage";
 
