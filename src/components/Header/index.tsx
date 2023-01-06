@@ -1,6 +1,6 @@
 import { StyledHeader } from "./styled";
-import OndeTemOng from "../../assets/imgs/onde-tem-ong.svg";
-import noUser from "../../assets/imgs/no_user.svg";
+import OndeTemOng from "../../assets/imgs/ondeTemOng.svg";
+import noUser from "../../assets/imgs/noUser.svg";
 import { Link } from "react-router-dom";
 
 interface iHeader {
