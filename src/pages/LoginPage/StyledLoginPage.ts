@@ -47,7 +47,7 @@ export const StyledLoginPage = styled.div`
       text-align: center;
 
       color: var(--Color-primary);
-      background-color: #f1ebf3;
+      background-color: var(--Color-terciary);
     }
 
     .loginContainer {
@@ -66,7 +66,7 @@ export const StyledLoginPage = styled.div`
         border-radius: 50px 1px 50px 12px;
 
         color: var(--Color-primary);
-        background-color: #f1ebf3;
+        background-color: var(--Color-terciary);
       }
 
       .returnButton {
@@ -96,6 +96,16 @@ export const StyledLoginPage = styled.div`
         flex-direction: column;
         justify-content: center;
         gap: 20px;
+
+        .inputContainer {
+          display: flex;
+
+          border-bottom: 1px solid var(--Color-primary);
+        }
+
+        .error {
+          border-bottom: 1px solid var(--Negative);
+        }
 
         button {
           width: 100%;

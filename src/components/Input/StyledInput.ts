@@ -6,8 +6,6 @@ export const StyledInput = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-bottom: 1px solid var(--Color-primary);
-
   label {
     font-size: var(--font14);
   }
@@ -31,6 +29,53 @@ export const StyledInput = styled.div`
       background: none;
 
       outline: none;
+    }
+  }
+`;
+
+export const Error = styled.div`
+  position: relative;
+
+  .ico {
+    color: var(--Negative);
+  }
+
+  &:hover span {
+    opacity: 1;
+  }
+
+  span {
+    width: fit-content;
+
+    padding: 10px;
+
+    border-radius: 0.25rem;
+
+    text-align: center;
+
+    color: var(--Withe);
+
+    background-color: var(--Negative);
+
+    position: absolute;
+    right: 35px;
+
+    opacity: 0;
+
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 8px;
+      right: -4px;
+
+      border-style: solid;
+      border-color: var(--Negative);
+      border-width: 0px 7px 10px 4px;
+
+      transform: rotate(46deg);
     }
   }
 `;
