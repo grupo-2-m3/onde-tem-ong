@@ -1,6 +1,6 @@
-import homePurple from "../../../../assets/imgs/home-purple.svg";
+import homePurple from "../../../../assets/imgs/homePurple.svg";
 import transparencia from "../../../../assets/imgs/transparencia.svg";
-import { StyledCardInfo } from "./styled";
+import { StyledCardInfo } from "./StyledCardInfo";
 
 interface iCardInfo {
   title: string;

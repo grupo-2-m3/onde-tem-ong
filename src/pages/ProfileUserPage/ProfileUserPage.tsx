@@ -1,14 +1,10 @@
-
-import CoverProfile from "../../components/CoverProfile";
-
-import { ProfileUserStyled } from "./ProfileUserStyled";
-
+import CoverProfile from "../../components/CoverProfile/CoverProfile";
+import { ProfileUserStyled } from "./StyledProfileUser";
 
 const ProfileUserPage = () => {
   return (
     <ProfileUserStyled>
-      <CoverProfile/>
-      
+      <CoverProfile />
     </ProfileUserStyled>
   );
 };

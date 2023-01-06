@@ -1,5 +1,4 @@
-import React from "react";
-import { StyledCardCarousel } from "./stlyed";
+import { StyledCardCarousel } from "./StyledCardCarousel";
 
 interface iCardCarousel {
   image: string;

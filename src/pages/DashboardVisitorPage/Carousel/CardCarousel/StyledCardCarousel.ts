@@ -11,7 +11,5 @@ export const StyledCardCarousel = styled.li`
     height: 100%;
 
     border-radius: 8px;
-
-    /* box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.9); */
   }
 `;

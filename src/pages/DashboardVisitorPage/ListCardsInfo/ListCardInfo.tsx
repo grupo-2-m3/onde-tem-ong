@@ -1,5 +1,5 @@
-import { CardInfo } from "./CardInfo";
-import { StyledListCardsInfo } from "./syled";
+import { CardInfo } from "./CardInfo/CardInfo";
+import { StyledListCardsInfo } from "./StyledListCardInfo";
 
 const text1 =
   "A nossa instituição, sem fins lucrativos, tem como missão dar visibilidade para ONGs e projetos sociais, conectando a instituição diretamente ao doador. Acreditamos que todos merecem a chance de fazer a diferença no mundo e de contribuir para uma sociedade mais justa e igualitária.";
