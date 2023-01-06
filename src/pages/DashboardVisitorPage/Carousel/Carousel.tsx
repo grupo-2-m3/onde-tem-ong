@@ -1,4 +1,4 @@
-import { CardCarousel } from "./CardCarousel";
+import { CardCarousel } from "./CardCarousel/CardCarousel";
 import { StyledCarousel } from "./styled";
 import test from "../../../assets/imgs/test.svg";
 
