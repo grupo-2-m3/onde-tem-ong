@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledRegisterPage = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ export const StyledRegisterPage = styled.div`
   background-repeat: no-repeat;
   transition: background-image 2s ease;
 
-  .background{
+  .background {
     width: 100%;
     height: 100%;
     padding: 20px;
@@ -41,7 +41,7 @@ export const StyledRegisterPage = styled.div`
 
     .divBlockRight > img {
       margin-top: 20px;
-      width: 95%;
+      width: 241px;
     }
 
     .RegisterAndTitle {
@@ -49,114 +49,113 @@ export const StyledRegisterPage = styled.div`
     }
 
     .titleRegister {
-        font-style: normal;
-        font-weight: 400;
-        font-size: var(--fon32);
-        line-height: 59px;
-        color: var(--Withe);
-    }
-
-    .formContainer{
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-  }
-      form {
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-
-        button {
-          width: 100%;
-
-          padding: 15px 0;
-
-          border: 1px solid transparent;
-          border-radius: 8px;
-
-          color: white;
-          background-color: var(--Color-primary);
-        }
-      }
-    span {
-      font-size: var(--font14);
+      font-style: normal;
+      font-weight: 400;
+      font-size: var(--fon32);
+      line-height: 59px;
       color: var(--Withe);
     }
 
-    .LoginButton {
+    .formContainer {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+  form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    button {
       width: 100%;
 
       padding: 15px 0;
 
-      border: 1px solid var(--Withe);
-      color: var(--Withe);
+      border: 1px solid transparent;
       border-radius: 8px;
-      background-color: transparent;
-    }
 
-    .selectTypeUser {
-        display: flex;
+      color: white;
+      background-color: var(--Color-primary);
     }
+  }
+  span {
+    font-size: var(--font14);
+    color: var(--Withe);
+  }
 
-    .labelSelectType {
-      color: var(--Withe);
-    }
+  .LoginButton {
+    width: 100%;
 
-    .divSelectCategory {
-      width: 100%;
-      margin-top: -10px;
-    }
+    padding: 15px 0;
 
-    .selectTypeUser > div {
-      border-color: var(--Withe)
-    }
+    border: 1px solid var(--Withe);
+    color: var(--Withe);
+    border-radius: 8px;
+    background-color: transparent;
+  }
 
-    .LabelAndSelect {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--Color-primary);
-      border-color: var(--Withe)
-    }
+  .selectTypeUser {
+    display: flex;
+  }
 
-    .divSelectCategory > div {
-      border-color: var(--Withe)
-    }
+  .labelSelectType {
+    color: var(--Withe);
+  }
 
-    .divSelectCategory label {
-      color: var(--Withe);
-    }
+  .divSelectCategory {
+    width: 100%;
+    margin-top: -10px;
+  }
 
-    .divSelectCategory select {
-      height: 100%;
-      width: 20px;
-      border-bottom: 1px solid;
-    }
+  .selectTypeUser > div {
+    border-color: var(--Withe);
+  }
 
-    .divBlockLeft {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  .LabelAndSelect {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--Color-primary);
+    border-color: var(--Withe);
+  }
 
-    .divBlockLeft > div {
-      border-color: var(--Withe);
-    }
+  .divSelectCategory > div {
+    border-color: var(--Withe);
+  }
 
-    .divBlockRight {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
+  .divSelectCategory label {
+    color: var(--Withe);
+  }
+
+  .divSelectCategory select {
+    height: 100%;
+    width: 20px;
+    border-bottom: 1px solid;
+  }
+
+  .divBlockLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .divBlockLeft > div {
+    border-color: var(--Withe);
+  }
+
+  .divBlockRight {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
 
   @media (min-width: 390px) {
     background-image: url("assets/Background Desktop.svg");
@@ -164,10 +163,10 @@ export const StyledRegisterPage = styled.div`
     transition: background-image 2s ease;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) {
     height: 100vh;
 
-    .RegisterMobile{
+    .RegisterMobile {
       width: 396px !important;
       padding: 17px 0px;
       margin-top: 97px;
@@ -180,7 +179,7 @@ export const StyledRegisterPage = styled.div`
       justify-content: flex-end;
     }
 
-    .background{
+    .background {
       height: 110vh;
     }
 
@@ -195,7 +194,7 @@ export const StyledRegisterPage = styled.div`
       width: 80vw;
     }
 
-    .container{
+    .container {
       display: flex;
     }
 
@@ -203,11 +202,11 @@ export const StyledRegisterPage = styled.div`
       width: 400px;
     }
 
-    .divBlockRight{
+    .divBlockRight {
       width: 400px;
     }
 
-    button{
+    button {
       height: 70px;
     }
   }
