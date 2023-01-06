@@ -20,6 +20,8 @@ export const GlobalStyle = createGlobalStyle`
   --Black: #000;
   --Black50: #808080;
 
+  --placeholderInputRegister: rgba(255, 255, 255, 0.6);
+
   /*Feedback Palette*/
 
   --Negative: #e60000;

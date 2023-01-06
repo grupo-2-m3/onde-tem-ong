@@ -3,12 +3,13 @@ import { StyledInput } from "./StyledInput";
 
 interface iInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  styledColor?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, iInputProps>(
-  ({ label, src, alt, placeholder, ...rest }, ref) => {
+  ({ label, src, alt, placeholder, styledColor, ...rest }, ref) => {
     return (
-      <StyledInput>
+      <StyledInput styledColor={styledColor ? styledColor : false}>
         <label>{label}</label>
         <div>
           <img src={src} alt={alt} />

@@ -2,5 +2,5 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL: "https://onde-tem-ong.onrender.com",
-  timeout: 6000,
+  timeout: 20000,
 });
