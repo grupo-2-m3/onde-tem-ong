@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
-import DashboardVisitorPage from "./pages/DashboardVisitorPage";
+import DashboardVisitorPage from "./pages/DashboardVisitorPage/DashboardVisitorPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import ProfileUserPage from "./pages/ProfileUserPage";
-import RegisterPage from "./pages/RegisterPage";
+import ProfileUserPage from "./pages/ProfileUserPage/ProfileUserPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 export const RoutesComponent = () => {
   return (
