@@ -4,6 +4,10 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { RiErrorWarningLine } from "react-icons/ri";
+
+import { Error } from "../../components/Input/StyledInput";
+
 import {
   AuthContext,
   iLoginData,
@@ -26,7 +30,11 @@ const LoginPage = () => {
     password: yup.string().required("Senha obrigatória"),
   });
 
-  const { register, handleSubmit } = useForm<iLoginData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iLoginData>({
     resolver: yupResolver(formSchemaLogin),
   });
 
@@ -43,18 +51,42 @@ const LoginPage = () => {
         </div>
         <div className="formContainer">
           <form onSubmit={handleSubmit(userLogin)}>
-            <Input
-              label="EMAIL"
-              src={User}
-              placeholder="Digite seu email"
-              {...register("email")}
-            />
-            <Input
-              label="SENHA"
-              src={Password}
-              placeholder="Digite sua senha"
-              {...register("password")}
-            />
+            <div
+              className={
+                errors.email ? "inputContainer error" : "inputContainer"
+              }
+            >
+              <Input
+                label="EMAIL"
+                src={User}
+                placeholder="Digite seu email"
+                {...register("email")}
+              />
+              {errors.email && (
+                <Error>
+                  <RiErrorWarningLine size="20" className="ico" />
+                  <span>{errors.email.message}</span>
+                </Error>
+              )}
+            </div>
+            <div
+              className={
+                errors.password ? "inputContainer error" : "inputContainer"
+              }
+            >
+              <Input
+                label="SENHA"
+                src={Password}
+                placeholder="Digite sua senha"
+                {...register("password")}
+              />
+              {errors.password && (
+                <Error>
+                  <RiErrorWarningLine size="20" className="ico" />
+                  <span>{errors.password.message}</span>
+                </Error>
+              )}
+            </div>
             <button type="submit">Entrar</button>
           </form>
           <span>Ainda não possui conta?</span>
