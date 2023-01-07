@@ -47,7 +47,7 @@ export const CarouselLibary = () => {
           ref={carousel}
           className="inner"
         >
-          {arrImgs.map((element, i, arr) => (
+          {arrImgs.map((element, i) => (
             <CardCarousel key={i} image={element} />
           ))}
         </motion.ul>

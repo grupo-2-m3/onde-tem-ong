@@ -30,6 +30,8 @@ const DashboardVisitorPage = () => {
       }}
     >
       <Header anchors={true} modal={modal} />
+      <div className="marginsBottonHeader"></div>
+
       <div className="boxCarousel">
         <CarouselLibary />
 

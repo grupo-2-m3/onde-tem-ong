@@ -23,7 +23,7 @@ export const Header = ({ imageUser, anchors, callBack, modal }: iHeader) => {
         <div className="conteiner_anchor">
           {anchors && (
             <div className="div_anchors">
-              <a href="#quem_somos">Quem somos?</a>
+              <a href="#quemSomos">Quem somos?</a>
               <a href="#transparencia">Transparência</a>
             </div>
           )}

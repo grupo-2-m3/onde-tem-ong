@@ -14,7 +14,7 @@ export const StyledCarousel = styled.div`
     overflow: hidden;
     scroll-behavior: smooth;
 
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 5%;
 
     transition: 0.3s;

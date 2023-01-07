@@ -60,7 +60,8 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
         width: 60%;
         color: var(--Blue);
 
-        top: 20%;
+        margin-top: 10%;
+
         @media (min-width: 600px) {
           top: 25%;
         }
@@ -203,5 +204,13 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
       z-index: 2;
     }
+  }
+  .marginsBottonHeader {
+    height: 100px;
+    width: 100%;
+
+    background-color: var(--Black);
+
+    opacity: 30%;
   }
 `;
