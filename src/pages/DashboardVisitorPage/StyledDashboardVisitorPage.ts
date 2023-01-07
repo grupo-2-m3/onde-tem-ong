@@ -166,8 +166,6 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     overflow: hidden;
 
-    cursor: grab;
-
     position: absolute;
 
     z-index: 5;
@@ -184,6 +182,8 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
       position: absolute;
 
+      bottom: 50%;
+
       svg {
         width: 100%;
         height: 100%;
@@ -191,7 +191,6 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
     }
     .right {
       right: 0px;
-      bottom: 40%;
 
       margin-right: 0px;
 
@@ -200,7 +199,6 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     .left {
       left: 0;
-      bottom: 40%;
 
       z-index: 2;
     }
