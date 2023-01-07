@@ -23,6 +23,7 @@ const DashboardVisitorPage = () => {
       setModal(false);
     }, 20000);
   }, []);
+
   return (
     <StyledDashboardVisitorPage
       Imagen={{
