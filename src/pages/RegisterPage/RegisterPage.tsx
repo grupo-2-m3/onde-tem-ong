@@ -239,7 +239,7 @@ const RegisterPage = () => {
                   Cadastrar
                 </Button>
                 <span>Já possui uma conta?</span>
-                <StyledLink type="button" to="/login">
+                <StyledLink type="button empty" to="/login">
                   Login
                 </StyledLink>
                 <img src={LogoWhite} alt="" />

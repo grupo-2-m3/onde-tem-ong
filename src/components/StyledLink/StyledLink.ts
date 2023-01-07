@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 interface iPropsStyledLink {
-  type: "button" | "link" | "filled";
+  type: "button" | "link" | "filled" | "button empty";
 }
 
 export const StyledLink = styled(Link)<iPropsStyledLink>`
@@ -45,6 +45,19 @@ export const StyledLink = styled(Link)<iPropsStyledLink>`
           -webkit-box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.26);
           -moz-box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.26);
           box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.26);
+        `;
+      case "button empty":
+        return css`
+          border: 1px solid var(--Withe);
+          padding: 12px 16px;
+          border-radius: 8px;
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          font-weight: 400;
+          color: var(--Withe);
         `;
     }
   }}
