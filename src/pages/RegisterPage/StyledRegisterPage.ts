@@ -144,7 +144,7 @@ export const StyledRegisterPage = styled.div`
     .inputContainer {
       display: flex;
 
-      border-bottom: 1px solid var(--Color-primary);
+      border-bottom: 1px solid var(--Withe);
     }
 
     .error {
@@ -165,7 +165,7 @@ export const StyledRegisterPage = styled.div`
     .inputContainer {
       display: flex;
 
-      border-bottom: 1px solid var(--Color-primary);
+      border-bottom: 1px solid var(--Withe);
     }
 
     .error {
