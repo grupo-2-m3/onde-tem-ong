@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledRegisterPage = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -15,14 +15,13 @@ export const StyledRegisterPage = styled.div`
 
   .background {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding: 20px;
     background-color: rgba(111, 42, 134, 0.81);
   }
 
   .container {
     width: 100%;
-    height: 100%;
     max-width: 1400px;
 
     display: flex;
@@ -31,7 +30,6 @@ export const StyledRegisterPage = styled.div`
     gap: 30px;
 
     .RegisterMobile {
-      width: 100%;
       text-align: center;
       border-radius: 50px 1px 50px 12px;
       background: rgba(232, 230, 233, 0.09);
@@ -49,8 +47,7 @@ export const StyledRegisterPage = styled.div`
     }
 
     .titleRegister {
-      font-style: normal;
-      font-weight: 400;
+      font-weight: 700;
       font-size: var(--fon32);
       line-height: 59px;
       color: var(--Withe);
@@ -69,7 +66,7 @@ export const StyledRegisterPage = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
 
     button {
@@ -122,8 +119,6 @@ export const StyledRegisterPage = styled.div`
     display: flex;
     justify-content: space-between;
     padding-bottom: 40px;
-    border-bottom: 1px solid var(--Color-primary);
-    border-color: var(--Withe);
   }
 
   .divSelectCategory > div {
@@ -144,6 +139,16 @@ export const StyledRegisterPage = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    .inputContainer {
+      display: flex;
+
+      border-bottom: 1px solid var(--Color-primary);
+    }
+
+    .error {
+      border-bottom: 1px solid var(--Negative);
+    }
   }
 
   .divBlockLeft > div {
@@ -155,6 +160,16 @@ export const StyledRegisterPage = styled.div`
     flex-direction: column;
     gap: 10px;
     align-items: center;
+
+    .inputContainer {
+      display: flex;
+
+      border-bottom: 1px solid var(--Color-primary);
+    }
+
+    .error {
+      border-bottom: 1px solid var(--Negative);
+    }
   }
 
   @media (min-width: 390px) {
@@ -165,12 +180,11 @@ export const StyledRegisterPage = styled.div`
 
   @media (min-width: 768px) {
     height: 100vh;
+    max-width: 100vw;
 
     .RegisterMobile {
-      width: 396px !important;
+      width: 45%;
       padding: 17px 0px;
-      margin-top: 97px;
-      margin-bottom: 70px;
     }
 
     .RegisterAndTitle {
@@ -180,22 +194,29 @@ export const StyledRegisterPage = styled.div`
     }
 
     .background {
-      height: 110vh;
-    }
-
-    .titleRegister {
-      font-size: 56px !important;
-      font-weight: 700 !important;
+      height: 100%;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     form {
       flex-direction: row;
-      gap: 280px;
-      width: 80vw;
+      gap: 80px;
     }
 
     .container {
+      width: 80%;
       display: flex;
+
+      .formContainer {
+        gap: 55px;
+      }
+
+      .titleRegister {
+        font-size: var(--fon32);
+      }
     }
 
     .divBlockLeft {
@@ -208,6 +229,12 @@ export const StyledRegisterPage = styled.div`
 
     button {
       height: 70px;
+    }
+  }
+
+  @media (min-width: 1247px) {
+    .RegisterMobile {
+      width: 404px;
     }
   }
 `;
