@@ -7,8 +7,8 @@ interface iProviders {
 
 export const Providers = ({ children }: iProviders) => {
   return (
-    <UserProvider>
-      <AuthProvider>{children}</AuthProvider>
-    </UserProvider>
+    <AuthProvider>
+      <UserProvider>{children}</UserProvider>
+    </AuthProvider>
   );
 };
