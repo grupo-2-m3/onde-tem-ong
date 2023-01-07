@@ -12,6 +12,8 @@ import PencilLight from "../../assets/imgs/Pencil Light.svg";
 import LogoWhite from "../../assets/imgs/LogoWhite.svg";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { Error } from "../../components/Input/StyledInput";
+import Button from "../../components/Button/Button";
+import { StyledLink } from "../../components/StyledLink/StyledLink";
 
 export interface iRegisterData {
   email: string;
@@ -37,8 +39,16 @@ const RegisterPage = () => {
       .required("A confirmação de senha é obrigatória")
       .oneOf([yup.ref("password")], "As senhas precisam coincidir"),
     type: yup.string().required("O tipo é obrigatório"),
-    category: yup.string().required("A categoria é obrigatória"),
-    bio: yup.string().required("A descrição é obrigatória"),
+    category: yup.string().when("type", {
+      is: "owner_ong",
+      then: yup.string().required("A categoria é obrigatória"),
+      otherwise: yup.string(),
+    }),
+    bio: yup.string().when("type", {
+      is: "owner_ong",
+      then: yup.string().required("A bio é obrigatória"),
+      otherwise: yup.string(),
+    }),
   });
 
   const {
@@ -179,28 +189,27 @@ const RegisterPage = () => {
               <div className="divBlockRight">
                 {typeUser === "owner_ong" ? (
                   <div className="divSelectCategory">
-                    <div className="LabelAndSelect">
-                      <label className="labelSelectCategory" htmlFor="category">
-                        SELECIONE A CATEGORIA
-                      </label>
-                      <select id="category" {...register("category")}>
-                        <option value="">Sem categoria</option>
-                        <option value="seguranca alimentar">
-                          Segurança Alimentar
-                        </option>
-                        <option value="Cultura">Cultura</option>
-                        <option value="Saúde">Saúde</option>
-                        <option value="Meio Ambiente">Meio Ambiente</option>
-                        <option value="Desenvolvimento e defesa de direitos">
-                          Desenvolvimento e defesa de direitos
-                        </option>
-                        <option value="Habitação">Habitação</option>
-                        <option value="Animais">Animais</option>
-                        <option value="Povos nativos">Povos nativos</option>
-                        <option value="Tecnologia">Tecnologia</option>
-                        <option value="Animais">Animais</option>
-                      </select>
-                    </div>
+                    <select
+                      id="category"
+                      {...register("category")}
+                      className={errors.category && "errorSelect"}
+                    >
+                      <option value="">Selecionar categoria</option>
+                      <option value="seguranca alimentar">
+                        Segurança Alimentar
+                      </option>
+                      <option value="Cultura">Cultura</option>
+                      <option value="Saúde">Saúde</option>
+                      <option value="Meio Ambiente">Meio Ambiente</option>
+                      <option value="Desenvolvimento e defesa de direitos">
+                        Desenvolvimento e defesa de direitos
+                      </option>
+                      <option value="Habitação">Habitação</option>
+                      <option value="Animais">Animais</option>
+                      <option value="Povos nativos">Povos nativos</option>
+                      <option value="Tecnologia">Tecnologia</option>
+                      <option value="Animais">Animais</option>
+                    </select>
                     <div
                       className={
                         errors.bio ? "inputContainer error" : "inputContainer"
@@ -226,11 +235,13 @@ const RegisterPage = () => {
                 ) : (
                   ""
                 )}
-                <button type="submit">Cadastrar</button>
+                <Button styled="filled" type="submit">
+                  Cadastrar
+                </Button>
                 <span>Já possui uma conta?</span>
-                <button type="button" className="LoginButton">
+                <StyledLink type="button" to="/login">
                   Login
-                </button>
+                </StyledLink>
                 <img src={LogoWhite} alt="" />
               </div>
             </form>
