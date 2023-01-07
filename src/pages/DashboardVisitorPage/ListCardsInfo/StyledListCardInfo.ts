@@ -11,9 +11,6 @@ export const StyledListCardsInfo = styled.ul`
 
   gap: 40px;
 
-  .card {
-  }
-
   h3 {
     width: 90%;
     margin-bottom: 20px;
@@ -21,5 +18,8 @@ export const StyledListCardsInfo = styled.ul`
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--Color-primary-50);
+  }
+  .motionInfo {
+    width: 90%;
   }
 `;

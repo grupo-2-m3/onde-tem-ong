@@ -15,41 +15,55 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
   }
 
   .backImg2 {
-    z-index: 1;
     left: 0;
   }
 
   .backImg {
-    z-index: 2;
     left: 0;
+  }
+  .imgBlur {
+    background-image: none;
   }
 
   .backImg1 {
+    position: absolute;
     left: 0;
   }
 
-  .carousel {
-    margin-top: 100px;
+  .boxCarousel {
     width: 100%;
 
     display: flex;
     justify-content: center;
 
-    > div {
+    h1 {
+      color: var(--Withe);
+      position: absolute;
+
+      bottom: 20%;
+    }
+
+    .boxVectors {
       width: 100%;
+      height: 100%;
 
       display: flex;
       align-items: center;
       flex-direction: column;
 
+      background-color: rgb(0, 0, 0, 0.3);
+
+      .blur {
+        width: 100%;
+      }
       .home {
-        z-index: 4;
-
         width: 60%;
-        max-width: 600px;
+        color: var(--Blue);
 
-        @media (min-width: 1000px) {
-          margin-top: 5%;
+        margin-top: 10%;
+
+        @media (min-width: 600px) {
+          top: 25%;
         }
       }
 
@@ -78,6 +92,8 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
     background-size: cover;
 
     margin-top: 50%;
+
+    background-color: white;
   }
 
   footer {
@@ -135,5 +151,64 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
     .blue {
       color: var(--Blue);
     }
+  }
+  .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    min-height: 120px;
+
+    @media (min-width: 900px) {
+      width: 70%;
+      margin-top: 60px;
+    }
+
+    overflow: hidden;
+
+    position: absolute;
+
+    z-index: 5;
+    > div {
+      width: 100%;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+
+      border: none;
+      background: none;
+
+      position: absolute;
+
+      bottom: 50%;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .right {
+      right: 0px;
+
+      margin-right: 0px;
+
+      transform: rotate(180deg);
+    }
+
+    .left {
+      left: 0;
+
+      z-index: 2;
+    }
+  }
+  .marginsBottonHeader {
+    height: 100px;
+    width: 100%;
+
+    background-color: var(--Black);
+
+    opacity: 30%;
   }
 `;

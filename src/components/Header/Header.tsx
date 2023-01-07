@@ -2,14 +2,16 @@ import OndeTemOng from "../../assets/imgs/ondeTemOng.svg";
 import noUser from "../../assets/imgs/noUser.svg";
 import { Link } from "react-router-dom";
 import { StyledHeader } from "./StyledHeader";
+import { motion } from "framer-motion";
 
 interface iHeader {
   imageUser?: string;
   anchors?: boolean;
   callBack?: () => void;
+  modal?: boolean;
 }
 
-export const Header = ({ imageUser, anchors, callBack }: iHeader) => {
+export const Header = ({ imageUser, anchors, callBack, modal }: iHeader) => {
   return (
     <StyledHeader>
       <div>
@@ -21,7 +23,7 @@ export const Header = ({ imageUser, anchors, callBack }: iHeader) => {
         <div className="conteiner_anchor">
           {anchors && (
             <div className="div_anchors">
-              <a href="#quem_somos">Quem somos?</a>
+              <a href="#quemSomos">Quem somos?</a>
               <a href="#transparencia">Transparência</a>
             </div>
           )}
@@ -40,6 +42,17 @@ export const Header = ({ imageUser, anchors, callBack }: iHeader) => {
                   alt="imagem do usuario"
                 />
               </Link>
+            )}
+
+            {modal && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="modalLogin"
+              >
+                <p>Faça Login</p>
+              </motion.div>
             )}
           </div>
         </div>

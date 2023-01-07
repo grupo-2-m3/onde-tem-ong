@@ -15,9 +15,11 @@ export const CardInfo = ({ title, className, text }: iCardInfo) => {
   };
   return (
     <>
-      <h3>{title}</h3>
+      <h3 id={title === "Quem Somos?" ? "quemSomos" : "transparencia"}>
+        {title}
+      </h3>
       <StyledCardInfo Image={Image} className="card">
-        <div className="conteiner_div_home">
+        <div className="conteinerDivHome">
           <div className={className}></div>
         </div>
         <p>{text}</p>
