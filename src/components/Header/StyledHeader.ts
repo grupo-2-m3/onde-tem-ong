@@ -91,4 +91,24 @@ export const StyledHeader = styled.header`
     background: none;
     border: none;
   }
+
+  .modalLogin {
+    background-color: #d9d9d9;
+
+    padding: 20px;
+
+    border-radius: 8px 0 8px 8px;
+
+    position: absolute;
+    z-index: 6;
+
+    margin-right: 25px;
+
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    font-size: var(--font20);
+    font-weight: 700;
+
+    right: 5%;
+  }
 `;
