@@ -175,6 +175,7 @@ export const StyledRegisterPage = styled.div`
 
   @media (min-width: 390px) {
     background-image: url("assets/Background Desktop.svg");
+    background-size: cover;
     background-position: center;
     transition: background-image 2s ease;
   }
@@ -212,7 +213,7 @@ export const StyledRegisterPage = styled.div`
       display: flex;
 
       .formContainer {
-        gap: 55px;
+        gap: 40px;
       }
 
       .titleRegister {
