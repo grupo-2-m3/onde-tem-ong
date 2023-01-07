@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       if (response.data.user.type === "owner_ong") {
         createOng(response.data.user);
       }
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }

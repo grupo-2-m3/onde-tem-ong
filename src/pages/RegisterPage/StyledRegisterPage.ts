@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import arrowDown from "../../assets/imgs/arrowDown.svg";
 
 export const StyledRegisterPage = styled.div`
   width: 100%;
@@ -15,6 +16,7 @@ export const StyledRegisterPage = styled.div`
 
   .background {
     width: 100%;
+    height: 100vh;
     min-height: 100%;
     padding: 20px;
     background-color: rgba(111, 42, 134, 0.81);
@@ -108,6 +110,9 @@ export const StyledRegisterPage = styled.div`
   .divSelectCategory {
     width: 100%;
     margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
 
   .selectTypeUser > div {
@@ -130,9 +135,29 @@ export const StyledRegisterPage = styled.div`
   }
 
   .divSelectCategory select {
-    height: 100%;
-    width: 20px;
-    border-bottom: 1px solid;
+    height: 45px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: var(--Color-primary-50);
+    border-radius: 8px;
+    font-size: var(--font14);
+    color: var(--Color-terciary);
+    padding: 10px;
+    font-weight: 400;
+    border: 2px solid var(--Color-primary);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url(${arrowDown});
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-size: 25px;
+  }
+
+  .divSelectCategory .errorSelect {
+    border-color: var(--Negative);
+    border-width: 1px;
   }
 
   .divBlockLeft {
