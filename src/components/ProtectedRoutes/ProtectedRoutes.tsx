@@ -5,13 +5,11 @@ import { UserContext } from "../../contexts/UserContext/UserContext";
 
 const ProtectedRoutes = () => {
   const { loading } = useContext(UserContext);
-  const { userInfo } = useContext(AuthContext);
+  const { verifyLogin } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log("oi");
-  console.log(userInfo);
 
   useEffect(() => {
-    if (!userInfo) {
+    if (!verifyLogin) {
       navigate("/login");
     }
   }, []);
@@ -20,7 +18,7 @@ const ProtectedRoutes = () => {
     return <></>;
   }
 
-  return userInfo ? <Outlet /> : <Navigate to="/login" />;
+  return verifyLogin ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoutes;

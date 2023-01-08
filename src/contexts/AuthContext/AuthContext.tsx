@@ -28,14 +28,14 @@ export interface iUserInfo {
 interface iAuthContextProps {
   userLogin: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
-  userInfo: iUserInfo | null;
-  setUserInfo: React.Dispatch<React.SetStateAction<iUserInfo | null>>;
+  verifyLogin: iUserInfo | null;
+  setVerifyLogin: React.Dispatch<React.SetStateAction<iUserInfo | null>>;
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
 
 export const AuthProvider = ({ children }: iAuthProvider) => {
-  const [userInfo, setUserInfo] = useState<iUserInfo | null>(null);
+  const [verifyLogin, setVerifyLogin] = useState<iUserInfo | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         navigate("/profile");
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
-        setUserInfo(response.data);
+        setVerifyLogin(response.data);
         // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
       })
       .catch((err) => console.log(err.response.data.message));
@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, registerSubmit, userInfo, setUserInfo }}
+      value={{ userLogin, registerSubmit, verifyLogin, setVerifyLogin }}
     >
       {children}
     </AuthContext.Provider>

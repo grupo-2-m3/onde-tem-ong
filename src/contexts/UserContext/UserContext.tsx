@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { AuthContext } from "../AuthContext/AuthContext";
+import { AuthContext, iUserInfo } from "../AuthContext/AuthContext";
 
 interface iUserProvider {
   children: React.ReactNode;
@@ -8,6 +8,7 @@ interface iUserProvider {
 
 interface iUserContextProps {
   loading: boolean;
+  userInfo: iUserInfo;
 }
 
 export interface iOng {
@@ -30,9 +31,10 @@ export interface iDonateOng {
 export const UserContext = createContext({} as iUserContextProps);
 
 export const UserProvider = ({ children }: iUserProvider) => {
-  const [loading, setLoading] = useState(true);
 
-  const { setUserInfo } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({} as iUserInfo)
+
 
   useEffect(() => {
     const getUserInfo = async () => {
@@ -63,6 +65,6 @@ export const UserProvider = ({ children }: iUserProvider) => {
   };
 
   return (
-    <UserContext.Provider value={{ loading }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ loading, userInfo}}>{children}</UserContext.Provider>
   );
 };
