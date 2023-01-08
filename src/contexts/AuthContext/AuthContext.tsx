@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
 
@@ -14,14 +14,29 @@ export interface iLoginData {
   password: string;
 }
 
+export interface iUserInfo {
+  bio?: string;
+  category?: string;
+  background?: string;
+  avatar?: string;
+  email: string;
+  id: number;
+  name: string | number;
+  type: string;
+}
+
 interface iAuthContextProps {
   userLogin: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
+  userInfo: iUserInfo | null;
+  setUserInfo: React.Dispatch<React.SetStateAction<iUserInfo | null>>;
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
 
 export const AuthProvider = ({ children }: iAuthProvider) => {
+  const [userInfo, setUserInfo] = useState<iUserInfo | null>(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const userLogin: SubmitHandler<iLoginData> = (data) => {
@@ -31,6 +46,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         navigate("/profile");
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
+        setUserInfo(response.data);
         // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
       })
       .catch((err) => console.log(err.response.data.message));
@@ -65,7 +81,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   };
 
   return (
-    <AuthContext.Provider value={{ userLogin, registerSubmit }}>
+    <AuthContext.Provider
+      value={{ userLogin, registerSubmit, userInfo, setUserInfo }}
+    >
       {children}
     </AuthContext.Provider>
   );
