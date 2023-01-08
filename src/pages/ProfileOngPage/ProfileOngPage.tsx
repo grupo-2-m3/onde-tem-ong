@@ -6,7 +6,7 @@ import { ProfileOngStyled } from "./StyledProfileOngPage";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const ProfileOngPage = () => {
-  const { userInfo } = useContext(AuthContext); 
+  const { userInfo } = useContext(AuthContext);
 
   // const totalPrice = historicDonates.reduce((acc, value) => {
   //   return (acc + (value.value))
@@ -20,9 +20,9 @@ const ProfileOngPage = () => {
           <h2>Informações</h2>
           <img src={PencilBlack} alt="" />
         </div>
-        <h3 className="name">Nome: {userInfo?.name}</h3>
+        <h3 className="name">Nome: {userInfo.name}</h3>
         <h3 className="bio">Bio:</h3>
-        <p>{userInfo?.bio}</p>
+        <p>{userInfo.bio}</p>
       </div>
       <div className="totalDiv">
         {/* <h3 className="total">Total: {totalPrice}</h3> */}

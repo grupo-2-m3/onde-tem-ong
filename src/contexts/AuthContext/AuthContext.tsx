@@ -69,6 +69,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         navigate("/profile");
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
+        setUserInfo(response.data.user)
         // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
       })
       .catch((err) => console.log(err.response.data.message));

@@ -10,8 +10,7 @@ import ProfileOngPage from "./pages/ProfileOngPage/ProfileOngPage";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
 
 export const RoutesComponent = () => {
-  const { userInfo } = useContext(AuthContext);
-  console.log(userInfo)
+  const { userInfo } = useContext(AuthContext); 
 
   return (
     <Routes>

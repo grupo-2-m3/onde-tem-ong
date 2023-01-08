@@ -1,6 +1,5 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { api } from "../../services/api";
-import { AuthContext } from "../AuthContext/AuthContext";
 
 interface iUserProvider {
   children: React.ReactNode;
