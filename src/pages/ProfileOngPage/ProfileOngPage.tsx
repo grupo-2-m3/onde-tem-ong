@@ -3,10 +3,10 @@ import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import PencilBlack from "../../assets/imgs/PencilBlack.svg";
 import Historic from "../../assets/imgs/Historic.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
-import { UserContext } from "../../contexts/UserContext/UserContext";
+import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const ProfileOngPage = () => {
-  const { userInfo } = useContext(UserContext);
+  const { userInfo } = useContext(AuthContext); 
 
   // const totalPrice = historicDonates.reduce((acc, value) => {
   //   return (acc + (value.value))

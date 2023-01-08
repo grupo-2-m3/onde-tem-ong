@@ -10,7 +10,8 @@ import ProfileOngPage from "./pages/ProfileOngPage/ProfileOngPage";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
 
 export const RoutesComponent = () => {
-  const { verifyLogin } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
+  console.log(userInfo)
 
   return (
     <Routes>
@@ -21,7 +22,7 @@ export const RoutesComponent = () => {
         <Route
           path="/profile"
           element={
-            verifyLogin?.type === "user" ? <ProfileUserPage /> : <ProfileOngPage />
+            userInfo.type === "user" ? <ProfileUserPage /> : <ProfileOngPage />
           }
         />
         <Route path="/dashboard" element={<DashboardLoggedPage />} />
