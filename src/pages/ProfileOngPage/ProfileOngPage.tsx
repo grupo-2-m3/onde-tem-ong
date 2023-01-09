@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import PencilBlack from "../../assets/imgs/PencilBlack.svg";
 import Historic from "../../assets/imgs/Historic.svg";
@@ -8,14 +8,20 @@ import { Modal } from "../../components/Modal/ModalGeneric/Modal";
 import { ModalOng } from "../../components/Modal/ModalOng";
 import NoUser from "../../assets/imgs/noUser.svg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
+import { UserContext } from "../../contexts/UserContext/UserContext";
 
 const ProfileOngPage = () => {
-  const { userInfo } = useContext(AuthContext);
   const [click, setClick] = useState(true);
+  const { userInfo } = useContext(AuthContext);
+  const { historicDonates, historicDonatesOngMain } = useContext(UserContext);
 
-  // const totalPrice = historicDonates.reduce((acc, value) => {
-  //   return (acc + (value.value))
-  // }, 0)
+  const totalPrice = historicDonates.reduce((acc, value) => {
+    return acc + Number(value.value);
+  }, 0);
+
+  useEffect(() => {
+    historicDonatesOngMain();
+  }, [userInfo]);
 
   return (
     <ProfileOngStyled>
@@ -38,10 +44,10 @@ const ProfileOngPage = () => {
           <p className="bio">Bio:</p>
           <div className="bioContainer">
             <span className={`spanBio ${click && "vanish"}`}>
-              {userInfo.bio}
+              {`${userInfo.bio} `}
             </span>
 
-            {userInfo.bio!.length > 100 && (
+            {userInfo.id && userInfo.bio!.length > 100 && (
               <button className="seeMore" onClick={() => setClick(!click)}>
                 {click ? "Ver mais" : "Ver menos"}
               </button>
@@ -51,7 +57,13 @@ const ProfileOngPage = () => {
         <div className="totalContainer">
           <div className="totalDiv">
             <h3 className="total">
-              Total: <span>R$16,00</span>
+              Total:{" "}
+              <span>
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(totalPrice)}
+              </span>
             </h3>
             <img src={Historic} alt="" />
           </div>
@@ -59,11 +71,24 @@ const ProfileOngPage = () => {
             <ul>
               {historicDonates?.map((historic, index) => (
                 <li key={index}>
-                  <div className="donorUser">
-                    <img src={NoUser} alt="" />
-                    <p>{historic.name}</p>
-                  </div>
-                  <span>{historic.value}</span>
+                  {historic.public === false ? (
+                    <div className="donorUser">
+                      <img src={NoUser} alt="" />
+                      <p>Usuário anônimo</p>
+                    </div>
+                  ) : (
+                    <div className="donorUser">
+                      <img src={historic.user.avatar} alt="" />
+                      <p>{historic.user.name}</p>
+                    </div>
+                  )}
+
+                  <span>
+                    {new Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(historic.value)}
+                  </span>
                 </li>
               ))}
             </ul>
