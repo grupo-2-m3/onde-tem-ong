@@ -1,26 +1,16 @@
-import { useContext, useEffect } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
-import { UserContext } from "../../contexts/UserContext/UserContext";
 
 const ProtectedRoutes = () => {
-  const { loading } = useContext(UserContext);
-  const { userInfo } = useContext(AuthContext);
-  const navigate = useNavigate();
-  console.log("oi");
-  console.log(userInfo);
+  const { loading } = useContext(AuthContext);
+  const token = localStorage.getItem("@token")
 
-  useEffect(() => {
-    if (!userInfo) {
-      navigate("/login");
-    }
-  }, []);
-
-  if (loading) {
-    return <></>;
+  if(loading) {
+    return null;
   }
 
-  return userInfo ? <Outlet /> : <Navigate to="/login" />;
+  return token ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoutes;

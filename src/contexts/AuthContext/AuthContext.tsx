@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
 
@@ -28,16 +28,39 @@ export interface iUserInfo {
 interface iAuthContextProps {
   userLogin: (data: iLoginData) => void;
   registerSubmit: (data: iRegisterData) => void;
-  userInfo: iUserInfo | null;
-  setUserInfo: React.Dispatch<React.SetStateAction<iUserInfo | null>>;
+  loading: boolean;
+  userInfo: iUserInfo;
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
 
 export const AuthProvider = ({ children }: iAuthProvider) => {
-  const [userInfo, setUserInfo] = useState<iUserInfo | null>(null);
+  const [userInfo, setUserInfo] = useState({} as iUserInfo);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      setLoading(true);
+      const token = localStorage.getItem("@token");
+      const id = localStorage.getItem("@id");
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      if (!token && !id) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const { data } = await api.get(`/users/${id}`);
+        setUserInfo(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getUserInfo();
+  }, []);
 
   const userLogin: SubmitHandler<iLoginData> = (data) => {
     api
@@ -46,7 +69,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         navigate("/profile");
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
-        setUserInfo(response.data);
+        setUserInfo(response.data.user)
         // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
       })
       .catch((err) => console.log(err.response.data.message));
@@ -82,7 +105,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, registerSubmit, userInfo, setUserInfo }}
+      value={{ userLogin, registerSubmit, userInfo, loading}}
     >
       {children}
     </AuthContext.Provider>
