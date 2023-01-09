@@ -4,6 +4,7 @@ import PencilBlack from "../../assets/imgs/PencilBlack.svg";
 import Historic from "../../assets/imgs/Historic.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
+import { Header } from "../../components/Header/Header";
 
 const ProfileOngPage = () => {
   const { userInfo } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const ProfileOngPage = () => {
 
   return (
     <ProfileOngStyled>
+      <Header/>
       <CoverProfile />
       <div className="infoUser">
         <div className="InfoAndEdit">
