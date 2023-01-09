@@ -41,6 +41,9 @@ export const ModalDiv=styled.div`
             font-size: 20px;
         }
         & button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: transparent;
             font-size: 20px;
             color: red;

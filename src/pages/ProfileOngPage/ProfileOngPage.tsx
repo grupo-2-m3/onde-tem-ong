@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import PencilBlack from "../../assets/imgs/PencilBlack.svg";
-import Historic from "../../assets/imgs/Historic.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import { Header } from "../../components/Header/Header";
 import { Modal } from "../../components/Modal/ModalGeneric/Modal";
-import { ModalOng } from "../../components/Modal/ModalOng";
+import { ModalOng } from "../../components/Modal/ModalOng/ModalOng";
 
 const ProfileOngPage = () => {
   const { userInfo } = useContext(AuthContext);
@@ -26,7 +25,7 @@ const ProfileOngPage = () => {
             title="Editar usuário"
             button={<img src={PencilBlack} alt="" />}
           >
-            <ModalOng data={userInfo} />
+            <ModalOng data={{ name: "ong", id: 1 }} />
           </Modal>
         </div>
         <p className="name">

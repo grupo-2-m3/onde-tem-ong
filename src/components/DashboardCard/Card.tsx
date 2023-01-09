@@ -5,8 +5,7 @@ import bgDefaultImg from "../../assets/imgs/noBackgroundUser.jpg";
 import userDefaultAvatar from "../../assets/imgs/noUserProfileUser.jpg";
 import { iOng } from "../../pages/DashboardLoggedPage/DashboardLoggedPage";
 import { Modal } from "../Modal/ModalGeneric/Modal";
-import { ModalOng } from "../Modal/ModalOng";
-import { ModalDonate } from "../Modal/ModalDonate";
+import { ModalDonate } from "../Modal/ModalDonate/ModalDonate";
 
 const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
 
