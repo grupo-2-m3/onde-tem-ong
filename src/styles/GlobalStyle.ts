@@ -14,7 +14,8 @@ export const GlobalStyle = createGlobalStyle`
   --Grey100: #1E1E1E;
   --Grey50: #2E2F35;
   --Grey20: #423F44;
-
+  --Grey10: #C2C2C2;
+  --Grey0: #D9D9D9;
 
   --Withe: #ffff;
   --Blue:  #3b5998;
