@@ -4,6 +4,7 @@ import { SubmitHandler } from "react-hook-form";
 
 import { api } from "../../services/api";
 import { iRegisterData } from "../../pages/RegisterPage/RegisterPage";
+import { toast } from "react-toastify";
 
 interface iAuthProvider {
   children: React.ReactNode;
@@ -79,9 +80,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
         setUserInfo(response.data.user);
-        // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
+        toast.success("Login realizado com sucesso!");
       })
-      .catch((err) => console.log(err.response.data.message));
+      .catch((err) => toast.error(err.response.data));
     setLoading(false);
   };
 
@@ -93,9 +94,11 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       if (response.data.user.type === "owner_ong") {
         createOng(response.data.user);
       }
+
+      toast.success("Usuario Criado Com sucesso!");
       navigate("/login");
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      toast.error(error.response.data);
     }
   };
 
