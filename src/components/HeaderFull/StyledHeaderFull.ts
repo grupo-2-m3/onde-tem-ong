@@ -2,37 +2,54 @@ import styled from "styled-components";
 
 export const StyledHeaderFull = styled.div`
   height: 84px;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  width: 100%;
+
+  > div {
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--Withe);
+    z-index: 5;
+  }
 
   header {
-    z-index: 2;
+    z-index: 5;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
     max-width: 1200px;
+    margin: 0 15px;
     padding: 10px 0;
     background: var(--Withe);
-    position: fixed;
     align-items: center;
-    margin: 0 auto;
+    position: relative;
   }
 
-  header > div > img {
-    right: 15px;
+  header > div > a > img {
+    cursor: pointer;
     width: 50px;
     object-fit: cover;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
   }
 
   .downMenu {
     border: 2px solid var(--Color-primary);
     position: absolute;
     width: 35%;
-    min-width: 200px;
+    min-width: 250px;
     top: 70px;
-    right: 25px;
+    right: 15px;
     display: none;
     border-radius: 8px;
     padding: 10px;
@@ -40,6 +57,9 @@ export const StyledHeaderFull = styled.div`
     display: none;
     flex-direction: column;
     gap: 10px;
+    -webkit-box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 26px -12px rgba(0, 0, 0, 0.75);
   }
 
   .downMenu > .goToProfile {
@@ -47,7 +67,7 @@ export const StyledHeaderFull = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 5px;
+    padding: 10px;
     text-decoration: none;
     color: black;
     width: 100%;
@@ -58,6 +78,18 @@ export const StyledHeaderFull = styled.div`
   .downMenu > .goToProfile > img {
     width: 30px;
     object-fit: cover;
+  }
+
+  .downMenu > .dynamicLink {
+    font-size: var(--font16);
+    color: var(--Color-primary);
+    border: 2px solid var(--Color-primary);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--Color-terciary);
   }
 
   header > div:hover > .downMenu {
