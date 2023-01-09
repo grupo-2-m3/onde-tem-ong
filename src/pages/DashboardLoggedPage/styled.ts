@@ -4,7 +4,7 @@ export const StyledDashboard = styled.main`
   margin: 0 15px;
   margin-top: 25px;
 
-  section {
+  > div > section {
     display: flex;
     justify-content: space-between;
   }
