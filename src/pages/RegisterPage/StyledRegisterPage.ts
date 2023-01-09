@@ -16,7 +16,6 @@ export const StyledRegisterPage = styled.div`
 
   .background {
     width: 100%;
-    height: 100vh;
     min-height: 100%;
     padding: 20px;
     background-color: rgba(111, 42, 134, 0.81);

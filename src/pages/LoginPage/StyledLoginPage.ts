@@ -18,8 +18,8 @@ export const StyledLoginPage = styled.div`
     align-content: flex-start;
 
     .upLeftImage {
-      width: 49px;
-      height: 46px;
+      width: 35px;
+      height: 32px;
 
       margin: 15px 12px 20px;
     }
@@ -141,7 +141,7 @@ export const StyledLoginPage = styled.div`
   .logoImage {
     width: 241px;
 
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 
   @media (min-width: 390px) {

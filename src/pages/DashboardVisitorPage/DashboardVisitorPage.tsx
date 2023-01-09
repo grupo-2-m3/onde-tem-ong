@@ -10,10 +10,13 @@ import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { Header } from "../../components/Header/Header";
 import { StyledDashboardVisitorPage } from "./StyledDashboardVisitorPage";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import HeaderFull from "../../components/HeaderFull/HeaderFull";
+import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const DashboardVisitorPage = () => {
   const [modal, setModal] = useState(false);
+  const { userInfo } = useContext(AuthContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,7 +33,10 @@ const DashboardVisitorPage = () => {
         imagem: OndeTemOng,
       }}
     >
-      <Header anchors={true} modal={modal} />
+      <HeaderFull
+        linkText={userInfo.id ? "Dashboard ONGs" : "Registre-se"}
+        linkTo={userInfo.id ? "/dashboard" : "/register"}
+      />
       <div className="marginsBottonHeader"></div>
 
       <div className="boxCarousel">

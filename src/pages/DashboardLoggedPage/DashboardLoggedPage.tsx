@@ -3,10 +3,13 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { RiFilterOffFill, RiFilterFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
 import Card from "../../components/DashboardCard/Card";
-import { Header } from "../../components/Header/Header";
 import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
+import HeaderFull from "../../components/HeaderFull/HeaderFull";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext/UserContext";
+
 
 export interface iOng {
   e: iOng;
@@ -27,7 +30,9 @@ const DashboardLoggedPage = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
 
+
   const ref = useRef<HTMLDivElement | null>(null);
+
 
   let mockOngs: iOng[];
   let filterCategories: string[] = [];
@@ -125,7 +130,7 @@ const DashboardLoggedPage = () => {
 
   return (
     <>
-      <Header></Header>
+      <HeaderFull linkText="Dashboard Inicial" linkTo="/" />
       <StyledDashboard>
         <div className="container">
           <section className="searchSection container">
