@@ -5,6 +5,9 @@ import Historic from "../../assets/imgs/Historic.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import { Header } from "../../components/Header/Header";
+import { Modal } from "../../components/Modal/ModalGeneric/Modal";
+import { ModalOng } from "../../components/Modal/ModalOng";
+
 
 const ProfileOngPage = () => {
   const { userInfo } = useContext(AuthContext);
@@ -20,7 +23,9 @@ const ProfileOngPage = () => {
       <div className="infoUser">
         <div className="InfoAndEdit">
           <h2>Informações</h2>
-          <img src={PencilBlack} alt="" />
+          <Modal title={'editar usuario'} button={<img src={PencilBlack} alt="" />}>
+            <ModalOng data={userInfo}/>
+          </Modal>
         </div>
         <h3 className="name">Nome: {userInfo.name}</h3>
         <h3 className="bio">Bio:</h3>
