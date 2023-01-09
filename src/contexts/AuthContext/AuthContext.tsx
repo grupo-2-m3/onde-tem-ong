@@ -30,6 +30,7 @@ interface iAuthContextProps {
   registerSubmit: (data: iRegisterData) => void;
   loading: boolean;
   userInfo: iUserInfo;
+  logout: () => void;
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
@@ -61,6 +62,12 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     };
     getUserInfo();
   }, []);
+
+  const logout = () => {
+    setUserInfo({} as iUserInfo);
+    localStorage.clear();
+    navigate("/");
+  };
 
   const userLogin: SubmitHandler<iLoginData> = (data) => {
     setLoading(true);
@@ -107,7 +114,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, registerSubmit, userInfo, loading }}
+      value={{ userLogin, registerSubmit, userInfo, loading, logout }}
     >
       {children}
     </AuthContext.Provider>

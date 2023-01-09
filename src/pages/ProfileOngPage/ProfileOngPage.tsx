@@ -8,7 +8,6 @@ import { Header } from "../../components/Header/Header";
 import { Modal } from "../../components/Modal/ModalGeneric/Modal";
 import { ModalOng } from "../../components/Modal/ModalOng";
 
-
 const ProfileOngPage = () => {
   const { userInfo } = useContext(AuthContext);
 
@@ -18,13 +17,16 @@ const ProfileOngPage = () => {
 
   return (
     <ProfileOngStyled>
-      <Header/>
+      <Header />
       <CoverProfile />
       <div className="infoUser">
         <div className="InfoAndEdit">
           <h2>Informações</h2>
-          <Modal title={'editar usuario'} button={<img src={PencilBlack} alt="" />}>
-            <ModalOng data={userInfo}/>
+          <Modal
+            title={"editar usuario"}
+            button={<img src={PencilBlack} alt="" />}
+          >
+            <ModalOng data={userInfo} />
           </Modal>
         </div>
         <h3 className="name">Nome: {userInfo.name}</h3>

@@ -3,10 +3,11 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { RiFilterOffFill, RiFilterFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
 import Card from "../../components/DashboardCard/Card";
-import { Header } from "../../components/Header/Header";
 import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
+import HeaderFull from "../../components/HeaderFull/HeaderFull";
+import { Link } from "react-router-dom";
 export interface iOng {
   name: string;
   userId: number;
@@ -78,7 +79,9 @@ const DashboardLoggedPage = () => {
 
   return (
     <>
-      <Header></Header>
+      <HeaderFull>
+        <Link to={"/"}>Dashboard Inicial</Link>
+      </HeaderFull>
       <StyledDashboard>
         <div className="container">
           <section className="searchSection container">
@@ -133,7 +136,7 @@ const DashboardLoggedPage = () => {
                         onClick={(e) => handleFilterButton(e)}
                         styled={"filled"}
                       >
-                        {e.charAt(0).toUpperCase() + e.slice(1)}
+                        {e?.charAt(0).toUpperCase() + e?.slice(1)}
                       </Button>
                     );
                   })}
