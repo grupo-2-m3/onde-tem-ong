@@ -105,7 +105,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     background-color: var(--Black50);
 
-    margin-top: 50px;
+    margin-top: 90px;
 
     div {
       gap: 10px;
@@ -174,8 +174,22 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
     }
 
     button {
-      width: 40px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
+
+      :hover {
+        color: var(--Black50);
+      }
+
+      @media (min-width: 600px) {
+        width: 30px;
+        height: 30px;
+      }
+
+      @media (min-width: 900px) {
+        width: 40px;
+        height: 40px;
+      }
 
       border: none;
       background: none;
@@ -204,7 +218,8 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
     }
   }
   .marginsBottonHeader {
-    height: 100px;
+    padding: 10% 0 0 0;
+
     width: 100%;
 
     background-color: var(--Black);

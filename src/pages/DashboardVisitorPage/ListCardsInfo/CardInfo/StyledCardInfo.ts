@@ -36,7 +36,7 @@ export const StyledCardInfo = styled.li<iStyledCardInfo>`
       border-radius: 0;
       .imgH {
         width: 100%;
-        border: 0;
+        border-radius: 0;
       }
     }
   }
