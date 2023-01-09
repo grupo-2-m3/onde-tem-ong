@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { RiFilterOffFill, RiFilterFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
@@ -8,7 +8,10 @@ import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext/UserContext";
+
 export interface iOng {
+  e: iOng
   name: string;
   userId: number;
   bio: string;
@@ -23,6 +26,8 @@ const DashboardLoggedPage = () => {
   const [auxOngs, setAuxOngs] = useState<iOng[] | undefined>(undefined);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
+
+
   let mockOngs: iOng[];
   let filterCategories: string[] = [];
   let filters: string[] = [];
@@ -44,6 +49,9 @@ const DashboardLoggedPage = () => {
     } catch (err) {
       console.error(err);
     }
+    finally {
+
+    }
   }
   function handleFilterButton(event: React.MouseEvent<HTMLElement>) {
     let target = event.target as HTMLElement;
@@ -59,6 +67,7 @@ const DashboardLoggedPage = () => {
     setNotFound(false);
     setSearchValue("");
   }
+
   function handleSearchSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     let found: iOng[] | undefined = [];
@@ -73,9 +82,17 @@ const DashboardLoggedPage = () => {
     }
     setSearchValue("");
   }
+
+  const token = localStorage.getItem("@token");
+
   useEffect(() => {
-    getOngs();
+    if (token) {
+      getOngs();
+    } else {
+      // navigate("/login")
+    }
   }, []);
+
 
   return (
     <>
@@ -155,6 +172,7 @@ const DashboardLoggedPage = () => {
                   auxOngs.map((e, i) => {
                     return (
                       <Card
+                        e={e}
                         name={e.name}
                         category={e.category}
                         id={e.id}

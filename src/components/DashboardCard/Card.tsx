@@ -4,7 +4,12 @@ import { StyledCard } from "./styled";
 import bgDefaultImg from "../../assets/imgs/noBackgroundUser.jpg";
 import userDefaultAvatar from "../../assets/imgs/noUserProfileUser.jpg";
 import { iOng } from "../../pages/DashboardLoggedPage/DashboardLoggedPage";
-const Card = ({ name, category, background, avatar, id, ...rest }: iOng) => {
+import { Modal } from "../Modal/ModalGeneric/Modal";
+import { ModalOng } from "../Modal/ModalOng";
+import { ModalDonate } from "../Modal/ModalDonate";
+
+const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
+
   const imageOnErrorHandler = (
     event: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
@@ -38,9 +43,10 @@ const Card = ({ name, category, background, avatar, id, ...rest }: iOng) => {
         </div>
       </div>
       <div className="helpBtnsDiv">
-        <button className="donateBtn">
+        <Modal button={<button className="donateBtn">
           <BiDonateHeart></BiDonateHeart>Ajudar
-        </button>
+        </button>} title="Doação" ><ModalDonate/></Modal>
+      
         <button id={String(id)}>Ver Mais</button>
       </div>
     </StyledCard>

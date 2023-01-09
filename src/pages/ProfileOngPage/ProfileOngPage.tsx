@@ -23,19 +23,33 @@ const ProfileOngPage = () => {
         <div className="InfoAndEdit">
           <h2>Informações</h2>
           <Modal
-            title={"editar usuario"}
+            title="Editar usuário"
             button={<img src={PencilBlack} alt="" />}
           >
             <ModalOng data={userInfo} />
           </Modal>
         </div>
-        <h3 className="name">Nome: {userInfo.name}</h3>
-        <h3 className="bio">Bio:</h3>
-        <p>{userInfo.bio}</p>
+        <p className="name">
+          Nome:<span className="spanName"> {userInfo.name}</span>
+        </p>
+        <p className="bio">Bio:</p>
+        <div className="bioContainer">
+          <span className="spanBio">
+            {userInfo.bio} Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum
+          </span>
+        </div>
       </div>
       <div className="totalDiv">
         {/* <h3 className="total">Total: {totalPrice}</h3> */}
-        <img src={Historic} alt="" />
+        {/* <img src={Historic} alt="" /> */}
       </div>
       <div className="historicDonantes">
         <ul>
