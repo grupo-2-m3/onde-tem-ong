@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import PencilBlack from "../../assets/imgs/PencilBlack.svg";
-import Historic from "../../assets/imgs/Historic.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import { Modal } from "../../components/Modal/ModalGeneric/Modal";
-import { ModalOng } from "../../components/Modal/ModalOng";
+import { ModalOng } from "../../components/Modal/ModalOng/ModalOng";
 import NoUser from "../../assets/imgs/noUser.svg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { UserContext } from "../../contexts/UserContext/UserContext";
