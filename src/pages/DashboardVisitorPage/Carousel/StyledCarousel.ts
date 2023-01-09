@@ -18,7 +18,6 @@ export const StyledCarousel = styled.div`
 
     transition: 0.3s;
   }
-
   .iten {
     min-width: 120px;
     min-height: 120px;

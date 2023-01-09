@@ -4,7 +4,7 @@ export const StyledDashboard = styled.main`
   margin: 0 15px;
   margin-top: 25px;
 
-  section {
+  > div > section {
     display: flex;
     justify-content: space-between;
   }
@@ -16,7 +16,13 @@ export const StyledDashboard = styled.main`
     margin: 0 auto;
     margin-bottom: 25px;
   }
+  .ongsSection {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .ongsSection > div {
+  }
   .searchSection {
     display: flex;
     flex-direction: column;
@@ -81,10 +87,11 @@ export const StyledDashboard = styled.main`
     flex-direction: column;
     gap: 25px;
     height: 115px;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
   }
-  .popUpFilters > span {
+  span {
     align-self: center;
+    margin-bottom: 15px;
   }
   .popUpFilters > ul {
     display: flex;
@@ -97,7 +104,10 @@ export const StyledDashboard = styled.main`
     margin: 0 auto;
   }
   .popUpFilters > ul > button {
-    height: fit-content;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: fit-content;
   }
   .searchNotFound {
     margin: 0 15px;
@@ -117,7 +127,9 @@ export const StyledDashboard = styled.main`
   .hidden {
     display: none;
   }
-
+  .block {
+    display: block;
+  }
   @media (min-width: 768px) {
     .ongsList {
       flex-direction: row;
@@ -139,9 +151,13 @@ export const StyledDashboard = styled.main`
       display: none;
     }
     .popUpFilters {
+      display: flex;
+      gap: 25px;
       flex-direction: row;
       align-items: center;
-      margin-bottom: 0;
+      overflow: auto;
+      max-width: 45vw;
+      border-radius: 8px;
     }
     .popUpFilters > ul {
       max-width: 100%;
@@ -153,6 +169,9 @@ export const StyledDashboard = styled.main`
       gap: 25px;
       flex-direction: row;
       align-items: center;
+      overflow: auto;
+      max-width: 45vw;
+      border-radius: 8px;
     }
     .catogoriesFilterDiv > span {
       height: fit-content;
@@ -167,6 +186,19 @@ export const StyledDashboard = styled.main`
 
     .categoriesList > button {
       width: fit-content;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .block {
+      display: block;
+      margin: 0 auto;
+    }
+    .spanResponsive {
+      display: block;
+      margin: 0 auto;
     }
   }
 `;

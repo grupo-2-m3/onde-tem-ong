@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { RiFilterOffFill, RiFilterFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
@@ -10,8 +10,9 @@ import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 
+
 export interface iOng {
-  e: iOng
+  e: iOng;
   name: string;
   userId: number;
   bio: string;
@@ -22,10 +23,15 @@ export interface iOng {
 }
 const DashboardLoggedPage = () => {
   const [filterState, setfilterState] = useState<boolean>(false);
-  const [ongs, setOngs] = useState<iOng[] | undefined>(undefined);
-  const [auxOngs, setAuxOngs] = useState<iOng[] | undefined>(undefined);
+  const [ongs, setOngs] = useState<iOng[]>([]);
+  const [auxOngs, setAuxOngs] = useState<iOng[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(0);
+
+
+  const ref = useRef<HTMLDivElement | null>(null);
 
 
   let mockOngs: iOng[];
@@ -39,18 +45,26 @@ const DashboardLoggedPage = () => {
       return arr.indexOf(e) === i;
     });
   }
-  async function getOngs() {
+  async function getOngs(page: number) {
     try {
       // setLoading(true)
-      const response = await api.get<iOng[]>(`ongs`);
-      response && setOngs(response.data);
-      setOngs(response.data);
-      setAuxOngs(response.data);
+      const response = await api.get<iOng[]>(`ongs/?_page=${page}&_limit=2`);
+
+      if (page === 0) {
+        response && setOngs(response.data);
+        response && setAuxOngs(response.data);
+      }
+
+      if (response.data.length > 0 && page > 1) {
+        setOngs((prev) => [...prev, ...response.data]);
+        setAuxOngs((prev) => [...prev, ...response.data]);
+      }
+      if (!response.data) {
+        return;
+      }
     } catch (err) {
       console.error(err);
-    }
-    finally {
-
+    } finally {
     }
   }
   function handleFilterButton(event: React.MouseEvent<HTMLElement>) {
@@ -83,22 +97,40 @@ const DashboardLoggedPage = () => {
     setSearchValue("");
   }
 
-  const token = localStorage.getItem("@token");
+  const options = useMemo(() => {
+    return {
+      root: null,
+      rootMagin: "0px",
+      threshold: 1,
+    };
+  }, []);
+  useEffect(() => {
+    let current = ref.current;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        console.log(entries[0].target);
+        setPage((currentPage) => currentPage + 1);
+      }
+    }, options);
+    return () => {
+      current && observer.observe(current);
+    };
+  }, [ref, options]);
 
   useEffect(() => {
+    getOngs(page);
+  }, [page]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("@token");
     if (token) {
-      getOngs();
-    } else {
-      // navigate("/login")
+      getOngs(page);
     }
   }, []);
 
-
   return (
     <>
-      <HeaderFull>
-        <Link to={"/"}>Dashboard Inicial</Link>
-      </HeaderFull>
+      <HeaderFull linkText="Dashboard Inicial" linkTo="/" />
       <StyledDashboard>
         <div className="container">
           <section className="searchSection container">
@@ -134,10 +166,12 @@ const DashboardLoggedPage = () => {
                 )}{" "}
               </button>
             </div>
+            <span className={filterState ? "block " : "hidden spanResponsive"}>
+              Categorias
+            </span>
             <div
               className={filterState ? "popUpFilters" : "catogoriesFilterDiv"}
             >
-              <span>Categorias</span>
               <ul className="categoriesList">
                 <Button
                   onClick={(e) => handleFilterButton(e)}
@@ -186,6 +220,7 @@ const DashboardLoggedPage = () => {
                   })}
               </>
             </ul>
+            <div style={{ height: "35px" }} ref={ref}></div>
           </section>
         </div>
         <div className={notFound ? "searchNotFound" : "hidden"}>
