@@ -9,14 +9,13 @@ import { ModalOng } from "../Modal/ModalOng";
 import { ModalDonate } from "../Modal/ModalDonate";
 
 const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
-
   const imageOnErrorHandler = (
     event: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
     event.currentTarget.alt === "backgroundImage"
       ? (event.currentTarget.src = bgDefaultImg)
       : (event.currentTarget.src = userDefaultAvatar);
-    console.log(event.currentTarget.alt);
+
   };
   return (
     <StyledCard>
@@ -43,10 +42,18 @@ const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
         </div>
       </div>
       <div className="helpBtnsDiv">
-        <Modal button={<button className="donateBtn">
-          <BiDonateHeart></BiDonateHeart>Ajudar
-        </button>} title="Doação" ><ModalDonate/></Modal>
-      
+        <Modal
+          button={
+            <>
+              <BiDonateHeart />
+              Ajudar
+            </>
+          }
+          title="Doação"
+        >
+          <ModalDonate />
+        </Modal>
+
         <button id={String(id)}>Ver Mais</button>
       </div>
     </StyledCard>
