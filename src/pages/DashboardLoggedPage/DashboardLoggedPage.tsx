@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export interface iOng {
-  e: iOng
+  e: iOng;
   name: string;
   userId: number;
   bio: string;
@@ -26,7 +26,6 @@ const DashboardLoggedPage = () => {
   const [auxOngs, setAuxOngs] = useState<iOng[] | undefined>(undefined);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
-
 
   let mockOngs: iOng[];
   let filterCategories: string[] = [];
@@ -48,9 +47,7 @@ const DashboardLoggedPage = () => {
       setAuxOngs(response.data);
     } catch (err) {
       console.error(err);
-    }
-    finally {
-
+    } finally {
     }
   }
   function handleFilterButton(event: React.MouseEvent<HTMLElement>) {
@@ -93,12 +90,9 @@ const DashboardLoggedPage = () => {
     }
   }, []);
 
-
   return (
     <>
-      <HeaderFull>
-        <Link to={"/"}>Dashboard Inicial</Link>
-      </HeaderFull>
+      <HeaderFull linkText="Dashboard Inicial" linkTo="/" />
       <StyledDashboard>
         <div className="container">
           <section className="searchSection container">
