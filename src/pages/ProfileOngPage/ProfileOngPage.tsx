@@ -8,6 +8,7 @@ import { ModalOng } from "../../components/Modal/ModalOng/ModalOng";
 import NoUser from "../../assets/imgs/noUser.svg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { UserContext } from "../../contexts/UserContext/UserContext";
+import Historic from "../../assets/imgs/Historic.svg";
 
 const ProfileOngPage = () => {
   const [click, setClick] = useState(true);

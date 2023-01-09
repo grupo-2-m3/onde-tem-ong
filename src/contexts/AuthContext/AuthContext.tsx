@@ -22,7 +22,7 @@ export interface iUserInfo {
   avatar?: string;
   email: string;
   id: number;
-  name: string | number;
+  name: string;
   type: string;
 }
 
