@@ -13,14 +13,16 @@ const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
   const imageOnErrorHandler = (
     event: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
-    event.currentTarget.alt === "backgroundImage" ? event.currentTarget.src = bgDefaultImg : event.currentTarget.src = userDefaultAvatar
-    console.log(event.currentTarget.alt)
+    event.currentTarget.alt === "backgroundImage"
+      ? (event.currentTarget.src = bgDefaultImg)
+      : (event.currentTarget.src = userDefaultAvatar);
+    console.log(event.currentTarget.alt);
   };
   return (
     <StyledCard>
       <div className="backgroundAvatarDiv">
         <img
-        onError={(e) => imageOnErrorHandler(e)}
+          onError={(e) => imageOnErrorHandler(e)}
           src={background ? background : bgDefaultImg}
           alt="backgroundImage"
           className="backgroundImg"
@@ -29,7 +31,7 @@ const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
       <div className="ongInfoDiv">
         <div className="profileImgDiv">
           <img
-          onError={(e) => imageOnErrorHandler(e)}
+            onError={(e) => imageOnErrorHandler(e)}
             src={avatar ? avatar : userDefaultAvatar}
             alt="Avatar"
             className="avatarImg"
