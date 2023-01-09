@@ -158,7 +158,7 @@ export const ProfileOngStyled = styled.div`
   @media (min-width: 768px) {
     .container {
       width: 80%;
-      height: 100vh;
+      height: 100%;
       display: flex;
       flex-direction: row;
       margin-bottom: 20px;
