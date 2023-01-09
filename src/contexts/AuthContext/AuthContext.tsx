@@ -63,16 +63,18 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   }, []);
 
   const userLogin: SubmitHandler<iLoginData> = (data) => {
+    setLoading(true);
     api
       .post("/login", data)
       .then((response) => {
         navigate("/profile");
         localStorage.setItem("@token", response.data.accessToken);
         localStorage.setItem("@id", response.data.user.id);
-        setUserInfo(response.data.user)
+        setUserInfo(response.data.user);
         // toast.success("Login realizado com sucesso!", { autoClose: 2000 });
       })
       .catch((err) => console.log(err.response.data.message));
+    setLoading(false);
   };
 
   const registerSubmit = async (data: iRegisterData) => {
@@ -105,7 +107,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, registerSubmit, userInfo, loading}}
+      value={{ userLogin, registerSubmit, userInfo, loading }}
     >
       {children}
     </AuthContext.Provider>
