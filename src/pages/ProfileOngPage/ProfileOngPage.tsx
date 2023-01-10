@@ -26,7 +26,7 @@ const ProfileOngPage = () => {
   return (
     <ProfileOngStyled>
       <HeaderFull linkText="ONGs" linkTo="/dashboard" />
-      <CoverProfile />
+      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar}/>
       <div className="container">
         <div className="infoUser">
           <div className="InfoAndEdit">
