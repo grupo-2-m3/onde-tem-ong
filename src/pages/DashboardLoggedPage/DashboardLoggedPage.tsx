@@ -42,23 +42,24 @@ const DashboardLoggedPage = () => {
       return arr.indexOf(e) === i;
     });
   }
+
   async function getOngs(page: number) {
     try {
       // setLoading(true)
-      const response = await api.get<iOng[]>(`ongs/?_page=${page}&_limit=2`);
+      const response = await api.get<iOng[]>(`/ongs/?_page=${page}&_limit=2`);
 
+      if (!response.data || !response) {
+        return;
+      }
       if (page === 0) {
         response && setOngs(response.data);
         response && setAuxOngs(response.data);
       }
-
       if (response.data.length > 0 && page > 1) {
         setOngs((prev) => [...prev, ...response.data]);
         setAuxOngs((prev) => [...prev, ...response.data]);
       }
-      if (!response.data) {
-        return;
-      }
+
     } catch (err) {
       console.error(err);
     } finally {
@@ -107,7 +108,6 @@ const DashboardLoggedPage = () => {
     let current = ref.current;
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        console.log(entries[0].target);
         setPage((currentPage) => currentPage + 1);
       }
     }, options);
@@ -117,15 +117,11 @@ const DashboardLoggedPage = () => {
   }, [ref, options]);
 
   useEffect(() => {
-    getOngs(page);
-  }, [page]);
-
-  useEffect(() => {
     const token = localStorage.getItem("@token");
     if (token) {
       getOngs(page);
     }
-  }, []);
+  }, [page]);
 
   return (
     <>

@@ -31,7 +31,7 @@ export const ModalDonate = () => {
   return (
     <div>
       <FormDonateStyled onSubmit={() => handleSubmit(submit)}>
-        <div>
+        <div className="valueDiv">
           <label htmlFor="donate">Valor R$:</label>
           <input
             id="donate"
@@ -66,7 +66,7 @@ export const ModalDonate = () => {
           </div>
         </div>
         </div>
-        <Button styled={"empty curved"}>Doar</Button>
+        <button>Doar</button>
       </FormDonateStyled>
     </div>
   );
