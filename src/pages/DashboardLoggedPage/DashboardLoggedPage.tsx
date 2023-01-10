@@ -48,6 +48,7 @@ const DashboardLoggedPage = () => {
       if (!response.data || !response) {
         return;
       }
+
       if (page === 0) {
         response && setOngs(filteredOngs);
         response && setAuxOngs(filteredOngs);
@@ -119,6 +120,7 @@ const DashboardLoggedPage = () => {
       getOngs(page);
     }
   }, [page]);
+
 
   return (
     <>
