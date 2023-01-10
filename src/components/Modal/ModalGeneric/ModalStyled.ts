@@ -21,20 +21,34 @@ export const ModalBodyStyled = styled.section`
 `;
 
 export const ModalDiv = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
+  background-color: var(--Withe);
+  padding: 15px;
+  margin: 0 15px;
+  border-radius: 9px;
+  position: relative;
+
+  > div > form {
+    margin-top: 35px;
+  }
 
   > .modalHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    background-color: var(--Color-primary);
+    color: var(--Withe);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: absolute;
+    padding: 5px 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
 
     > p {
       font-size: 20px;
       font-weight: 500;
-      color: var(--Color-primary);
+      color: var(--Withe);
     }
 
     > button {
@@ -45,7 +59,8 @@ export const ModalDiv = styled.div`
       background: transparent;
 
       > .iconClose {
-        color: var(--Color-primary);
+        color: var(--Withe);
+        background: transparent;
         width: 100%;
         height: 100%;
       }

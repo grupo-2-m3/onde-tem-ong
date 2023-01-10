@@ -16,6 +16,7 @@ const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
       ? (event.currentTarget.src = bgDefaultImg)
       : (event.currentTarget.src = userDefaultAvatar);
   };
+  console.log(id)
   return (
     <StyledCard>
       <div className="backgroundAvatarDiv">

@@ -10,7 +10,6 @@ import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 
-
 export interface iOng {
   e: iOng;
   name: string;
@@ -30,9 +29,7 @@ const DashboardLoggedPage = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
 
-
   const ref = useRef<HTMLDivElement | null>(null);
-
 
   let mockOngs: iOng[];
   let filterCategories: string[] = [];
@@ -93,6 +90,8 @@ const DashboardLoggedPage = () => {
     setAuxOngs(found);
     if (found?.length === 0) {
       setNotFound(true);
+    } else if (found?.length > 0) {
+      setNotFound(false);
     }
     setSearchValue("");
   }
@@ -149,7 +148,7 @@ const DashboardLoggedPage = () => {
                   type="text"
                   placeholder="Pesquisar"
                 />
-                <button type="submit">
+                <button disabled={!searchValue} type="submit">
                   <BiSearchAlt2 />
                 </button>
               </form>
