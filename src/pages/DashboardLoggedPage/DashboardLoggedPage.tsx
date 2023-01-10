@@ -7,18 +7,16 @@ import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
-import { Link } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export interface iOng {
-  e: iOng;
-  name: string;
-  userId: number;
-  bio: string;
-  category: string;
-  id: number;
-  background: string;
   avatar: string;
+  background: string;
+  category: string;
+  name: string;
+  userType: string;
+  userId: number;
+  id: number;
+  e: iOng;
 }
 const DashboardLoggedPage = () => {
   const [filterState, setfilterState] = useState<boolean>(false);
@@ -26,7 +24,6 @@ const DashboardLoggedPage = () => {
   const [auxOngs, setAuxOngs] = useState<iOng[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
-  const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -46,25 +43,25 @@ const DashboardLoggedPage = () => {
   async function getOngs(page: number) {
     try {
       // setLoading(true)
-      const response = await api.get<iOng[]>(`/ongs/?_page=${page}&_limit=2`);
-
+      const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=3`);
+      const filteredOngs = response.data.filter((e) => e.userType !== "user");
       if (!response.data || !response) {
         return;
       }
       if (page === 0) {
-        response && setOngs(response.data);
-        response && setAuxOngs(response.data);
+        response && setOngs(filteredOngs);
+        response && setAuxOngs(filteredOngs);
       }
       if (response.data.length > 0 && page > 1) {
-        setOngs((prev) => [...prev, ...response.data]);
-        setAuxOngs((prev) => [...prev, ...response.data]);
+        setOngs((prev) => [...prev, ...filteredOngs]);
+        setAuxOngs((prev) => [...prev, ...filteredOngs]);
       }
-
     } catch (err) {
       console.error(err);
     } finally {
     }
   }
+
   function handleFilterButton(event: React.MouseEvent<HTMLElement>) {
     let target = event.target as HTMLElement;
     if (target.innerHTML === "Todos") {
@@ -201,15 +198,15 @@ const DashboardLoggedPage = () => {
                   auxOngs.map((e, i) => {
                     return (
                       <Card
+                       userId={e.userId}
+                       userType={e.userType}
                         e={e}
                         name={e.name}
+                        avatar={e.avatar}
                         category={e.category}
                         id={e.id}
                         background={e.background}
-                        avatar={e.avatar}
                         key={i}
-                        userId={e.userId}
-                        bio={e.bio}
                       ></Card>
                     );
                   })}
