@@ -9,6 +9,7 @@ const ProtectedRoutes = () => {
   if(loading) {
     return null;
   }
+  
 
   return token ? <Outlet /> : <Navigate to="/login" />;
 };

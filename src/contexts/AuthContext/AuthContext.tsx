@@ -15,14 +15,15 @@ export interface iLoginData {
 }
 
 export interface iUserInfo {
-  bio?: string;
+  bio: string;
   category?: string;
-  background?: string;
-  avatar?: string;
+  background: string;
+  avatar: string;
   email: string;
   id: number;
   name: string;
-  type: string;
+  userType: string;
+  metas?: number;
 }
 
 interface iAuthContextProps {

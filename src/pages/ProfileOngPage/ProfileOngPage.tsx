@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import PencilBlack from "../../assets/imgs/PencilBlack.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
@@ -74,7 +74,7 @@ const ProfileOngPage = () => {
                     </div>
                   ) : (
                     <div className="donorUser">
-                      <img src={historic.user.avatar} alt="" />
+                      {historic.user.avatar === "" ? <img src={NoUser} alt=""/> : <img src={historic.user.avatar} alt="" />}
                       <p>{historic.user.name}</p>
                     </div>
                   )}
@@ -89,6 +89,7 @@ const ProfileOngPage = () => {
               ))}
             </ul>
           </div>
+          <span>Meta da Ong: {userInfo.metas === 0 ? <p>ainda não possui meta</p> : userInfo.metas}</span>
         </div>
       </div>
     </ProfileOngStyled>
