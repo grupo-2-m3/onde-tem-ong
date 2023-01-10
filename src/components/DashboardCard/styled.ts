@@ -26,7 +26,7 @@ export const StyledCard = styled.li`
     border-bottom-right-radius: 8px;
   }
   .helpBtnsDiv > button,
-  .helpBtnsDiv > div > button > button {
+  .helpBtnsDiv > div > button {
     background-color: #ad72c066;
     border: 1px solid var(--Color-primary);
     width: 115px;
