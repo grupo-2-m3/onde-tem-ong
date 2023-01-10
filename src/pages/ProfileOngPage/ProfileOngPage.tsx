@@ -26,7 +26,7 @@ const ProfileOngPage = () => {
   return (
     <ProfileOngStyled>
       <HeaderFull linkText="ONGs" linkTo="/dashboard" />
-      <CoverProfile />
+      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar}/>
       <div className="container">
         <div className="infoUser">
           <div className="InfoAndEdit">
@@ -47,11 +47,7 @@ const ProfileOngPage = () => {
               {`${userInfo.bio} `}
             </span>
 
-            {userInfo.id && userInfo.bio!.length > 100 && (
-              <button className="seeMore" onClick={() => setClick(!click)}>
-                {click ? "Ver mais" : "Ver menos"}
-              </button>
-            )}
+           
           </div>
         </div>
         <div className="totalContainer">
