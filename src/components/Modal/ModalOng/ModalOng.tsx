@@ -1,5 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import Button from "../../Button/Button";
 import { FormEditOngStyled } from "./ModalOngStyled";
 import { OngSchema } from "./ModalOngSchema";
@@ -17,6 +19,9 @@ interface iOng {
 }
 
 export const ModalOng = ({ data }: iFormOng) => {
+
+  const {updateProfile}=useContext(AuthContext)
+
   const {
     register,
     handleSubmit,
@@ -25,13 +30,9 @@ export const ModalOng = ({ data }: iFormOng) => {
     resolver: yupResolver(OngSchema),
   });
 
-  async function submit(data: iOng) {
-    console.log(data);
-  }
-
   return (
     <div>
-      <FormEditOngStyled onSubmit={handleSubmit(submit)}>
+      <FormEditOngStyled onSubmit={handleSubmit(updateProfile)}>
         <div>
           <label htmlFor="name">Nome</label>
           <input
@@ -41,7 +42,7 @@ export const ModalOng = ({ data }: iFormOng) => {
             placeholder="Nome"
             {...register("name")}
           />
-          {errors.name?.message && <p>{errors.name.message}</p>}
+          {errors.name?.message && <p>{errors.name?.message}</p>}
         </div>
         <div>
           <label htmlFor="bio">Bio</label>
@@ -52,7 +53,7 @@ export const ModalOng = ({ data }: iFormOng) => {
             placeholder="Bio"
             {...register("bio")}
           />
-          {errors.bio?.message && <p>{errors.bio.message}</p>}
+          {errors.bio?.message && <p>{errors.bio?.message}</p>}
         </div>
         <div>
           <label htmlFor="avatar">Avatar</label>
@@ -63,7 +64,7 @@ export const ModalOng = ({ data }: iFormOng) => {
             placeholder="Avatar"
             {...register("avatar")}
           />
-          {errors.avatar?.message && <p>{errors.avatar.message}</p>}
+          {errors.avatar?.message && <p>{errors?.avatar?.message}</p>}
         </div>
         <div>
           <label htmlFor="background">Background</label>
@@ -74,7 +75,7 @@ export const ModalOng = ({ data }: iFormOng) => {
             placeholder="Background"
             {...register("background")}
           />
-          {errors.background?.message && <p>{errors.background.message}</p>}
+          {errors.background?.message && <p>{errors?.background?.message}</p>}
         </div>
         <Button styled={"empty curved"} type="submit">
           Editar

@@ -9,13 +9,9 @@ interface ICoverProfile {
 const CoverProfile = ({ imgCover, imgUser }: ICoverProfile) => {
   return (
     <CoverProfileStyled>
-      {<img src={imgCover} alt="Img Cover" /> && (
-        <img src={CoverDefault} alt="Cover Default" />
-      )}
+      {<img src={imgCover || CoverDefault} alt="Img Cover" /> }
       <div className="imgUser">
-        {<img src={imgUser} alt="Img User" /> && (
-          <img src={UserDefault} alt="User Default" />
-        )}
+        {<img src={imgUser || UserDefault} alt="Img User" />}
       </div>
     </CoverProfileStyled>
   );

@@ -48,7 +48,7 @@ export const StyledHeaderFull = styled.div`
     position: absolute;
     width: 35%;
     min-width: 250px;
-    top: 70px;
+    top: 50px;
     right: 15px;
     display: none;
     border-radius: 8px;
