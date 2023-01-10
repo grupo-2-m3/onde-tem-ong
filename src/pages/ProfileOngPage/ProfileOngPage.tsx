@@ -47,7 +47,11 @@ const ProfileOngPage = () => {
               {`${userInfo.bio} `}
             </span>
 
-           
+            {userInfo.id && userInfo.bio!.length > 100 && (
+              <button className="seeMore" onClick={() => setClick(!click)}>
+                {click ? "Ver mais" : "Ver menos"}
+              </button>
+            )}
           </div>
         </div>
         <div className="totalContainer">
