@@ -49,8 +49,6 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
   });
 
   async function submit(data: iDonate) {
-    console.log("oi");
-    console.log(data.public);
     try {
       const response = await api.post("/donates", {
         ong: {
@@ -67,7 +65,6 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
         value: data.value,
         public: data.public === "yes" ? true : false,
       });
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
