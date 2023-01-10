@@ -121,7 +121,6 @@ const DashboardLoggedPage = () => {
     }
   }, [page]);
 
-
   return (
     <>
       <HeaderFull linkText="Dashboard Inicial" linkTo="/" />
@@ -200,8 +199,8 @@ const DashboardLoggedPage = () => {
                   auxOngs.map((e, i) => {
                     return (
                       <Card
-                       userId={e.userId}
-                       userType={e.userType}
+                        userId={e.userId}
+                        userType={e.userType}
                         e={e}
                         name={e.name}
                         avatar={e.avatar}
