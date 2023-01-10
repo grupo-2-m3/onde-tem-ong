@@ -1,10 +1,8 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 
-const DonateSchema=yup.object().shape({
-    value:yup.string().required(),
+const DonateSchema = yup.object().shape({
+  value: yup.string().required(),
+  public: yup.string().required(),
+});
 
-    anonimo:yup.string().required(),
-
-})
-
-export{DonateSchema}
+export { DonateSchema };

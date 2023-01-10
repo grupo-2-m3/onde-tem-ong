@@ -18,6 +18,10 @@ export interface iOng {
   id: number;
   background: string;
   avatar: string;
+  email?: string;
+  metas?: number;
+  password?: string;
+  userType?: string;
 }
 
 export interface iOngDonate {

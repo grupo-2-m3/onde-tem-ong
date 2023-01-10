@@ -1,14 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import Button from "../../Button/Button";
 import { FormDonateStyled } from "./ModalDonateStyled";
 import { DonateSchema } from "./ModalDonateSchema";
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
+import { api } from "../../../services/api";
+import { iOng } from "../../../contexts/UserContext/UserContext";
 
 interface iDonate {
   value: number;
-  public: boolean;
+  public: string;
 }
 
 interface iProps {
@@ -21,9 +22,24 @@ interface iProps {
 }
 
 export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
+  const { userInfo } = useContext(AuthContext);
+  const [ong, setOng] = useState<null | iOng>(null);
 
-  const { userInfo } = useContext(AuthContext)
-  console.log(userInfo)
+  const getInfoOng = async () => {
+    console.log(ongId);
+
+    try {
+      const response = await api.get(`/users/${ongId}`);
+      setOng(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getInfoOng();
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -32,19 +48,36 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
     resolver: yupResolver(DonateSchema),
   });
 
-  function submit(data: iDonate) {
-
-    console.log(data);
+  async function submit(data: iDonate) {
+    try {
+      const response = await api.post("/donates", {
+        ong: {
+          ongId: ong?.id,
+          name: ong?.name,
+          avatar: ong?.avatar ? ong.avatar : "",
+          bio: ong?.bio,
+        },
+        user: {
+          userId: userInfo.id,
+          name: userInfo.name,
+          avatar: userInfo.avatar,
+        },
+        value: data.value,
+        public: data.public === "yes" ? true : false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  
-  const [checkedValue, setCheckedValue] = useState<string | null>("")
+
+  const [checkedValue, setCheckedValue] = useState<string | null>("");
   function onChangeHandler(event: React.FormEvent<HTMLInputElement>) {
-      setCheckedValue(event.currentTarget.value)
+    setCheckedValue(event.currentTarget.value);
   }
 
   return (
     <div>
-      <FormDonateStyled onSubmit={() => handleSubmit(submit)}>
+      <FormDonateStyled onSubmit={handleSubmit(submit)}>
         <div className="valueDiv">
           <label htmlFor="donate">Valor R$:</label>
           <input
@@ -61,26 +94,33 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
           <label>Deseja doar anonimamente? </label>
           <div className="radios">
             <div>
-            <label htmlFor="yes">Sim</label>
-            <input
-              type={"radio"}
-              required
-              id="yes"
-              value="anonimo"
-              {...register("public")}
-              name="yes"
-              checked={checkedValue === "anonimo"}
-              onChange={onChangeHandler}
-            />
-            {errors.public?.message && <p>{errors.public.message}</p>}
+              <label htmlFor="yes">Sim</label>
+              <input
+                type="radio"
+                id="yes"
+                value="yes"
+                {...register("public")}
+                /* checked={checkedValue === "anonimo"} */
+                onChange={onChangeHandler}
+              />
+              {errors.public?.message && <p>{errors.public.message}</p>}
             </div>
             <div>
-          <label htmlFor="no">Não</label>
-          <input type="radio" name="anonimo" id="no" value="public" checked={checkedValue === "public"} onChange={onChangeHandler}/>
+              <label htmlFor="no">Não</label>
+              <input
+                type="radio"
+                id="no"
+                value="no"
+                {...register("public")}
+                /* checked={checkedValue === "public"} */
+                onChange={onChangeHandler}
+              />
+            </div>
           </div>
         </div>
-        </div>
-        <button id={String(ongId)}>Doar</button>
+        <button disabled={ong ? false : true} id={String(ongId)}>
+          Doar
+        </button>
       </FormDonateStyled>
     </div>
   );
