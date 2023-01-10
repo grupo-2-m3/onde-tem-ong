@@ -1,11 +1,9 @@
 import React, { createContext, useEffect, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { SubmitHandler } from "react-hook-form";
-
 import { api } from "../../services/api";
 import { iRegisterData } from "../../pages/RegisterPage/RegisterPage";
 import { toast } from "react-toastify";
-import { UserInfo } from "os";
 
 interface iAuthProvider {
   children: React.ReactNode;
@@ -34,7 +32,7 @@ interface iAuthContextProps {
   userInfo: iUserInfo;
   logout: () => void;
   navigate: NavigateFunction;
-  updateProfile: (data: any)=> Promise<void>
+  updateProfile: (data: any) => Promise<void>;
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
@@ -64,7 +62,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         setLoading(false);
       }
     };
-    
+
     getUserInfo();
   }, []);
 
@@ -91,13 +89,13 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
 
   const registerSubmit = async (data: iRegisterData) => {
     try {
-      const response = await api.post("/users", data);
+      const response = await api.post(
+        "/users",
+        data.userType === "ownerOng" ? { ...data, metas: 0 } : data
+      );
+      console.log(response.data);
       localStorage.clear();
       localStorage.setItem("USERID", response.data.accessToken);
-      if (response.data.user.type === "owner_ong") {
-        createOng(response.data.user);
-      }
-
       toast.success("Usuario Criado Com sucesso!");
       navigate("/login");
     } catch (error: any) {
@@ -105,35 +103,29 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     }
   };
 
-  const createOng = async (data: any) => {
-    const newData = {
-      userID: data.id,
-      name: data.name,
-      contact: [{ email: data.email }],
-      category: data?.category,
-      bio: data?.bio,
-    };
-    const UserID = localStorage.getItem("USERID");
-    const response = await api.post("/ongs", newData, {
-      headers: { Authorization: `Bearer ${UserID}` },
+  const updateProfile = async (data: iUserInfo) => {
+    console.log(userInfo);
+    const userId = localStorage.getItem("@id");
+    const token = localStorage.getItem("@token");
+    const response = await api.patch(`/users/${userId}`, data, {
+      headers: { Authorization: `Bearer ${token}` },
     });
+    const responseData: iUserInfo = response.data;
+    setUserInfo(responseData);
+    toast.success("perfil atualizado com sucesso");
   };
-
-  const updateProfile= async (data:iUserInfo)=> {
-    console.log(userInfo)
-    const userId=localStorage.getItem('@id')
-    const token=localStorage.getItem('@token')
-    const response= await api.patch(`/users/${userId}`,data,{
-      headers:{ Authorization: `Bearer ${token}`,}
-    })
-    const responseData:iUserInfo=response.data
-    setUserInfo(responseData)
-    toast.success('perfil atualizado com sucesso')
-  }
 
   return (
     <AuthContext.Provider
-      value={{ userLogin, registerSubmit, userInfo, loading, logout, navigate,updateProfile }}
+      value={{
+        userLogin,
+        registerSubmit,
+        userInfo,
+        loading,
+        logout,
+        navigate,
+        updateProfile,
+      }}
     >
       {children}
     </AuthContext.Provider>

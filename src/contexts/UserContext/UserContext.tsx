@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 interface iUserProvider {
@@ -7,7 +7,6 @@ interface iUserProvider {
 
 interface iUserContextProps {
   historicDonates: iOngDonate[];
-  historicDonatesOngMain: () => Promise<void>;
 }
 
 export interface iOng {
@@ -48,34 +47,21 @@ export const UserProvider = ({ children }: iUserProvider) => {
   const [historicDonates, setHistoricDonates] = useState([] as iOngDonate[]);
   const [userDonate, setUserDonate] = useState({} as iDonateUser);
 
-  const getAllOngs = async () => {
-    const allOngs = await api.get("/ongs");
-    return allOngs;
-  };
-  const getIdOng = async () => {
-    const ongsAll = await getAllOngs();
-    const idUser = Number(localStorage.getItem("@id"));
-    const idOng = ongsAll.data.find((ong: any) => idUser === ong.userID);
-    idOng && localStorage.setItem("@ongID", idOng.id);
-  };
   const historicDonatesOngMain = async () => {
     const token = localStorage.getItem("@token");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
-    const historicDonatesOng = async () => {
-      const idOng = localStorage.getItem("@ongID");
-      if (!idOng) {
-        await getIdOng();
-      }
-      try {
-        const idOng = localStorage.getItem("@ongID");
-        const response = await api.get(`/ong/donates/${idOng}`);
-        setHistoricDonates(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    historicDonatesOng();
+    try {
+      const idOng = localStorage.getItem("@id");
+      const response = await api.get(`/ong/donates/${idOng}`);
+      setHistoricDonates(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    historicDonatesOngMain();
+  }, []);
 
   const getDonateUser = async () => {
     const token = localStorage.getItem("@token");
@@ -88,7 +74,7 @@ export const UserProvider = ({ children }: iUserProvider) => {
   };
 
   return (
-    <UserContext.Provider value={{ historicDonates, historicDonatesOngMain }}>
+    <UserContext.Provider value={{ historicDonates }}>
       {children}
     </UserContext.Provider>
   );

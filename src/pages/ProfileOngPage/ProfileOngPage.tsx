@@ -13,20 +13,16 @@ import Historic from "../../assets/imgs/Historic.svg";
 const ProfileOngPage = () => {
   const [click, setClick] = useState(true);
   const { userInfo } = useContext(AuthContext);
-  const { historicDonates, historicDonatesOngMain } = useContext(UserContext);
+  const { historicDonates } = useContext(UserContext);
 
   const totalPrice = historicDonates.reduce((acc, value) => {
     return acc + Number(value.value);
   }, 0);
 
-  useEffect(() => {
-    historicDonatesOngMain();
-  }, [userInfo]);
-
   return (
     <ProfileOngStyled>
       <HeaderFull linkText="ONGs" linkTo="/dashboard" />
-      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar}/>
+      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar} />
       <div className="container">
         <div className="infoUser">
           <div className="InfoAndEdit">

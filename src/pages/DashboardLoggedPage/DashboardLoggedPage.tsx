@@ -7,8 +7,6 @@ import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
-import { Link } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export interface iOng {
   e: iOng;
@@ -26,7 +24,6 @@ const DashboardLoggedPage = () => {
   const [auxOngs, setAuxOngs] = useState<iOng[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
-  const [visible, setVisible] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -42,10 +39,11 @@ const DashboardLoggedPage = () => {
       return arr.indexOf(e) === i;
     });
   }
+
   async function getOngs(page: number) {
     try {
       // setLoading(true)
-      const response = await api.get<iOng[]>(`ongs/?_page=${page}&_limit=2`);
+      const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=3`);
 
       if (page === 0) {
         response && setOngs(response.data);
@@ -64,6 +62,7 @@ const DashboardLoggedPage = () => {
     } finally {
     }
   }
+
   function handleFilterButton(event: React.MouseEvent<HTMLElement>) {
     let target = event.target as HTMLElement;
     if (target.innerHTML === "Todos") {
@@ -107,7 +106,6 @@ const DashboardLoggedPage = () => {
     let current = ref.current;
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        console.log(entries[0].target);
         setPage((currentPage) => currentPage + 1);
       }
     }, options);
@@ -125,6 +123,7 @@ const DashboardLoggedPage = () => {
     if (token) {
       getOngs(page);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

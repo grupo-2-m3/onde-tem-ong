@@ -20,7 +20,7 @@ export interface iRegisterData {
   name: string;
   password: string;
   confirmPassword: string;
-  type: string;
+  userType: "ownerOng" | "user";
   category: string;
   bio: string;
 }
@@ -38,14 +38,14 @@ const RegisterPage = () => {
       .string()
       .required("A confirmação de senha é obrigatória")
       .oneOf([yup.ref("password")], "As senhas precisam coincidir"),
-    type: yup.string().required("O tipo é obrigatório"),
-    category: yup.string().when("type", {
-      is: "owner_ong",
+    userType: yup.string().required("O tipo é obrigatório"),
+    category: yup.string().when("userType", {
+      is: "ownerOng",
       then: yup.string().required("A categoria é obrigatória"),
       otherwise: yup.string(),
     }),
-    bio: yup.string().when("type", {
-      is: "owner_ong",
+    bio: yup.string().when("userType", {
+      is: "ownerOng",
       then: yup.string().required("A bio é obrigatória"),
       otherwise: yup.string(),
     }),
@@ -170,7 +170,7 @@ const RegisterPage = () => {
                     id="user"
                     type="radio"
                     value="user"
-                    {...register("type")}
+                    {...register("userType")}
                     onChange={(event) => setTypeUser(event.target.value)}
                   />
                   <Input
@@ -178,16 +178,16 @@ const RegisterPage = () => {
                     className="inputRadio"
                     src={UserLight}
                     label="CEO ONG"
-                    id="owner_ong"
+                    id="ownerOng"
                     type="radio"
-                    value="owner_ong"
-                    {...register("type")}
+                    value="ownerOng"
+                    {...register("userType")}
                     onChange={(event) => setTypeUser(event.target.value)}
                   />
                 </div>
               </div>
               <div className="divBlockRight">
-                {typeUser === "owner_ong" ? (
+                {typeUser === "ownerOng" ? (
                   <div className="divSelectCategory">
                     <select
                       id="category"
