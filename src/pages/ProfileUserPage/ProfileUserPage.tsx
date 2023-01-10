@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
@@ -10,11 +10,15 @@ import NoUser from "../../assets/imgs/noUser.svg";
 
 const ProfileUserPage = () => {
   const { userInfo } = useContext(AuthContext);
-  const { userDonate } = useContext(UserContext);
+  const { userDonate, getDonateUser } = useContext(UserContext);
 
   const totalPrice = userDonate.reduce((acc, value) => {
     return acc + Number(value.value);
   }, 0);
+
+  useEffect(() => {
+    getDonateUser();
+  }, [userInfo]);
 
   return (
     <StyledProfileUser>
@@ -28,26 +32,33 @@ const ProfileUserPage = () => {
         <div className="historicDonates">
           <img src={Historic} alt="" />
           <p>Histórico de Doações</p>
-          <span>{new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(totalPrice)}</span>
+          <span>
+            {new Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(totalPrice)}
+          </span>
         </div>
         <ul>
           {userDonate?.map((donate, index) => (
             <li key={index}>
-              {donate.ong.avatar === "" ? <img src={NoUser} alt=""/> : <img src={donate.ong.avatar} alt="" />}
+              {donate.ong.avatar === "" ? (
+                <img src={NoUser} alt="" />
+              ) : (
+                <img src={donate.ong.avatar} alt="" />
+              )}
               <h3>{donate.ong.name}</h3>
               <span>{donate.ong.bio}</span>
-              <p>{new Intl.NumberFormat("pt-BR", {
+              <p>
+                {new Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
-                }).format(donate.value)}</p>
+                }).format(donate.value)}
+              </p>
             </li>
           ))}
         </ul>
       </div>
-
     </StyledProfileUser>
   );
 };
