@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
 import PencilBlack from "../../assets/imgs/PencilBlack.svg";
 import { ProfileOngStyled } from "./StyledProfileOngPage";
@@ -13,11 +13,15 @@ import Historic from "../../assets/imgs/Historic.svg";
 const ProfileOngPage = () => {
   const [click, setClick] = useState(true);
   const { userInfo } = useContext(AuthContext);
-  const { historicDonates } = useContext(UserContext);
+  const { historicDonates, historicDonatesOngMain } = useContext(UserContext);
 
   const totalPrice = historicDonates.reduce((acc, value) => {
     return acc + Number(value.value);
   }, 0);
+
+  useEffect(() => {
+    historicDonatesOngMain();
+  }, [userInfo]);
 
   return (
     <ProfileOngStyled>
@@ -74,7 +78,11 @@ const ProfileOngPage = () => {
                     </div>
                   ) : (
                     <div className="donorUser">
-                      {historic.user.avatar === "" ? <img src={NoUser} alt=""/> : <img src={historic.user.avatar} alt="" />}
+                      {historic.user.avatar === "" ? (
+                        <img src={NoUser} alt="" />
+                      ) : (
+                        <img src={historic.user.avatar} alt="" />
+                      )}
                       <p>{historic.user.name}</p>
                     </div>
                   )}
@@ -89,7 +97,14 @@ const ProfileOngPage = () => {
               ))}
             </ul>
           </div>
-          <span>Meta da Ong: {userInfo.metas === 0 ? <p>ainda não possui meta</p> : userInfo.metas}</span>
+          <span>
+            Meta da Ong:{" "}
+            {userInfo.metas === 0 ? (
+              <p>ainda não possui meta</p>
+            ) : (
+              userInfo.metas
+            )}
+          </span>
         </div>
       </div>
     </ProfileOngStyled>

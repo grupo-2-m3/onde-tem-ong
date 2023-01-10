@@ -1,5 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { AuthContext } from "../AuthContext/AuthContext";
 
 interface iUserProvider {
   children: React.ReactNode;
@@ -8,6 +9,8 @@ interface iUserProvider {
 interface iUserContextProps {
   historicDonates: iOngDonate[];
   userDonate: iUserDonate[];
+  getDonateUser: () => Promise<void>;
+  historicDonatesOngMain: () => Promise<void>;
 }
 
 export interface iOng {
@@ -40,10 +43,11 @@ export interface iUserDonate {
   ong: { ongId: number; name: string; avatar: string; bio: string };
 }
 
-
 export const UserContext = createContext({} as iUserContextProps);
 
 export const UserProvider = ({ children }: iUserProvider) => {
+  const { userInfo } = useContext(AuthContext);
+
   const [historicDonates, setHistoricDonates] = useState([] as iOngDonate[]);
   const [userDonate, setUserDonate] = useState([] as iUserDonate[]);
 
@@ -65,19 +69,21 @@ export const UserProvider = ({ children }: iUserProvider) => {
     try {
       const id = localStorage.getItem("@id");
       const response = await api.get(`/user/donates/${id}`);
-      setUserDonate(response.data)
+      setUserDonate(response.data);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
-  useEffect(() => {
-    historicDonatesOngMain();
-    getDonateUser();
-  }, []);
-
   return (
-    <UserContext.Provider value={{ historicDonates, userDonate }}>
+    <UserContext.Provider
+      value={{
+        historicDonates,
+        userDonate,
+        getDonateUser,
+        historicDonatesOngMain,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
