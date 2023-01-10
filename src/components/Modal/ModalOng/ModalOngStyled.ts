@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormEditUserStyled = styled.form`
+export const FormEditOngStyled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@ export const FormEditUserStyled = styled.form`
 
   div > input {
     border-radius: 8px;
-    width: 28vw;
+    width: 150px;
     outline: none;
     border: 2px solid var(--Color-primary);
     font-size: var(--font14);
@@ -59,20 +59,6 @@ export const FormEditUserStyled = styled.form`
           font-weight: 400;
         }
       }
-    }
-  }
-
-  > .makeDonation {
-    width: 100%;
-    border-radius: 8px;
-    color: var(--Withe);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 34px;
-
-    :hover {
-      background-color: var(--Color-secondary);
     }
   }
 `;

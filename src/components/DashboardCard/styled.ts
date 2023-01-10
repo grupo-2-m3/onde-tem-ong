@@ -41,12 +41,11 @@ export const StyledCard = styled.li`
     justify-content: center;
     overflow: hidden;
     z-index: -1;
-    object-fit: cover;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
   }
   .backgroundAvatarDiv > img {
-    width: fit-content;
+    object-fit: cover;
   }
   .profileImgDiv {
     border-radius: 50%;
@@ -62,7 +61,7 @@ export const StyledCard = styled.li`
     transform: translate(1rem, -2rem);
   }
   .profileImgDiv > img {
-    width: 100%;
+    width: 135%;
   }
 
   .ongInfoDiv {
@@ -86,6 +85,9 @@ export const StyledCard = styled.li`
       width: 115px;
       height: 115px;
       transform: translate(1rem, -3rem);
+      display: flex;
+      object-fit: cover;
+      align-items: center;
     }
 
     h2 {

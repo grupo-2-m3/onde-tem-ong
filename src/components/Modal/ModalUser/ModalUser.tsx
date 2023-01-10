@@ -2,7 +2,7 @@ import React from "react"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import Button from "../../Button/Button"
-import { FormStyled } from "../../Forms/Form"
+import { FormEditUserStyled } from "../../Forms/Form"
 import { UserSchema } from "./ModalUserSchema"
 
 interface iFormUser{
@@ -37,7 +37,7 @@ export const ModalUser=({data}:iFormUser)=>{
 
     return(
         <div>
-            <FormStyled onSubmit={handleSubmit(submit)}>
+            <FormEditUserStyled onSubmit={handleSubmit(submit)}>
                 <div>
                     <label htmlFor="name">Nome</label>
                     <input type="text" id="name" defaultValue={data.name} placeholder="Nome" {...register('name')} />
@@ -69,7 +69,7 @@ export const ModalUser=({data}:iFormUser)=>{
                     {errors.background?.message && <p>{errors.background.message}</p>}
                 </div>
                 <Button styled={'empty curved'} type="submit">Editar</Button>
-            </FormStyled>
+            </FormEditUserStyled>
         </div>
     )
 }

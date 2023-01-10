@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Button from "../../Button/Button";
-import { FormStyled } from "../../Forms/Form";
+import { FormEditOngStyled } from "./ModalOngStyled";
 import { OngSchema } from "./ModalOngSchema";
 
 interface iFormOng {
@@ -31,7 +31,7 @@ export const ModalOng = ({ data }: iFormOng) => {
 
   return (
     <div>
-      <FormStyled onSubmit={handleSubmit(submit)}>
+      <FormEditOngStyled onSubmit={handleSubmit(submit)}>
         <div>
           <label htmlFor="name">Nome</label>
           <input
@@ -79,7 +79,7 @@ export const ModalOng = ({ data }: iFormOng) => {
         <Button styled={"empty curved"} type="submit">
           Editar
         </Button>
-      </FormStyled>
+      </FormEditOngStyled>
     </div>
   );
 };

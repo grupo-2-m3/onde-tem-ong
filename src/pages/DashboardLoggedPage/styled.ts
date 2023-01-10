@@ -49,7 +49,6 @@ export const StyledDashboard = styled.main`
     background-color: transparent;
     border: none;
   }
-
   .filterBtn > svg {
     width: 30px;
     height: 30px;
@@ -60,7 +59,6 @@ export const StyledDashboard = styled.main`
   .catogoriesFilterDiv {
     display: none;
   }
-
   .ongsList {
     display: flex;
     flex-direction: column;
@@ -73,7 +71,6 @@ export const StyledDashboard = styled.main`
   .downPull {
     animation: pull linear 0.1s forwards;
   }
-
   @keyframes pull {
     20% {
       margin-top: 0px;
@@ -85,6 +82,7 @@ export const StyledDashboard = styled.main`
   .popUpFilters {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 25px;
     height: 115px;
     margin-bottom: 0px;
@@ -95,13 +93,19 @@ export const StyledDashboard = styled.main`
   }
   .popUpFilters > ul {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
     overflow: auto;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    gap: 15px;
     max-width: 536px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  button:disabled {
+    opacity: 0.2;
   }
   .popUpFilters > ul > button {
     display: flex;
