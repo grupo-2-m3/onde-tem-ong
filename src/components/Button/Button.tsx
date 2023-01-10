@@ -3,7 +3,7 @@ import { StyledButton } from "./StyledButton";
 
 interface iButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  styled: "filled" | "empty" | "empty curved";
+  styled: "filled" | "empty" | "empty curved" | "filled curved";
 }
 
 const Button = ({ children, styled, ...rest }: iButtonProps) => {
