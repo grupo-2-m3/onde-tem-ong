@@ -1,24 +1,52 @@
 import { useContext } from "react";
 import CoverProfile from "../../components/CoverProfile/CoverProfile";
-import { Header } from "../../components/Header/Header";
+import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import { StyledProfileUser } from "./StyledProfileUser";
-import {MdEdit as IconEdit} from "react-icons/md"
-import HistoryList from "./HistoryList";
-
-
+import PencilBlack from "../../assets/imgs/PencilBlack.svg";
+import Historic from "../../assets/imgs/Historic.svg";
+import { UserContext } from "../../contexts/UserContext/UserContext";
+import NoUser from "../../assets/imgs/noUser.svg";
 
 const ProfileUserPage = () => {
   const { userInfo } = useContext(AuthContext);
+  const { userDonate } = useContext(UserContext);
+
+  const totalPrice = userDonate.reduce((acc, value) => {
+    return acc + Number(value.value);
+  }, 0);
+
   return (
     <StyledProfileUser>
-      <Header/>
-      <CoverProfile />
+      <HeaderFull linkText={"Dashboard Ongs"} linkTo={"/dashboard"} />
+      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar} />
       <div className="infoUser container">
-      <h3 className="name">Nome: {userInfo.name}</h3>
-      <IconEdit className="iconEdit"/>
+        <div className="infoEdit">
+          <h3 className="name">Nome: {userInfo.name}</h3>
+          <img src={PencilBlack} alt="" />
+        </div>
+        <div className="historicDonates">
+          <img src={Historic} alt="" />
+          <p>Histórico de Doações</p>
+          <span>{new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(totalPrice)}</span>
+        </div>
+        <ul>
+          {userDonate?.map((donate, index) => (
+            <li key={index}>
+              {donate.ong.avatar === "" ? <img src={NoUser} alt=""/> : <img src={donate.ong.avatar} alt="" />}
+              <h3>{donate.ong.name}</h3>
+              <span>{donate.ong.bio}</span>
+              <p>{new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(donate.value)}</p>
+            </li>
+          ))}
+        </ul>
       </div>
-      <HistoryList/>
 
     </StyledProfileUser>
   );

@@ -10,7 +10,7 @@ import ProfileOngPage from "./pages/ProfileOngPage/ProfileOngPage";
 import { AuthContext } from "./contexts/AuthContext/AuthContext";
 
 export const RoutesComponent = () => {
-  const { userInfo } = useContext(AuthContext); 
+  const { userInfo } = useContext(AuthContext);
 
   return (
     <Routes>
@@ -21,7 +21,7 @@ export const RoutesComponent = () => {
         <Route
           path="/profile"
           element={
-            userInfo.type === "user" ? <ProfileUserPage /> : <ProfileOngPage />
+            userInfo.userType === "user" ? <ProfileUserPage /> : <ProfileOngPage />
           }
         />
         <Route path="/dashboard" element={<DashboardLoggedPage />} />

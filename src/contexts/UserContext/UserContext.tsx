@@ -7,12 +7,13 @@ interface iUserProvider {
 
 interface iUserContextProps {
   historicDonates: iOngDonate[];
+  userDonate: iUserDonate[];
 }
 
 export interface iOng {
   name: string;
   userID: number;
-  bio: string;
+  bio?: string;
   category: string;
   id: number;
   background: string;
@@ -27,25 +28,20 @@ export interface iOngDonate {
   ong: { ongId: number; name: string; avatar: string };
 }
 
-export interface iDonateOng {
-  userId: number;
-  ongId: number;
-  value: number;
-  id: number;
-}
-export interface iDonateUser {
-  userId: number;
-  ongId: number;
+export interface iUserDonate {
   public: boolean;
   value: number;
   id: number;
+  user: { userId: number; name: string; avatar: string };
+  ong: { ongId: number; name: string; avatar: string; bio: string };
 }
+
 
 export const UserContext = createContext({} as iUserContextProps);
 
 export const UserProvider = ({ children }: iUserProvider) => {
   const [historicDonates, setHistoricDonates] = useState([] as iOngDonate[]);
-  const [userDonate, setUserDonate] = useState({} as iDonateUser);
+  const [userDonate, setUserDonate] = useState([] as iUserDonate[]);
 
   const historicDonatesOngMain = async () => {
     const token = localStorage.getItem("@token");
@@ -59,22 +55,25 @@ export const UserProvider = ({ children }: iUserProvider) => {
     }
   };
 
-  useEffect(() => {
-    historicDonatesOngMain();
-  }, []);
-
   const getDonateUser = async () => {
     const token = localStorage.getItem("@token");
-    const id = localStorage.getItem("@id");
-    const donateUser = await api.get<iDonateUser[]>(`/users/donate/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    return donateUser;
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    try {
+      const id = localStorage.getItem("@id");
+      const response = await api.get(`/user/donates/${id}`);
+      setUserDonate(response.data)
+    } catch (error) {
+      console.error(error)
+    }
   };
 
+  useEffect(() => {
+    historicDonatesOngMain();
+    getDonateUser();
+  }, []);
+
   return (
-    <UserContext.Provider value={{ historicDonates }}>
+    <UserContext.Provider value={{ historicDonates, userDonate }}>
       {children}
     </UserContext.Provider>
   );
