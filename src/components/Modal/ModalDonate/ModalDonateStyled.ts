@@ -8,7 +8,7 @@ export const FormDonateStyled = styled.form`
   border: 2px solid var(--Color-primary);
   border-radius: 8px;
   padding: 10px;
-  background-color: var(--Color-terciary);
+  background-color: rgba(111, 42, 134, 0.3);
 
   > div {
     display: flex;
@@ -18,6 +18,7 @@ export const FormDonateStyled = styled.form`
   div > label {
     font-size: var(--font14);
     font-weight: 500;
+    color: var(--Color-primary);
   }
   .radios {
     display: flex;
@@ -111,7 +112,7 @@ export const FormDonateStyled = styled.form`
     }
   }
 
-  button {
+  > button {
     border-radius: 8px;
     color: var(--Withe);
     display: flex;
@@ -120,6 +121,55 @@ export const FormDonateStyled = styled.form`
 
     :hover {
       background-color: var(--Color-secondary);
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 550px;
+    height: 290px;
+    padding: 15px;
+
+    .valueDiv {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      > label {
+        align-self: flex-start;
+        margin-bottom: 15px;
+      }
+    }
+
+    #donate {
+      padding-left: 15px;
+      width: 100%;
+      height: 45px;
+    }
+    .radioFieldDiv {
+      flex-direction: column;
+    }
+    .radioFieldDiv > label {
+      font-size: var(--font20);
+      width: 100%;
+    }
+
+    .radios {
+      justify-content: flex-start;
+      width: fit-content;
+      align-self: flex-start;
+      margin-top: 35px;
+
+      > div {
+        flex-direction: row-reverse;
+        width: 65px;
+        justify-content: space-between;
+      }
+    }
+    > button {
+      width: 100%;
+      padding: 0px 50px;
     }
   }
 `;

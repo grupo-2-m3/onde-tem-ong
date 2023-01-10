@@ -23,7 +23,7 @@ export const ProfileOngStyled = styled.div`
       font-size: var(--font20);
     }
 
-    button {
+    > button {
       width: 25px;
       height: 25px;
 

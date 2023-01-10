@@ -7,7 +7,7 @@ import { iOng } from "../../pages/DashboardLoggedPage/DashboardLoggedPage";
 import { Modal } from "../Modal/ModalGeneric/Modal";
 import { ModalDonate } from "../Modal/ModalDonate/ModalDonate";
 
-const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
+const Card = ({ e, name, category, background, avatar, userId ,id, ...rest }: iOng) => {
   const imageOnErrorHandler = (
     event: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
@@ -49,7 +49,7 @@ const Card = ({ e, name, category, background, avatar, id, ...rest }: iOng) => {
           }
           title="Doação"
         >
-          <ModalDonate />
+          <ModalDonate ongName={name} ongAvatar={avatar} ongId={id} />
         </Modal>
 
         <button id={String(id)}>Ver Mais</button>

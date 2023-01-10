@@ -9,14 +9,14 @@ import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 
 export interface iOng {
-  e: iOng;
-  name: string;
-  userId: number;
-  bio: string;
-  category: string;
-  id: number;
-  background: string;
   avatar: string;
+  background: string;
+  category: string;
+  name: string;
+  userType: string;
+  userId: number;
+  id: number;
+  e: iOng;
 }
 const DashboardLoggedPage = () => {
   const [filterState, setfilterState] = useState<boolean>(false);
@@ -44,18 +44,18 @@ const DashboardLoggedPage = () => {
     try {
       // setLoading(true)
       const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=3`);
+      const filteredOngs = response.data.filter((e) => e.userType !== "user");
+      if (!response.data || !response) {
+        return;
+      }
 
       if (page === 0) {
-        response && setOngs(response.data);
-        response && setAuxOngs(response.data);
+        response && setOngs(filteredOngs);
+        response && setAuxOngs(filteredOngs);
       }
-
       if (response.data.length > 0 && page > 1) {
-        setOngs((prev) => [...prev, ...response.data]);
-        setAuxOngs((prev) => [...prev, ...response.data]);
-      }
-      if (!response.data) {
-        return;
+        setOngs((prev) => [...prev, ...filteredOngs]);
+        setAuxOngs((prev) => [...prev, ...filteredOngs]);
       }
     } catch (err) {
       console.error(err);
@@ -115,16 +115,12 @@ const DashboardLoggedPage = () => {
   }, [ref, options]);
 
   useEffect(() => {
-    getOngs(page);
-  }, [page]);
-
-  useEffect(() => {
     const token = localStorage.getItem("@token");
     if (token) {
       getOngs(page);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [page]);
+
 
   return (
     <>
@@ -204,15 +200,15 @@ const DashboardLoggedPage = () => {
                   auxOngs.map((e, i) => {
                     return (
                       <Card
+                       userId={e.userId}
+                       userType={e.userType}
                         e={e}
                         name={e.name}
+                        avatar={e.avatar}
                         category={e.category}
                         id={e.id}
                         background={e.background}
-                        avatar={e.avatar}
                         key={i}
-                        userId={e.userId}
-                        bio={e.bio}
                       ></Card>
                     );
                   })}

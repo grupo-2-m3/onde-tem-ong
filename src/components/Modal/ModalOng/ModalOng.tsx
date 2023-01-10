@@ -19,8 +19,7 @@ interface iOng {
 }
 
 export const ModalOng = ({ data }: iFormOng) => {
-
-  const {updateProfile}=useContext(AuthContext)
+  const { updateProfile } = useContext(AuthContext);
 
   const {
     register,
@@ -77,9 +76,7 @@ export const ModalOng = ({ data }: iFormOng) => {
           />
           {errors.background?.message && <p>{errors?.background?.message}</p>}
         </div>
-        <Button styled={"empty curved"} type="submit">
-          Editar
-        </Button>
+        <button className="submitEditOngBtn" type="submit">Editar</button>
       </FormEditOngStyled>
     </div>
   );

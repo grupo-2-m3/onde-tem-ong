@@ -1,16 +1,29 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../Button/Button";
 import { FormDonateStyled } from "./ModalDonateStyled";
 import { DonateSchema } from "./ModalDonateSchema";
+import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 
 interface iDonate {
   value: number;
   public: boolean;
 }
 
-export const ModalDonate = () => {
+interface iProps {
+  ongId: number;
+  ongName: string;
+  ongAvatar: string;
+  // userId: number;
+  // userName: string;
+  // userAvatar: string;
+}
+
+export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
+
+  const { userInfo } = useContext(AuthContext)
+  console.log(userInfo)
   const {
     register,
     handleSubmit,
@@ -20,6 +33,7 @@ export const ModalDonate = () => {
   });
 
   function submit(data: iDonate) {
+
     console.log(data);
   }
   
@@ -31,7 +45,7 @@ export const ModalDonate = () => {
   return (
     <div>
       <FormDonateStyled onSubmit={() => handleSubmit(submit)}>
-        <div>
+        <div className="valueDiv">
           <label htmlFor="donate">Valor R$:</label>
           <input
             id="donate"
@@ -66,7 +80,7 @@ export const ModalDonate = () => {
           </div>
         </div>
         </div>
-        <Button styled={"empty curved"}>Doar</Button>
+        <button id={String(ongId)}>Doar</button>
       </FormDonateStyled>
     </div>
   );
