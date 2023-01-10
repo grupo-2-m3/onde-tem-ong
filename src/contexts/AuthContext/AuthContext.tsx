@@ -5,6 +5,7 @@ import { SubmitHandler } from "react-hook-form";
 import { api } from "../../services/api";
 import { iRegisterData } from "../../pages/RegisterPage/RegisterPage";
 import { toast } from "react-toastify";
+import { UserInfo } from "os";
 
 interface iAuthProvider {
   children: React.ReactNode;
@@ -33,6 +34,7 @@ interface iAuthContextProps {
   userInfo: iUserInfo;
   logout: () => void;
   navigate: NavigateFunction;
+  updateProfile: (data: any)=> Promise<void>
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
@@ -62,6 +64,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         setLoading(false);
       }
     };
+    
     getUserInfo();
   }, []);
 
@@ -116,9 +119,21 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     });
   };
 
+  const updateProfile= async (data:iUserInfo)=> {
+    console.log(userInfo)
+    const userId=localStorage.getItem('@id')
+    const token=localStorage.getItem('@token')
+    const response= await api.patch(`/users/${userId}`,data,{
+      headers:{ Authorization: `Bearer ${token}`,}
+    })
+    const responseData:iUserInfo=response.data
+    setUserInfo(responseData)
+    toast.success('perfil atualizado com sucesso')
+  }
+
   return (
     <AuthContext.Provider
-      value={{ userLogin, registerSubmit, userInfo, loading, logout, navigate }}
+      value={{ userLogin, registerSubmit, userInfo, loading, logout, navigate,updateProfile }}
     >
       {children}
     </AuthContext.Provider>

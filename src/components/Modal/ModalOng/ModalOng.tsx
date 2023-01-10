@@ -1,5 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import Button from "../../Button/Button";
 import { FormStyled } from "../../Forms/Form";
 import { OngSchema } from "./ModalOngSchema";
@@ -17,6 +19,9 @@ interface iOng {
 }
 
 export const ModalOng = ({ data }: iFormOng) => {
+
+  const {updateProfile}=useContext(AuthContext)
+
   const {
     register,
     handleSubmit,
@@ -25,13 +30,9 @@ export const ModalOng = ({ data }: iFormOng) => {
     resolver: yupResolver(OngSchema),
   });
 
-  async function submit(data: iOng) {
-    console.log(data);
-  }
-
   return (
     <div>
-      <FormStyled onSubmit={handleSubmit(submit)}>
+      <FormStyled onSubmit={handleSubmit(updateProfile)}>
         <div>
           <label htmlFor="name">Nome</label>
           <input
