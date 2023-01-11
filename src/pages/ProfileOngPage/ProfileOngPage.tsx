@@ -22,6 +22,7 @@ const ProfileOngPage = () => {
 
   useEffect(() => {
     historicDonatesOngMain();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo]);
 
   return (

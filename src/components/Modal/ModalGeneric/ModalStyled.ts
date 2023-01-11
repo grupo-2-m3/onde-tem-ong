@@ -27,7 +27,8 @@ export const ModalDiv = styled.div`
   margin: 0 15px;
   border-radius: 9px;
   position: relative;
-  width: 80%;
+  max-width: 90vw;
+
 
   > div > form {
     margin-top: 35px;
