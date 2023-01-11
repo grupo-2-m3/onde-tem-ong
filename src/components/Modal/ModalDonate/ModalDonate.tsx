@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FormDonateStyled } from "./ModalDonateStyled";
 import { DonateSchema } from "./ModalDonateSchema";
@@ -54,7 +54,7 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
           avatar: userInfo.avatar,
         },
         value: data.value,
-        public: data.public === "yes" ? true : false,
+        public: data.public === "yes" ? false : true,
       });
 
       toast.success("Doação realizada com sucesso!");
@@ -63,11 +63,6 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
     } finally {
       setUserLoading(false);
     }
-  }
-
-  const [checkedValue, setCheckedValue] = useState<string | null>("");
-  function onChangeHandler(event: React.FormEvent<HTMLInputElement>) {
-    setCheckedValue(event.currentTarget.value);
   }
 
   return (
@@ -95,21 +90,12 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
                 id="yes"
                 value="yes"
                 {...register("public")}
-                /* checked={checkedValue === "anonimo"} */
-                onChange={onChangeHandler}
               />
               {errors.public?.message && <p>{errors.public.message}</p>}
             </div>
             <div>
               <label htmlFor="no">Não</label>
-              <input
-                type="radio"
-                id="no"
-                value="no"
-                {...register("public")}
-                /* checked={checkedValue === "public"} */
-                onChange={onChangeHandler}
-              />
+              <input type="radio" id="no" value="no" {...register("public")} />
             </div>
           </div>
         </div>
