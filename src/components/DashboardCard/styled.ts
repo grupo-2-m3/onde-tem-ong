@@ -21,7 +21,7 @@ export const StyledCard = styled.li`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 30%;
+    height: 70px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
@@ -39,13 +39,14 @@ export const StyledCard = styled.li`
     display: flex;
     align-items: center;
     justify-content: center;
+    object-fit: cover;
     overflow: hidden;
     z-index: -1;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
   }
   .backgroundAvatarDiv > img {
-    object-fit: cover;
+    width: 100%;
   }
   .profileImgDiv {
     border-radius: 50%;
