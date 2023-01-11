@@ -5,7 +5,7 @@ import { FormDonateStyled } from "./ModalDonateStyled";
 import { DonateSchema } from "./ModalDonateSchema";
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import { api } from "../../../services/api";
-import { iOng } from "../../../contexts/UserContext/UserContext";
+import { UserContext } from "../../../contexts/UserContext/UserContext";
 
 interface iDonate {
   value: number;
@@ -23,21 +23,10 @@ interface iProps {
 
 export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
   const { userInfo } = useContext(AuthContext);
-  const [ong, setOng] = useState<null | iOng>(null);
-
-  const getInfoOng = async () => {
-    console.log(ongId);
-
-    try {
-      const response = await api.get(`/users/${ongId}`);
-      setOng(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { getInfoOng, ong } = useContext(UserContext);
 
   useEffect(() => {
-    getInfoOng();
+    getInfoOng(ongId);
   }, []);
 
   const {
