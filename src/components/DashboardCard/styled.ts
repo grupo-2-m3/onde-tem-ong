@@ -5,8 +5,10 @@ export const StyledCard = styled.li`
   flex-direction: column;
   width: 100%;
   max-width: 536px;
+  border: 0.01rem solid var(--Color-secondary);
   border-radius: 8px;
   max-height: 350px;
+
   h2 {
     width: fit-content;
     font-size: 1rem;
@@ -44,18 +46,19 @@ export const StyledCard = styled.li`
 
   .backgroundAvatarDiv {
     width: 100%;
-    height: 175px;
+    min-height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     object-fit: cover;
     overflow: hidden;
     z-index: -1;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
   }
   .backgroundAvatarDiv > img {
-    width: 100%;
+    width: 120%;
+    height: 100%;
   }
   .profileImgDiv {
     border-radius: 50%;

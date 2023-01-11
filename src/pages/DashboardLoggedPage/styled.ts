@@ -94,7 +94,8 @@ export const StyledDashboard = styled.main`
   .popUpFilters > ul {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+
     overflow: auto;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -114,17 +115,44 @@ export const StyledDashboard = styled.main`
     width: fit-content;
   }
   .searchNotFound {
-    margin: 0 15px;
-    width: 100%;
-    margin-top: 50px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    border-radius: 8px;
+    padding: 0px 0px 25px 0px;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+    gap: 20px;
+
+    > div {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 6px;
+      padding: 20px;
+      height: max-content;
+      gap: 20px;
+      > h4 {
+        height: fit-content;
+      }
+      > button {
+        -webkit-box-shadow: 3px 3px 22px 2px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 3px 3px 22px 2px rgba(0, 0, 0, 0.5);
+        box-shadow: 3px 3px 22px 2px rgba(0, 0, 0, 0.5);
+        padding: 8px;
+        border-radius: 6px;
+        border: none;
+        background-color: var(--Color-primary);
+        color: var(--Withe);
+      }
+    }
   }
   .searchNotFound > h3 {
     width: 50%;
   }
+
   .searchNotFound > #notFoundImg {
     width: 200px;
   }
