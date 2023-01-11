@@ -73,19 +73,20 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     navigate("/");
   };
 
-  const userLogin: SubmitHandler<iLoginData> = (data) => {
+  const userLogin: SubmitHandler<iLoginData> = async (data) => {
     setLoading(true);
-    api
-      .post("/login", data)
-      .then((response) => {
-        navigate("/profile");
-        localStorage.setItem("@token", response.data.accessToken);
-        localStorage.setItem("@id", response.data.user.id);
-        setUserInfo(response.data.user);
-        toast.success("Login realizado com sucesso!");
-      })
-      .catch((err) => toast.error(err.response.data));
-    setLoading(false);
+    try {
+      const response = await api.post("/login", data);
+      navigate("/profile");
+      localStorage.setItem("@token", response.data.accessToken);
+      localStorage.setItem("@id", response.data.user.id);
+      setUserInfo(response.data.user);
+      toast.success("Login realizado com sucesso!");
+    } catch (err: any) {
+      toast.error(err.response.data);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const registerSubmit = async (data: iRegisterData) => {
@@ -107,12 +108,16 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   const updateProfile = async (data: iUserInfo) => {
     const userId = localStorage.getItem("@id");
     const token = localStorage.getItem("@token");
-    const response = await api.patch(`/users/${userId}`, data, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const responseData: iUserInfo = response.data;
-    setUserInfo(responseData);
-    toast.success("perfil atualizado com sucesso");
+    try {
+      const response = await api.patch(`/users/${userId}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const responseData: iUserInfo = response.data;
+      setUserInfo(responseData);
+      toast.success("perfil atualizado com sucesso");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

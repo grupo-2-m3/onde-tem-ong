@@ -6,6 +6,7 @@ import { DonateSchema } from "./ModalDonateSchema";
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import { api } from "../../../services/api";
 import { UserContext } from "../../../contexts/UserContext/UserContext";
+import { toast } from "react-toastify";
 
 interface iDonate {
   value: number;
@@ -39,7 +40,7 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
 
   async function submit(data: iDonate) {
     try {
-      const response = await api.post("/donates", {
+      await api.post("/donates", {
         ong: {
           ongId: ong?.id,
           name: ong?.name,
@@ -54,6 +55,8 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
         value: data.value,
         public: data.public === "yes" ? true : false,
       });
+
+      toast.success("Doação realizada com sucesso!");
     } catch (error) {
       console.log(error);
     }
