@@ -8,22 +8,21 @@ interface iStyledCardInfo {
 }
 
 export const StyledCardInfo = styled.li<iStyledCardInfo>`
-  width: 90%;
+  width: 100%;
   height: min-content;
 
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  padding: 0 0 1rem 0;
-  border-radius: 8px;
-
   gap: 20px;
 
-  .conteinerDivHome {
-    background-color: var(--Withe);
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  background-color: var(--Withe);
 
+  padding: 15px;
+  border: 2px solid var(--Color-primary);
+  border-radius: 8px;
+
+  .conteinerDivHome {
     border-radius: 8px 8px 0 0;
 
     height: min-content;
@@ -63,7 +62,7 @@ export const StyledCardInfo = styled.li<iStyledCardInfo>`
     width: 95%;
     text-align: center;
 
-    font-size: 1.1rem;
+    font-size: var(--font14);
   }
   .imgT {
     background-image: url(${({ Image }) => Image.img});
@@ -72,13 +71,14 @@ export const StyledCardInfo = styled.li<iStyledCardInfo>`
 
     border-radius: 8px 8px 0 0;
 
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 220px;
 
     @media (min-width: 900px) {
-      width: 300px;
+      width: 250px;
       background-size: contain;
       border-radius: 8px;
+      margin: 15px 0 15px 15px;
     }
   }
 
@@ -99,7 +99,7 @@ export const StyledCardInfo = styled.li<iStyledCardInfo>`
     padding: 0;
 
     box-shadow: none;
-    background: none;
+    background-color: var(--Withe);
 
     img {
       margin: 0 1rem 0 1rem;

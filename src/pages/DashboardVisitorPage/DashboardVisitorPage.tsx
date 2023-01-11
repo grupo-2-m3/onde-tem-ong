@@ -1,4 +1,3 @@
-import { CarouselLibary } from "./Carousel/Carousel";
 import OndeTemOng from "../../assets/imgs/ondeTemOng2.svg";
 import vetor from "../../assets/imgs/vectorPrimario.svg";
 import vetor3 from "../../assets/imgs/vectorTerciario.svg";
@@ -12,6 +11,7 @@ import { StyledDashboardVisitorPage } from "./StyledDashboardVisitorPage";
 import { useContext } from "react";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
+import Carousel from "./Carousel/Carousel";
 
 const DashboardVisitorPage = () => {
   const { userInfo } = useContext(AuthContext);
@@ -26,40 +26,34 @@ const DashboardVisitorPage = () => {
         linkText={userInfo.id ? "Dashboard ONGs" : "Registre-se"}
         linkTo={userInfo.id ? "/dashboard" : "/register"}
       />
-      <div className="marginsBottonHeader"></div>
 
-      <div className="boxCarousel">
-        <CarouselLibary />
-
-        <div className="boxVectors">
-          <img className="backImg3" src={vetor3} alt="" />
-          <img className="backImg2" src={vetor2} alt="" />
-          <img className="backImg" src={vetor} alt="" />
-          <img className="imgBlur" src={blurDash} alt="" />
-          <img className="home" src={home} alt="" />
+      <div>
+        <div className="boxCarousel">
+          <Carousel />
         </div>
-      </div>
-      <div className="information">
-        <ListCardInfo />
 
-        <footer>
-          <div>
+        <div className="information">
+          <ListCardInfo />
+
+          <footer>
             <div>
-              <button>
-                <AiOutlineGithub />
-              </button>
-              <button className="blue">
-                <BsFacebook />
-              </button>
-              <button className="blue">
-                <AiFillLinkedin />
-              </button>
+              <div>
+                <button>
+                  <AiOutlineGithub />
+                </button>
+                <button className="blue">
+                  <BsFacebook />
+                </button>
+                <button className="blue">
+                  <AiFillLinkedin />
+                </button>
+              </div>
+              <h3 className="paragraph">
+                Todos os direitos reservados a Onde Tem Ong?
+              </h3>
             </div>
-            <h3 className="paragraph">
-              Todos Direitos Reservados a Onde Tem Ong
-            </h3>
-          </div>
-        </footer>
+          </footer>
+        </div>
       </div>
     </StyledDashboardVisitorPage>
   );

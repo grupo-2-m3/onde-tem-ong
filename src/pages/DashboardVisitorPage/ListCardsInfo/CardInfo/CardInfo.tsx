@@ -1,5 +1,5 @@
-import homePurple from "../../../../assets/imgs/homePurple.svg";
-import transparencia from "../../../../assets/imgs/transparencia.svg";
+import homePurple from "../../../../assets/imgs/Logo.png";
+import transparencia from "../../../../assets/imgs/transparencia.png";
 import { StyledCardInfo } from "./StyledCardInfo";
 
 interface iCardInfo {
@@ -15,7 +15,7 @@ export const CardInfo = ({ title, className, text }: iCardInfo) => {
   };
   return (
     <>
-      <h3 id={title === "Quem Somos?" ? "quemSomos" : "transparencia"}>
+      <h3 id={title === "Quem somos?" ? "quemSomos" : "transparencia"}>
         {title}
       </h3>
       <StyledCardInfo Image={Image} className="card">

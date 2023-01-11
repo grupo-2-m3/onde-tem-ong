@@ -10,31 +10,13 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
   width: 100%;
   height: 100%;
 
-  .backImg3 {
-    left: 0;
-  }
-
-  .backImg2 {
-    left: 0;
-  }
-
-  .backImg {
-    left: 0;
-  }
-  .imgBlur {
-    background-image: none;
-  }
-
-  .backImg1 {
-    position: absolute;
-    left: 0;
-  }
-
   .boxCarousel {
     width: 100%;
+    height: 370px;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     h1 {
       color: var(--Withe);
@@ -51,7 +33,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
       align-items: center;
       flex-direction: column;
 
-      background-color: rgb(0, 0, 0, 0.3);
+      /* background-color: rgb(0, 0, 0, 0.3); */
 
       .blur {
         width: 100%;
@@ -87,13 +69,14 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
     width: 100%;
     height: 100%;
 
-    background-image: url(${({ Imagen }) => Imagen.imagem});
+    background-image: url("assets/Background Desktop.svg");
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    transition: background-image 2s ease;
 
-    margin-top: 50%;
+    margin-top: 10px;
 
-    background-color: white;
+    background-color: var(--Withe);
   }
 
   footer {
@@ -102,12 +85,17 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     background-color: var(--Black50);
 
     margin-top: 90px;
 
     div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       gap: 10px;
 
       @media (min-width: 700px) {
@@ -116,6 +104,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
       }
       > div {
         display: flex;
+        flex-direction: row-reverse;
         margin: 15px 0 15px 0;
       }
     }
@@ -127,13 +116,11 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
       text-align: center;
 
-      font-size: var(--font20);
+      font-size: var(--font14);
+
+      font-weight: 500;
 
       margin-bottom: 20px;
-
-      @media (min-width: 700px) {
-        margin: 0;
-      }
     }
 
     button {
