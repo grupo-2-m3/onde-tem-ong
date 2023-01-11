@@ -16,7 +16,7 @@ export const ListCardInfo = () => {
         transition={{ duration: 0.5 }}
         className="motionInfo"
       >
-        <CardInfo title="Quem Somos?" text={text1} className="imgT" />
+        <CardInfo title="Quem somos?" text={text1} className="imgT" />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}

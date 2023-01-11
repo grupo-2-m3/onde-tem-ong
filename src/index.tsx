@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { Providers } from "./contexts/Provider";
 import { GlobalStyle } from "./styles/GlobalStyle";
+import "swiper/css/bundle";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
