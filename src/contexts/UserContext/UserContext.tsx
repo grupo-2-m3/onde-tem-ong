@@ -15,7 +15,6 @@ interface iUserContextProps {
   ong: iOng | null;
   userLoading: boolean;
   setHistoricDonates: React.Dispatch<React.SetStateAction<iOngDonate[]>>;
-  setUserLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface iOng {
@@ -103,7 +102,6 @@ export const UserProvider = ({ children }: iUserProvider) => {
         ong,
         userLoading,
         setHistoricDonates,
-        setUserLoading,
       }}
     >
       {children}
