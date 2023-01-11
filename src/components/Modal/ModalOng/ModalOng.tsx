@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import { FormEditOngStyled } from "./ModalOngStyled";
 import { OngSchema } from "./ModalOngSchema";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface iFormOng {
   data: iOng;
@@ -20,8 +19,7 @@ interface iOng {
 }
 
 export const ModalOng = ({ data }: iFormOng) => {
-  const { updateProfile, userInfo, loadingUpdateUser } =
-    useContext(AuthContext);
+  const { updateProfile, userInfo } = useContext(AuthContext);
 
   const {
     register,
@@ -89,16 +87,8 @@ export const ModalOng = ({ data }: iFormOng) => {
           />
           {errors.background?.message && <p>{errors?.background?.message}</p>}
         </div>
-        <button
-          disabled={loadingUpdateUser ? true : false}
-          className="submitEditOngBtn"
-          type="submit"
-        >
-          {loadingUpdateUser ? (
-            <AiOutlineLoading3Quarters className="loading" />
-          ) : (
-            "Editar"
-          )}
+        <button className="submitEditOngBtn" type="submit">
+          Editar
         </button>
       </FormEditOngStyled>
     </div>

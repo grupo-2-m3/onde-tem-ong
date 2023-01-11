@@ -7,7 +7,6 @@ import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import { api } from "../../../services/api";
 import { UserContext } from "../../../contexts/UserContext/UserContext";
 import { toast } from "react-toastify";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface iDonate {
   value: number;
@@ -22,8 +21,7 @@ interface iProps {
 
 export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
   const { userInfo } = useContext(AuthContext);
-  const { getInfoOng, ong, userLoading, setUserLoading } =
-    useContext(UserContext);
+  const { getInfoOng, ong } = useContext(UserContext);
 
   useEffect(() => {
     getInfoOng(ongId);
@@ -39,7 +37,6 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
   });
 
   async function submit(data: iDonate) {
-    setUserLoading(true);
     try {
       await api.post("/donates", {
         ong: {
@@ -60,8 +57,6 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
       toast.success("Doação realizada com sucesso!");
     } catch (error) {
       console.log(error);
-    } finally {
-      setUserLoading(false);
     }
   }
 
@@ -113,12 +108,8 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
             </div>
           </div>
         </div>
-        <button disabled={userLoading ? true : false} id={String(ongId)}>
-          {userLoading ? (
-            <AiOutlineLoading3Quarters className="loading" />
-          ) : (
-            "Doar"
-          )}
+        <button disabled={ong ? false : true} id={String(ongId)}>
+          Doar
         </button>
       </FormDonateStyled>
     </div>
