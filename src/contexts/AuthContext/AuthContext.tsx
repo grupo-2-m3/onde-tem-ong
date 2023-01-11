@@ -94,10 +94,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         "/users",
         data.userType === "ownerOng" ? { ...data, metas: 0 } : data
       );
-      console.log(response.data);
       localStorage.clear();
       localStorage.setItem("USERID", response.data.accessToken);
-      toast.success("Usuario Criado Com sucesso!");
+      toast.success("Usuário criado com sucesso!");
       navigate("/login");
     } catch (error: any) {
       toast.error(error.response.data);
@@ -112,7 +111,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     });
     const responseData: iUserInfo = response.data;
     setUserInfo(responseData);
-    toast.success("perfil atualizado com sucesso");
+    toast.success("Perfil atualizado com sucesso!");
   };
 
   return (
