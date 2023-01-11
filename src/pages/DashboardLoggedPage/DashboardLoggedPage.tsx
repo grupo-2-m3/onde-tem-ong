@@ -125,8 +125,6 @@ const DashboardLoggedPage = () => {
     }
   }, [page]);
 
-  console.log(filters);
-
   return (
     <>
       <HeaderFull linkText="Dashboard Inicial" linkTo="/" />
