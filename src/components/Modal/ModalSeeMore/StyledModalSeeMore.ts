@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledModalSeeMore = styled.div`
   margin-top: 40px;
   width: 800px;
-  max-width: 90vw;
-  max-height: 550px;
+  max-width: 100%;
+  max-height: 650px;
   overflow-y: scroll;
   border-radius: 10px;
   display: flex;
@@ -77,10 +77,11 @@ export const StyledModalSeeMore = styled.div`
 
     > .infosRight {
       margin-top: 25px;
-      width: 30%;
+      width: 40%;
       display: flex;
       flex-direction: column;
       object-fit: cover;
+      margin-right: 10px;
 
       > h2 {
         padding-bottom: 20px;

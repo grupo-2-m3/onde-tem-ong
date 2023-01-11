@@ -46,7 +46,10 @@ const RegisterPage = () => {
     }),
     bio: yup.string().when("userType", {
       is: "ownerOng",
-      then: yup.string().required("A bio é obrigatória"),
+      then: yup
+        .string()
+        .required("A bio é obrigatória")
+        .min(200, "É necessário no mínimo 200 caracteres"),
       otherwise: yup.string(),
     }),
   });
@@ -69,7 +72,7 @@ const RegisterPage = () => {
                 <h1 className="titleRegister">Cadastro</h1>
               </div>
             </div>
-            <form onSubmit={handleSubmit(registerSubmit)}>
+            <form autoComplete="off" onSubmit={handleSubmit(registerSubmit)}>
               <div className="divBlockLeft">
                 <div
                   className={
