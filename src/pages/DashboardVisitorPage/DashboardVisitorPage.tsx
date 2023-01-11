@@ -8,24 +8,13 @@ import blurDash from "../../assets/imgs/blurDashBord.svg";
 import { ListCardInfo } from "./ListCardsInfo/ListCardInfo";
 import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
-import { Header } from "../../components/Header/Header";
 import { StyledDashboardVisitorPage } from "./StyledDashboardVisitorPage";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const DashboardVisitorPage = () => {
-  const [modal, setModal] = useState(false);
   const { userInfo } = useContext(AuthContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setModal(true);
-    }, 2000);
-    setTimeout(() => {
-      setModal(false);
-    }, 20000);
-  }, []);
 
   return (
     <StyledDashboardVisitorPage

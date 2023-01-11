@@ -32,7 +32,16 @@ export const StyledCard = styled.li`
     width: 115px;
     height: 45px;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font14);
+    padding: 0;
+    color: black;
+    font-weight: 400;
+    gap: 10px;
   }
+
   .backgroundAvatarDiv {
     width: 100%;
     height: 175px;
