@@ -9,17 +9,36 @@ export const FormEditOngStyled = styled.form`
   border-radius: 8px;
   padding: 10px;
   background-color: rgba(111, 42, 134, 0.3);
-  width: 265px;
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    margin-right: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #d4bfda;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 3px solid var(--Color-primary);
+    border-radius: 20px;
+    background-color: var(--Color-primary);
+  }
 
   > button {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    padding: 20px 120px;
+    padding: 20px;
     width: 100%;
   }
   > div {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -75,9 +94,19 @@ export const FormEditOngStyled = styled.form`
       }
     }
   }
+
+  .submitEditOngBtn {
+    height: 50px;
+    margin-top: 10px;
+    border: none;
+    align-self: flex-end;
+    font-size: var(--font20);
+    font-weight: 500;
+    background-color: var(--Color-primary);
+    color: var(--Withe);
+  }
+
   @media (min-width: 768px) {
-    width: 550px;
-    padding: 20px;
     > div {
       width: 100%;
     }

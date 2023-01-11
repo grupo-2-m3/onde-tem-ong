@@ -70,6 +70,14 @@ export const StyledRegisterPage = styled.div`
     justify-content: space-between;
     gap: 20px;
 
+    input {
+      color: var(--Withe);
+    }
+
+    input::placeholder {
+      color: var(--Withe);
+    }
+
     button {
       width: 100%;
 

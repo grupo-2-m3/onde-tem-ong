@@ -18,6 +18,7 @@ export const ModalBodyStyled = styled.section`
   z-index: 10;
   top: 0;
   left: 0;
+  backdrop-filter: blur(5px);
 `;
 
 export const ModalDiv = styled.div`
@@ -27,6 +28,7 @@ export const ModalDiv = styled.div`
   border-radius: 9px;
   position: relative;
   max-width: 90vw;
+
 
   > div > form {
     margin-top: 35px;
@@ -70,5 +72,9 @@ export const ModalDiv = styled.div`
     > button:hover .iconClose {
       color: var(--Color-primary-50);
     }
+  }
+
+  @media (min-width: 670px) {
+    width: 537px;
   }
 `;
