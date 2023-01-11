@@ -28,7 +28,7 @@ const ProfileOngPage = () => {
   return (
     <ProfileOngStyled>
       <HeaderFull linkText="ONGs" linkTo="/dashboard" />
-      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar} />
+      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar}/>
       <div className="container">
         <div className="infoUser">
           <div className="InfoAndEdit">
@@ -61,10 +61,38 @@ const ProfileOngPage = () => {
             <h3>
               Meta da ONG:
               <span>
+<<<<<<< HEAD
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(totalPrice)}
+              </span>
+            </h3>
+            <img src={Historic} alt="" />
+          </div>
+          <div className="historicDonates">
+            <ul>
+              {historicDonates?.map((historic, index) => (
+                <li key={index}>
+                  {historic.public === false ? (
+                    <div className="donorUser">
+                      <img src={NoUser} alt="" />
+                      <p>Usuário anônimo</p>
+                    </div>
+                  ) : (
+                    <div className="donorUser">
+                      <img src={historic.user.avatar} alt="" />
+                      <p>{historic.user.name}</p>
+                    </div>
+                  )}
+
+                  <span>
+=======
                 {userInfo.metas === 0 ? (
                   <p>Ainda não possui meta</p>
                 ) : (
                   <>
+>>>>>>> d3e40e36123c632ffa74e73008afd011811b603b
                     {new Intl.NumberFormat("pt-BR", {
                       style: "currency",
                       currency: "BRL",
@@ -86,6 +114,8 @@ const ProfileOngPage = () => {
               <img src={Historic} alt="" />
             </div>
           </div>
+<<<<<<< HEAD
+=======
           <div className="historicDonates">
             {historicDonates.length ? (
               <ul>
@@ -123,6 +153,7 @@ const ProfileOngPage = () => {
               </div>
             )}
           </div>
+>>>>>>> d3e40e36123c632ffa74e73008afd011811b603b
         </div>
       </div>
     </ProfileOngStyled>

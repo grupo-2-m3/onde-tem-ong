@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import Button from "../../Button/Button"
 import { FormEditUserStyled } from "../../Forms/Form"
 import { UserSchema } from "./ModalUserSchema"
+import { AuthContext } from "../../../contexts/AuthContext/AuthContext"
 
 interface iFormUser{
     data:iUser
@@ -18,6 +19,7 @@ interface iUser {
 }
   
 export const ModalUser=({data}:iFormUser)=>{
+    const { updateProfile } = useContext(AuthContext);
 
     const {
         register,
@@ -27,13 +29,10 @@ export const ModalUser=({data}:iFormUser)=>{
         resolver: yupResolver(UserSchema),
       });
 
-      function submit(data:iUser){
-        console.log(data)
-      }
-
     return(
         <div>
-            <FormEditUserStyled onSubmit={handleSubmit(submit)}>
+            
+            <FormEditUserStyled onSubmit={handleSubmit(updateProfile)}>
                 <div>
                     <label htmlFor="name">Nome</label>
                     <input type="text" id="name" defaultValue={data.name} placeholder="Nome" {...register('name')} />
