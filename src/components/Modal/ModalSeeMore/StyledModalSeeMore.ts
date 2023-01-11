@@ -4,7 +4,7 @@ export const StyledModalSeeMore = styled.div`
   margin-top: 40px;
   width: 800px;
   max-width: 90vw;
-  max-height: 700px;
+  max-height: 550px;
   overflow-y: scroll;
   border-radius: 10px;
   display: flex;
@@ -43,7 +43,6 @@ export const StyledModalSeeMore = styled.div`
     display: flex;
     justify-content: space-between;
     transform: translateY(-90px);
-
     h2 {
       color: var(--Black);
       font-size: var(--font20);
@@ -57,14 +56,13 @@ export const StyledModalSeeMore = styled.div`
     > .infosLeft {
       padding: 10px;
       width: 60%;
+      height: fit-content;
       display: flex;
       flex-direction: column;
       gap: 20px;
-
-      .title {
+      > .title {
         font-size: var(--font24);
       }
-
       p {
         font-size: var(--font16);
         font-weight: 500;
@@ -84,20 +82,38 @@ export const StyledModalSeeMore = styled.div`
       flex-direction: column;
       object-fit: cover;
 
+      > h2 {
+        padding-bottom: 20px;
+      }
       > ul {
-        max-height: 350px;
+        max-height: 300px;
         overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          border-radius: 20px;
+          background: var(--Grey0);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border: 3px solid var(--Grey10);
+          border-radius: 20px;
+          background-color: var(--Grey10);
+        }
 
         > li {
           display: flex;
           justify-content: space-between;
           padding: 5px;
-          margin-top: 25px;
           gap: 10px;
           flex-wrap: wrap;
           border-bottom: 1px solid var(--Black);
           box-shadow: 10px 1px 10px rgba(0, 0, 0, 0.25);
-
           > div {
             display: flex;
             flex-direction: column;
@@ -111,11 +127,69 @@ export const StyledModalSeeMore = styled.div`
 
           > div > img {
             align-self: flex-start;
-            width: 50px;
+            width: 40px;
+            height: 40px;
             object-fit: cover;
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-height: 450px;
+    .donorUser {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-start;
+      p {
+        font-size: var(--font16);
+        width: fit-content;
+        font-weight: 500;
+      }
+    }
+    .infos {
+      flex-direction: column;
+      justify-content: center;
+
+      > .infosLeft {
+        > .title {
+          font-size: var(--font16);
+        }
+      }
+      > .infosRight {
+        flex-direction: column;
+        margin-top: 45px;
+        width: 100%;
+        > ul {
+          border-radius: 8px;
+          width: 100%;
+          height: 200px;
+          padding-top: 0;
+          > li {
+            flex-wrap: nowrap;
+            padding: 10px;
+            > div {
+              flex-direction: row;
+            }
+          }
+        }
+      }
+    }
+    .title {
+      font-size: var(--font14);
+    }
+    .backgroundPic {
+      height: 22vh;
+    }
+    .profilePic {
+      width: 30vw;
+      height: 30vw;
+      max-width: 150px;
+      max-height: 150px;
     }
   }
 `;

@@ -7,7 +7,7 @@ import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
-
+import { MdClear } from "react-icons/md";
 export interface iOng {
   avatar: string;
   background: string;
@@ -43,12 +43,11 @@ const DashboardLoggedPage = () => {
   async function getOngs(page: number) {
     try {
       // setLoading(true)
-      const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=3`);
+      const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=8`);
       const filteredOngs = response.data.filter((e) => e.userType !== "user");
       if (!response.data || !response) {
         return;
       }
-
       if (page === 0) {
         response && setOngs(filteredOngs);
         response && setAuxOngs(filteredOngs);
@@ -222,6 +221,12 @@ const DashboardLoggedPage = () => {
             Ooops! Não encontramos resultados para sua busca... Gostaria de
             procurar novamente?{" "}
           </h3>
+          <div>
+          <button onClick={() => {setAuxOngs(ongs) 
+            setNotFound(false)}}>
+            Limpar Pesquisa
+          </button>
+          </div>
         </div>
       </StyledDashboard>
     </>
