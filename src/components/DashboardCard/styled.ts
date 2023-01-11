@@ -7,7 +7,7 @@ export const StyledCard = styled.li`
   max-width: 536px;
   border: 0.01rem solid var(--Color-secondary);
   border-radius: 8px;
-  max-height: 350px;
+  height: 350px;
 
   h2 {
     width: fit-content;
@@ -23,7 +23,8 @@ export const StyledCard = styled.li`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 70px;
+    min-height: 70px;
+    max-height: 70px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
@@ -46,7 +47,11 @@ export const StyledCard = styled.li`
 
   .backgroundAvatarDiv {
     width: 100%;
+<<<<<<< HEAD
     min-height: 170px;
+=======
+    height: 100%;
+>>>>>>> 474248fc3cacedfb37dd449ac531ae9c373c7718
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,6 +64,7 @@ export const StyledCard = styled.li`
   .backgroundAvatarDiv > img {
     width: 120%;
     height: 100%;
+    object-fit: cover;
   }
   .profileImgDiv {
     border-radius: 50%;
@@ -75,6 +81,8 @@ export const StyledCard = styled.li`
   }
   .profileImgDiv > img {
     width: 135%;
+    height: 120px;
+    object-fit: cover;
   }
 
   .ongInfoDiv {

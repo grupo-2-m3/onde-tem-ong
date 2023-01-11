@@ -16,7 +16,6 @@ export const StyledRegisterPage = styled.div`
 
   .background {
     width: 100%;
-    min-height: 100%;
     padding: 20px;
     background-color: rgba(111, 42, 134, 0.81);
   }
@@ -69,6 +68,14 @@ export const StyledRegisterPage = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+
+    input {
+      color: var(--Withe);
+    }
+
+    input::placeholder {
+      color: var(--Withe);
+    }
 
     button {
       width: 100%;

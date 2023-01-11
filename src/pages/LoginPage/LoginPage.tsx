@@ -55,7 +55,7 @@ const LoginPage = () => {
           </StyledLink>
         </div>
         <div className="formContainer">
-          <form onSubmit={handleSubmit(userLogin)}>
+          <form autoComplete="off" onSubmit={handleSubmit(userLogin)}>
             <div
               className={
                 errors.email ? "inputContainer error" : "inputContainer"

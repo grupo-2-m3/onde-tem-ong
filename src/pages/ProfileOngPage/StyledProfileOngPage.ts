@@ -15,21 +15,34 @@ export const ProfileOngStyled = styled.div`
     gap: 20px;
   }
 
+  .totalContainer {
+    margin-bottom: 50px;
+  }
+
   .InfoAndEdit {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 50px;
 
     h2 {
-      font-size: var(--font20);
+      font-size: var(--fon32);
     }
 
-    > button {
-      width: 25px;
-      height: 25px;
+    > div > button {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--Grey100);
+      padding: 15px;
+      border: 1px solid transparent;
+      border-radius: 8px;
 
       img {
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
       }
     }
   }
@@ -73,8 +86,10 @@ export const ProfileOngStyled = styled.div`
   .totalDiv {
     padding: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 30px;
 
     h3 {
       font-size: var(--font20);
@@ -89,6 +104,12 @@ export const ProfileOngStyled = styled.div`
         color: var(--Black50);
       }
     }
+  }
+
+  .historic {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   .historicDonates {
@@ -145,13 +166,18 @@ export const ProfileOngStyled = styled.div`
     }
   }
 
-  @media (min-width: 430px) {
-    .totalDiv {
-      width: 426px;
+  .noDonates {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 220px;
     }
 
-    ul {
-      width: 399px;
+    p {
+      font-size: var(--font14);
     }
   }
 
@@ -161,11 +187,16 @@ export const ProfileOngStyled = styled.div`
       height: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       margin-bottom: 20px;
     }
 
+    .infoUser {
+      margin-top: 150px;
+    }
+
     .totalContainer {
-      margin-top: 100px;
+      margin-top: 150px;
     }
 
     .totalDiv {
