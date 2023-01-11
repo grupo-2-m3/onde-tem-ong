@@ -21,7 +21,11 @@ export const RoutesComponent = () => {
         <Route
           path="/profile"
           element={
-            userInfo.userType === "user" ? <ProfileUserPage /> : <ProfileOngPage />
+            userInfo.userType === "user" ? (
+              <ProfileUserPage />
+            ) : (
+              <ProfileOngPage />
+            )
           }
         />
         <Route path="/dashboard" element={<DashboardLoggedPage />} />
