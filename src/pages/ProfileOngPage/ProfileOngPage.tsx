@@ -26,7 +26,7 @@ const ProfileOngPage = () => {
   return (
     <ProfileOngStyled>
       <HeaderFull linkText="ONGs" linkTo="/dashboard" />
-      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar} />
+      <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar}/>
       <div className="container">
         <div className="infoUser">
           <div className="InfoAndEdit">
@@ -78,11 +78,7 @@ const ProfileOngPage = () => {
                     </div>
                   ) : (
                     <div className="donorUser">
-                      {historic.user.avatar === "" ? (
-                        <img src={NoUser} alt="" />
-                      ) : (
-                        <img src={historic.user.avatar} alt="" />
-                      )}
+                      <img src={historic.user.avatar} alt="" />
                       <p>{historic.user.name}</p>
                     </div>
                   )}
@@ -97,14 +93,6 @@ const ProfileOngPage = () => {
               ))}
             </ul>
           </div>
-          <span>
-            Meta da Ong:{" "}
-            {userInfo.metas === 0 ? (
-              <p>ainda não possui meta</p>
-            ) : (
-              userInfo.metas
-            )}
-          </span>
         </div>
       </div>
     </ProfileOngStyled>
