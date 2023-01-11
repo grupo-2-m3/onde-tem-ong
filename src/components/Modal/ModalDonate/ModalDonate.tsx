@@ -99,7 +99,11 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
             </div>
           </div>
         </div>
-        <button disabled={userLoading ? true : false} id={String(ongId)}>
+        <button
+          className="donateButton"
+          disabled={userLoading ? true : false}
+          id={String(ongId)}
+        >
           {userLoading ? (
             <AiOutlineLoading3Quarters className="loading" />
           ) : (

@@ -13,6 +13,10 @@ export const FormDonateStyled = styled.form`
   max-width: 100%;
   width: 550px;
 
+  .donateButton {
+    max-height: 50px;
+  }
+
   > div {
     display: flex;
     justify-content: space-between;

@@ -41,7 +41,7 @@ const DashboardLoggedPage = () => {
     });
   }
 
-  async function getOngs( page:number , keyword:string) {
+  async function getOngs(page: number, keyword: string) {
     try {
       const response = await api.get<iOng[]>(`/ongs`);
       setTotalOngs(response.data);
@@ -121,7 +121,6 @@ const DashboardLoggedPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("@token");
     if (token) {
-
       getOngs(page, "");
     }
   }, [page]);
@@ -164,32 +163,36 @@ const DashboardLoggedPage = () => {
                 )}{" "}
               </button>
             </div>
-            <span className={filterState ? "block " : "hidden spanResponsive"}>
-              Categorias
-            </span>
-            <div
-              className={filterState ? "popUpFilters" : "catogoriesFilterDiv"}
-            >
-              <ul className="categoriesList">
-                <Button
-                  onClick={(e) => handleFilterButton(e)}
-                  styled={"filled"}
-                >
-                  Todos
-                </Button>
-                {filters &&
-                  filters?.map((e, i) => {
-                    return (
-                      <Button
-                        key={i}
-                        onClick={(e) => handleFilterButton(e)}
-                        styled={"filled"}
-                      >
-                        {e?.charAt(0).toUpperCase() + e?.slice(1)}
-                      </Button>
-                    );
-                  })}
-              </ul>
+            <div className="categoriesDiv">
+              <span
+                className={filterState ? "block " : "hidden spanResponsive"}
+              >
+                Categorias:
+              </span>
+              <div
+                className={filterState ? "popUpFilters" : "catogoriesFilterDiv"}
+              >
+                <ul className="categoriesList">
+                  <Button
+                    onClick={(e) => handleFilterButton(e)}
+                    styled={"filled"}
+                  >
+                    Todos
+                  </Button>
+                  {filters &&
+                    filters?.map((e, i) => {
+                      return (
+                        <Button
+                          key={i}
+                          onClick={(e) => handleFilterButton(e)}
+                          styled={"filled"}
+                        >
+                          {e?.charAt(0).toUpperCase() + e?.slice(1)}
+                        </Button>
+                      );
+                    })}
+                </ul>
+              </div>
             </div>
           </section>
 
