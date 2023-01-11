@@ -11,6 +11,10 @@ interface iUserContextProps {
   userDonate: iUserDonate[];
   getDonateUser: () => Promise<void>;
   historicDonatesOngMain: () => Promise<void>;
+  getInfoOng: (ongId: number) => Promise<void>;
+  ong: iOng | null;
+  userLoading: boolean;
+  setHistoricDonates: React.Dispatch<React.SetStateAction<iOngDonate[]>>;
 }
 
 export interface iOng {
@@ -46,10 +50,10 @@ export interface iUserDonate {
 export const UserContext = createContext({} as iUserContextProps);
 
 export const UserProvider = ({ children }: iUserProvider) => {
-  const { userInfo } = useContext(AuthContext);
-
   const [historicDonates, setHistoricDonates] = useState([] as iOngDonate[]);
   const [userDonate, setUserDonate] = useState([] as iUserDonate[]);
+  const [ong, setOng] = useState<null | iOng>(null);
+  const [userLoading, setUserLoading] = useState(false);
 
   const historicDonatesOngMain = async () => {
     const token = localStorage.getItem("@token");
@@ -60,6 +64,18 @@ export const UserProvider = ({ children }: iUserProvider) => {
       setHistoricDonates(response.data);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const getInfoOng = async (ongId: number) => {
+    setUserLoading(true);
+    try {
+      const response = await api.get(`/users/${ongId}`);
+      setOng(response.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setUserLoading(false);
     }
   };
 
@@ -82,6 +98,10 @@ export const UserProvider = ({ children }: iUserProvider) => {
         userDonate,
         getDonateUser,
         historicDonatesOngMain,
+        getInfoOng,
+        ong,
+        userLoading,
+        setHistoricDonates,
       }}
     >
       {children}

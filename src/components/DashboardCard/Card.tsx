@@ -6,8 +6,18 @@ import userDefaultAvatar from "../../assets/imgs/noUserProfileUser.jpg";
 import { iOng } from "../../pages/DashboardLoggedPage/DashboardLoggedPage";
 import { Modal } from "../Modal/ModalGeneric/Modal";
 import { ModalDonate } from "../Modal/ModalDonate/ModalDonate";
+import ModalSeeMore from "../Modal/ModalSeeMore/ModalSeeMore";
 
-const Card = ({ e, name, category, background, avatar, userId ,id, ...rest }: iOng) => {
+const Card = ({
+  e,
+  name,
+  category,
+  background,
+  avatar,
+  userId,
+  id,
+  ...rest
+}: iOng) => {
   const imageOnErrorHandler = (
     event: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
@@ -52,7 +62,9 @@ const Card = ({ e, name, category, background, avatar, userId ,id, ...rest }: iO
           <ModalDonate ongName={name} ongAvatar={avatar} ongId={id} />
         </Modal>
 
-        <button id={String(id)}>Ver Mais</button>
+        <Modal button={"Ver mais"} title="Informações">
+          <ModalSeeMore ongId={id} imageHandler={imageOnErrorHandler} />
+        </Modal>
       </div>
     </StyledCard>
   );
