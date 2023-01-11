@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Button from "../../Button/Button";
-import { FormEditUserStyled } from "../../Forms/Form";
+import { FormEditUserStyled } from "./ModalUserStyled"
 import { UserSchema } from "./ModalUserSchema";
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import { UserContext } from "../../../contexts/UserContext/UserContext";
