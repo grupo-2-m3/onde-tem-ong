@@ -22,9 +22,10 @@ import UpLeft from "../../assets/imgs/Up Left.svg";
 import Password from "../../assets/imgs/Password.svg";
 
 import { StyledLoginPage } from "./StyledLoginPage";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const LoginPage = () => {
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, loading } = useContext(AuthContext);
 
   const formSchemaLogin = yup.object({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -94,8 +95,16 @@ const LoginPage = () => {
                 </Error>
               )}
             </div>
-            <Button styled="filled" type="submit">
-              Entrar
+            <Button
+              disabled={loading ? true : false}
+              styled="filled"
+              type="submit"
+            >
+              {loading ? (
+                <AiOutlineLoading3Quarters className="loading" />
+              ) : (
+                "Entrar"
+              )}
             </Button>
           </form>
           <span>Ainda não possui conta?</span>

@@ -1,40 +1,43 @@
-import React, { useContext } from "react"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
-import Button from "../../Button/Button"
+import React, { useContext } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import Button from "../../Button/Button";
 import { FormEditUserStyled } from "./ModalUserStyled"
-import { UserSchema } from "./ModalUserSchema"
-import { AuthContext } from "../../../contexts/AuthContext/AuthContext"
+import { UserSchema } from "./ModalUserSchema";
+import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
+import { UserContext } from "../../../contexts/UserContext/UserContext";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-interface iFormUser{
-    data:iUser
+
+interface iFormUser {
+  data: iUser;
 }
 
 interface iUser {
-    name: string;
-    bio?: string;
-    avatar?: string;
-    background?: string;
-    id:number,
+  name: string;
+  bio?: string;
+  avatar?: string;
+  background?: string;
+  id: number;
 }
-  
-export const ModalUser=({data}:iFormUser)=>{
-    const { updateProfile } = useContext(AuthContext);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<iUser>({
-        resolver: yupResolver(UserSchema),
-      });
+export const ModalUser = ({ data }: iFormUser) => {
+  const { updateProfile, loadingUpdateUser } = useContext(AuthContext);
 
-    return(
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iUser>({
+    resolver: yupResolver(UserSchema),
+  });
+
+  return (
+    <div>
+      <FormEditUserStyled onSubmit={handleSubmit(updateProfile)}>
+        
         <div>
-            
-            <FormEditUserStyled onSubmit={handleSubmit(updateProfile)}>
-            <div>
-                <div>
+          <div>      
                 <div>
                     <label htmlFor="name">Nome</label>
                     <input type="text" id="name" defaultValue={data.name} placeholder="Nome" {...register('name')} />
@@ -50,10 +53,20 @@ export const ModalUser=({data}:iFormUser)=>{
                     <input type="url" id="background" defaultValue={data.background} placeholder="Background" {...register('background')} />
                     {errors.background?.message && <p>{errors.background.message}</p>}
                 </div>
-                </div>
-                <button type="submit">Editar</button>
-                </div>
-            </FormEditUserStyled>
+          </div>
+          <Button
+          disabled={loadingUpdateUser ? true : false}
+          styled={"empty curved"}
+          type="submit"
+          >
+          {loadingUpdateUser ? (
+            <AiOutlineLoading3Quarters className="loading" />
+          ) : (
+            "Editar"
+          )}
+          </Button>
         </div>
-    )
-}
+      </FormEditUserStyled>
+    </div>
+  );
+};
