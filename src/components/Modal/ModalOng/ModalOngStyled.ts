@@ -9,7 +9,8 @@ export const FormEditOngStyled = styled.form`
   border-radius: 8px;
   padding: 10px;
   background-color: rgba(111, 42, 134, 0.3);
-  width: 100%;
+  width: 567px;
+  max-width: 100%;
   height: 500px;
   overflow-y: scroll;
 
