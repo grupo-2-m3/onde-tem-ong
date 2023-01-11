@@ -2,7 +2,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
-import Button from "../../Button/Button";
 import { FormEditOngStyled } from "./ModalOngStyled";
 import { OngSchema } from "./ModalOngSchema";
 
@@ -16,10 +15,11 @@ interface iOng {
   avatar?: string;
   background?: string;
   id: number;
+  metas?: number;
 }
 
 export const ModalOng = ({ data }: iFormOng) => {
-  const { updateProfile } = useContext(AuthContext);
+  const { updateProfile, userInfo } = useContext(AuthContext);
 
   const {
     register,
@@ -76,7 +76,20 @@ export const ModalOng = ({ data }: iFormOng) => {
           />
           {errors.background?.message && <p>{errors?.background?.message}</p>}
         </div>
-        <button className="submitEditOngBtn" type="submit">Editar</button>
+        <div>
+          <label htmlFor="metas">Meta</label>
+          <input
+            type="number"
+            id="metas"
+            defaultValue={userInfo.metas}
+            placeholder="Metas (R$)"
+            {...register("metas")}
+          />
+          {errors.background?.message && <p>{errors?.background?.message}</p>}
+        </div>
+        <button className="submitEditOngBtn" type="submit">
+          Editar
+        </button>
       </FormEditOngStyled>
     </div>
   );

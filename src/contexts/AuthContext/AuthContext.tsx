@@ -105,7 +105,6 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   };
 
   const updateProfile = async (data: iUserInfo) => {
-    console.log(userInfo);
     const userId = localStorage.getItem("@id");
     const token = localStorage.getItem("@token");
     const response = await api.patch(`/users/${userId}`, data, {
