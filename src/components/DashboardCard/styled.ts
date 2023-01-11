@@ -46,7 +46,7 @@ export const StyledCard = styled.li`
 
   .backgroundAvatarDiv {
     width: 100%;
-    min-height: 150px;
+    min-height: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
