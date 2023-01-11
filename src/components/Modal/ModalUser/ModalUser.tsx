@@ -8,6 +8,7 @@ import { AuthContext } from "../../../contexts/AuthContext/AuthContext";
 import { UserContext } from "../../../contexts/UserContext/UserContext";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
+
 interface iFormUser {
   data: iUser;
 }
@@ -34,50 +35,37 @@ export const ModalUser = ({ data }: iFormUser) => {
   return (
     <div>
       <FormEditUserStyled onSubmit={handleSubmit(updateProfile)}>
+        
         <div>
-          <label htmlFor="name">Nome</label>
-          <input
-            type="text"
-            id="name"
-            defaultValue={data.name}
-            placeholder="Nome"
-            {...register("name")}
-          />
-          {errors.name?.message && <p>{errors.name.message}</p>}
-        </div>
-        <div>
-          <label htmlFor="avatar">Avatar</label>
-          <input
-            type="url"
-            id="avatar"
-            defaultValue={data.avatar}
-            placeholder="Avatar"
-            {...register("avatar")}
-          />
-          {errors.avatar?.message && <p>{errors.avatar.message}</p>}
-        </div>
-        <div>
-          <label htmlFor="background">Background</label>
-          <input
-            type="url"
-            id="background"
-            defaultValue={data.background}
-            placeholder="Background"
-            {...register("background")}
-          />
-          {errors.background?.message && <p>{errors.background.message}</p>}
-        </div>
-        <Button
+          <div>      
+                <div>
+                    <label htmlFor="name">Nome</label>
+                    <input type="text" id="name" defaultValue={data.name} placeholder="Nome" {...register('name')} />
+                    {errors.name?.message && <p>{errors.name.message}</p>}
+                </div>
+                <div>
+                    <label htmlFor="avatar">Avatar</label>
+                    <input type="url" id="avatar" defaultValue={data.avatar} placeholder="Avatar" {...register('avatar')} />
+                    {errors.avatar?.message && <p>{errors.avatar.message}</p>}
+                </div>
+                <div>
+                    <label htmlFor="background">Background</label>
+                    <input type="url" id="background" defaultValue={data.background} placeholder="Background" {...register('background')} />
+                    {errors.background?.message && <p>{errors.background.message}</p>}
+                </div>
+          </div>
+          <Button
           disabled={loadingUpdateUser ? true : false}
           styled={"empty curved"}
           type="submit"
-        >
+          >
           {loadingUpdateUser ? (
             <AiOutlineLoading3Quarters className="loading" />
           ) : (
             "Editar"
           )}
-        </Button>
+          </Button>
+        </div>
       </FormEditUserStyled>
     </div>
   );

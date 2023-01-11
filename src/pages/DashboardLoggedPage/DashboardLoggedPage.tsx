@@ -7,7 +7,7 @@ import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
-import { MdClear } from "react-icons/md";
+
 export interface iOng {
   avatar: string;
   background: string;
@@ -18,14 +18,15 @@ export interface iOng {
   id: number;
   e: iOng;
 }
+
 const DashboardLoggedPage = () => {
   const [filterState, setfilterState] = useState<boolean>(false);
   const [ongs, setOngs] = useState<iOng[]>([]);
+  const [totalOngs, setTotalOngs] = useState<iOng[]>([]);
   const [auxOngs, setAuxOngs] = useState<iOng[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
-
   const ref = useRef<HTMLDivElement | null>(null);
 
   let mockOngs: iOng[];
@@ -33,18 +34,22 @@ const DashboardLoggedPage = () => {
   let filters: string[] = [];
 
   if (ongs) {
-    mockOngs = ongs;
+    mockOngs = totalOngs;
     filterCategories = mockOngs.map((e) => e.category);
     filters = filterCategories.filter((e, i, arr) => {
       return arr.indexOf(e) === i;
     });
   }
 
-  async function getOngs(page: number) {
+  async function getOngs( page:number , keyword:string) {
     try {
-      // setLoading(true)
+      const response = await api.get<iOng[]>(`/ongs`);
+      setTotalOngs(response.data);
+    } catch {}
+    try {
       const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=8`);
       const filteredOngs = response.data.filter((e) => e.userType !== "user");
+
       if (!response.data || !response) {
         return;
       }
@@ -116,7 +121,8 @@ const DashboardLoggedPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("@token");
     if (token) {
-      getOngs(page);
+
+      getOngs(page, "");
     }
   }, [page]);
 
@@ -222,10 +228,14 @@ const DashboardLoggedPage = () => {
             procurar novamente?{" "}
           </h3>
           <div>
-          <button onClick={() => {setAuxOngs(ongs) 
-            setNotFound(false)}}>
-            Limpar Pesquisa
-          </button>
+            <button
+              onClick={() => {
+                setAuxOngs(ongs);
+                setNotFound(false);
+              }}
+            >
+              Limpar Pesquisa
+            </button>
           </div>
         </div>
       </StyledDashboard>
