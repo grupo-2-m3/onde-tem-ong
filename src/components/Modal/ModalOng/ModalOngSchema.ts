@@ -1,18 +1,15 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 
-const OngSchema=yup.object().shape({
-    name:yup
-    .string(),
+const OngSchema = yup.object().shape({
+  name: yup.string(),
 
-    bio: yup
-    .string(),
+  bio: yup.string(),
 
-    avatar: yup
-    .string(),
+  avatar: yup.string(),
 
-    background: yup
-    .string()
+  background: yup.string(),
 
-})
+  metas: yup.string(),
+});
 
-export{OngSchema}
+export { OngSchema };
