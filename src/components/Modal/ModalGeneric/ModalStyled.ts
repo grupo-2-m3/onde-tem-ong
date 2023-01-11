@@ -29,7 +29,6 @@ export const ModalDiv = styled.div`
   position: relative;
   max-width: 90vw;
 
-
   > div > form {
     margin-top: 35px;
   }
@@ -72,9 +71,5 @@ export const ModalDiv = styled.div`
     > button:hover .iconClose {
       color: var(--Color-primary-50);
     }
-  }
-
-  @media (min-width: 670px) {
-    width: 537px;
   }
 `;

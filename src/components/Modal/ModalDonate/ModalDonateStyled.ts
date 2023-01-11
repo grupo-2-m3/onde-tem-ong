@@ -9,6 +9,9 @@ export const FormDonateStyled = styled.form`
   border-radius: 8px;
   padding: 10px;
   background-color: rgba(111, 42, 134, 0.3);
+  justify-content: space-between;
+  max-width: 100%;
+  width: 550px;
 
   > div {
     display: flex;
@@ -42,10 +45,15 @@ export const FormDonateStyled = styled.form`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 65px;
   }
-  .radioFieldDiv > label {
-    width: fit-content;
+
+  .radioFieldDiv > .radios > div {
+    width: max-content;
+    align-self: flex-end;
+  }
+
+  .radioFieldDiv > .radios > div > label {
+    width: 40px;
   }
   .radioFieldDiv > div {
     display: flex;
@@ -65,7 +73,7 @@ export const FormDonateStyled = styled.form`
     background-color: var(--Color-primary);
   }
   input[type="radio"]:checked::before {
-    transform: scale(1.2);
+    transform: scale(1);
     outline: max(1px, 0.2em) solid;
     color: var(--Color-primary-50);
   }
@@ -118,6 +126,7 @@ export const FormDonateStyled = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 100%;
 
     :hover {
       background-color: var(--Color-secondary);
@@ -125,7 +134,8 @@ export const FormDonateStyled = styled.form`
   }
 
   @media (min-width: 768px) {
-    width: 550px;
+    max-width: 100%;
+
     height: 290px;
     padding: 15px;
 
@@ -159,7 +169,8 @@ export const FormDonateStyled = styled.form`
       justify-content: flex-start;
       width: fit-content;
       align-self: flex-start;
-      margin-top: 35px;
+      margin-top: 15px;
+      max-width: 80px;
 
       > div {
         flex-direction: row-reverse;
@@ -168,7 +179,6 @@ export const FormDonateStyled = styled.form`
       }
     }
     > button {
-      width: 100%;
       padding: 0px 50px;
     }
   }

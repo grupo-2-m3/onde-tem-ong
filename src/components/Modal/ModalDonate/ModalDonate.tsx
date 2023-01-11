@@ -17,9 +17,6 @@ interface iProps {
   ongId: number;
   ongName: string;
   ongAvatar: string;
-  // userId: number;
-  // userName: string;
-  // userAvatar: string;
 }
 
 export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
@@ -28,6 +25,7 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
 
   useEffect(() => {
     getInfoOng(ongId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
