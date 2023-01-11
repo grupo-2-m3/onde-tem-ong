@@ -15,12 +15,8 @@ interface iUser {
     avatar?: string;
     background?: string;
     id:number,
-    password:string,
-    email:string,
-    confirmPassword:string
-  }
+}
   
-
 export const ModalUser=({data}:iFormUser)=>{
 
     const {
@@ -42,21 +38,6 @@ export const ModalUser=({data}:iFormUser)=>{
                     <label htmlFor="name">Nome</label>
                     <input type="text" id="name" defaultValue={data.name} placeholder="Nome" {...register('name')} />
                     {errors.name?.message && <p>{errors.name.message}</p>}
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input type="text" id="bio" defaultValue={data.bio} placeholder="Bio" {...register('email')}/>
-                    {errors.email?.message && <p>{errors.email.message}</p>}
-                </div>
-                <div>
-                    <label htmlFor="password">Senha</label>
-                    <input type="password" id="password" defaultValue={data.password} placeholder="Bio" {...register('password')}/>
-                    {errors.password?.message && <p>{errors.password.message}</p>}
-                </div>
-                <div>
-                    <label htmlFor="confirmPassword">Confirmar senha</label>
-                    <input type="password" id="confirmPassword" defaultValue={data.password} placeholder="Bio" {...register('confirmPassword')}/>
-                    {errors.confirmPassword?.message && <p>{errors.confirmPassword.message}</p>}
                 </div>
                 <div>
                     <label htmlFor="avatar">Avatar</label>
