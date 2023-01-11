@@ -27,7 +27,7 @@ const ProfileUserPage = () => {
 
   return (
     <StyledProfileUser>
-      <HeaderFull linkText={"Dashboard Ongs"} linkTo={"/dashboard"} />
+      <HeaderFull linkText={"ONGs"} linkTo={"/dashboard"} />
       <CoverProfile imgCover={userInfo.background} imgUser={userInfo.avatar} />
       <div className="infoUser container">
         <div className="infoEdit">

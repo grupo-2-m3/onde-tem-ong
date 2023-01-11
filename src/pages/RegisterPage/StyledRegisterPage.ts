@@ -3,7 +3,8 @@ import arrowDown from "../../assets/imgs/arrowDown.svg";
 
 export const StyledRegisterPage = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -15,6 +16,8 @@ export const StyledRegisterPage = styled.div`
   transition: background-image 2s ease;
 
   .background {
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
     padding: 20px;
     background-color: rgba(111, 42, 134, 0.81);
@@ -109,6 +112,11 @@ export const StyledRegisterPage = styled.div`
     display: flex;
   }
 
+  .selectTypeUser > div > div > input {
+    background: red;
+    width: 20px;
+  }
+
   .labelSelectType {
     color: var(--Withe);
   }
@@ -118,7 +126,10 @@ export const StyledRegisterPage = styled.div`
     margin-top: -10px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+  }
+
+  .divSelectCategory > input {
+    background: red;
   }
 
   .selectTypeUser > div {

@@ -127,7 +127,7 @@ const DashboardLoggedPage = () => {
 
   return (
     <>
-      <HeaderFull linkText="Dashboard Inicial" linkTo="/" />
+      <HeaderFull linkText="Página Inicial" linkTo="/" />
       <StyledDashboard>
         <div className="container">
           <section className="searchSection container">
