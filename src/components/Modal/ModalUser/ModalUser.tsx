@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import Button from "../../Button/Button"
-import { FormEditUserStyled } from "../../Forms/Form"
+import { FormEditUserStyled } from "./ModalUserStyled"
 import { UserSchema } from "./ModalUserSchema"
 import { AuthContext } from "../../../contexts/AuthContext/AuthContext"
 
@@ -33,6 +33,8 @@ export const ModalUser=({data}:iFormUser)=>{
         <div>
             
             <FormEditUserStyled onSubmit={handleSubmit(updateProfile)}>
+            <div>
+                <div>
                 <div>
                     <label htmlFor="name">Nome</label>
                     <input type="text" id="name" defaultValue={data.name} placeholder="Nome" {...register('name')} />
@@ -48,7 +50,9 @@ export const ModalUser=({data}:iFormUser)=>{
                     <input type="url" id="background" defaultValue={data.background} placeholder="Background" {...register('background')} />
                     {errors.background?.message && <p>{errors.background.message}</p>}
                 </div>
-                <Button styled={'empty curved'} type="submit">Editar</Button>
+                </div>
+                <button type="submit">Editar</button>
+                </div>
             </FormEditUserStyled>
         </div>
     )
