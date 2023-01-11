@@ -30,11 +30,10 @@ const DashboardVisitorPage = () => {
       <div>
         <div className="boxCarousel">
           <Carousel />
-        </div>
 
+        </div>
         <div className="information">
           <ListCardInfo />
-
           <footer>
             <div>
               <div>
