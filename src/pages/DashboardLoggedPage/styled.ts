@@ -81,6 +81,7 @@ export const StyledDashboard = styled.main`
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-direction: column;
   }
   @keyframes pull {
     20% {
@@ -97,6 +98,7 @@ export const StyledDashboard = styled.main`
     gap: 25px;
     height: 115px;
     margin-bottom: 0px;
+    max-width: 100%;
   }
 
   span {
@@ -175,6 +177,10 @@ export const StyledDashboard = styled.main`
     display: block;
   }
   @media (min-width: 768px) {
+    .categoriesDiv {
+      flex-direction: row;
+    }
+
     .ongsList {
       flex-direction: row;
       flex-wrap: wrap;
