@@ -5,6 +5,7 @@ import noUser from "../../assets/imgs/noUser.svg";
 import { StyledHeaderFull } from "./StyledHeaderFull";
 import { Link, LinkProps } from "react-router-dom";
 import Button from "../Button/Button";
+import { motion } from "framer-motion";
 
 interface iHeaderProps {
   linkText: string;
@@ -30,7 +31,13 @@ const HeaderFull = ({ linkText, linkTo }: iHeaderProps) => {
                 alt="Imagem de perfil do usuário"
               />
             </Link>
-            <div className="downMenu">
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="downMenu"
+            >
               {userInfo.id && (
                 <Link to={"/profile"} className="goToProfile">
                   <img
@@ -57,7 +64,7 @@ const HeaderFull = ({ linkText, linkTo }: iHeaderProps) => {
                   {userInfo.id ? "Sair" : "Fazer login"}
                 </Button>
               )}
-            </div>
+            </motion.div>
           </div>
         </header>
       </div>
