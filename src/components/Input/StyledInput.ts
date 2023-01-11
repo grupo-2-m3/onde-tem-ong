@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 interface iPropsInput {
   styledColor?: string | boolean;
@@ -15,10 +15,10 @@ export const StyledInput = styled.div`
 
   label {
     ${(props: iPropsInput) => {
-      if(props.styledColor){
+      if (props.styledColor) {
         return css`
           color: var(--${props.styledColor as string});
-        `
+        `;
       }
     }}
     font-size: var(--font14);
@@ -26,12 +26,12 @@ export const StyledInput = styled.div`
 
   input::placeholder {
     ${(props: iPropsInput) => {
-      if(props.styledColor){
+      if (props.styledColor) {
         return css`
           color: rgba(255, 255, 255, 0.6);
-        `
+        `;
       }
-    }}
+    }};
   }
 
   div {
@@ -46,6 +46,8 @@ export const StyledInput = styled.div`
     }
 
     input {
+      width: 100%;
+
       padding: 12px 0;
 
       border: none;

@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   --Color-secondary: rgb(111,42,134,0.8);
   --Color-terciary: #f1ebf3;
 
+  
+
   /*Grey Scale Palette*/
 
   --Grey100: #1E1E1E;
