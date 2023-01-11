@@ -14,6 +14,7 @@ import { RiErrorWarningLine } from "react-icons/ri";
 import { Error } from "../../components/Input/StyledInput";
 import Button from "../../components/Button/Button";
 import { StyledLink } from "../../components/StyledLink/StyledLink";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export interface iRegisterData {
   email: string;
@@ -28,7 +29,7 @@ export interface iRegisterData {
 const RegisterPage = () => {
   const [typeUser, setTypeUser] = useState("");
 
-  const { registerSubmit } = useContext(AuthContext);
+  const { registerSubmit, loading } = useContext(AuthContext);
 
   const RegisterSchema = yup.object().shape({
     name: yup.string().required("O nome é obrigatório"),
@@ -238,8 +239,16 @@ const RegisterPage = () => {
                 ) : (
                   ""
                 )}
-                <Button styled="filled" type="submit">
-                  Cadastrar
+                <Button
+                  disabled={loading ? true : false}
+                  styled="filled"
+                  type="submit"
+                >
+                  {loading ? (
+                    <AiOutlineLoading3Quarters className="loading" />
+                  ) : (
+                    "Cadastrar"
+                  )}
                 </Button>
                 <span>Já possui uma conta?</span>
                 <StyledLink type="button empty" to="/login">

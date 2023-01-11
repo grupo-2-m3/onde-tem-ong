@@ -106,7 +106,7 @@ export const StyledDashboard = styled.main`
   }
 
   button:disabled {
-    opacity: 0.2;
+    opacity: 0.7;
   }
   .popUpFilters > ul > button {
     display: flex;
