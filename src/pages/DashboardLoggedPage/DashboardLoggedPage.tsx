@@ -7,6 +7,7 @@ import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
+import { motion } from "framer-motion";
 
 export interface iOng {
   avatar: string;
