@@ -15,8 +15,7 @@ interface iPropsModalSeeMore {
 }
 
 export const ModalSeeMore = ({ ongId, imageHandler }: iPropsModalSeeMore) => {
-  const { getInfoOng, ong, userLoading, setHistoricDonates } =
-    useContext(UserContext);
+  const { getInfoOng, ong, userLoading } = useContext(UserContext);
   const [historic, setHistoric] = useState<iOngDonate[] | null>(null);
 
   const getHistoric = async () => {
@@ -33,6 +32,7 @@ export const ModalSeeMore = ({ ongId, imageHandler }: iPropsModalSeeMore) => {
   useEffect(() => {
     getInfoOng(ongId);
     getHistoric();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
