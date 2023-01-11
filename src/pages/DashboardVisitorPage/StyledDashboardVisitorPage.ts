@@ -168,7 +168,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     position: absolute;
 
-    z-index: 5;
+    z-index: 3;
     > div {
       width: 100%;
     }

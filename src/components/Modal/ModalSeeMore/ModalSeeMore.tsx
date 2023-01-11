@@ -57,7 +57,7 @@ export const ModalSeeMore = ({ ongId, imageHandler }: iPropsModalSeeMore) => {
           </div>
           <div className="infos">
             <div className="infosLeft">
-              <h2 className="title">Detalhes</h2>
+              <h3 className="title">Detalhes</h3>
               <h2>
                 Nome: <span className="name">{ong?.name}</span>
               </h2>
