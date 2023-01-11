@@ -34,6 +34,7 @@ interface iAuthContextProps {
   logout: () => void;
   navigate: NavigateFunction;
   updateProfile: (data: any) => Promise<void>;
+  loadingUpdateUser: boolean;
 }
 
 export const AuthContext = createContext({} as iAuthContextProps);
@@ -41,6 +42,7 @@ export const AuthContext = createContext({} as iAuthContextProps);
 export const AuthProvider = ({ children }: iAuthProvider) => {
   const [userInfo, setUserInfo] = useState({} as iUserInfo);
   const [loading, setLoading] = useState(false);
+  const [loadingUpdateUser, setLoadingUpdateUser] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -90,6 +92,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
   };
 
   const registerSubmit = async (data: iRegisterData) => {
+    setLoading(true);
     try {
       const response = await api.post(
         "/users",
@@ -101,12 +104,15 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       navigate("/login");
     } catch (error: any) {
       toast.error(error.response.data);
+    } finally {
+      setLoading(false);
     }
   };
 
   const updateProfile = async (data: iUserInfo) => {
     const userId = localStorage.getItem("@id");
     const token = localStorage.getItem("@token");
+    setLoadingUpdateUser(true);
     try {
       const response = await api.patch(`/users/${userId}`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -116,6 +122,8 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       toast.success("perfil atualizado com sucesso");
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoadingUpdateUser(false);
     }
   };
 
@@ -129,6 +137,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
         logout,
         navigate,
         updateProfile,
+        loadingUpdateUser,
       }}
     >
       {children}

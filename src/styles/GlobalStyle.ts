@@ -1,4 +1,13 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, keyframes } from "styled-components";
+
+const rotate = keyframes`
+  0%{
+    transform: rotate(0deg)
+  }
+  100%{
+    transform: rotate(350deg)
+  }
+`;
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -67,5 +76,9 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+  }
+
+  .loading{
+    animation: ${rotate} 0.5s linear infinite;
   }
 `;
