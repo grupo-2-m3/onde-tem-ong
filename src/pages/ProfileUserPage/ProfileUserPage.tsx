@@ -7,6 +7,8 @@ import PencilBlack from "../../assets/imgs/PencilBlack.svg";
 import Historic from "../../assets/imgs/Historic.svg";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 import NoUser from "../../assets/imgs/noUser.svg";
+import { Modal } from "../../components/Modal/ModalGeneric/Modal";
+import { ModalUser } from "../../components/Modal/ModalUser/ModalUser";
 
 const ProfileUserPage = () => {
   const { userInfo } = useContext(AuthContext);
@@ -27,7 +29,12 @@ const ProfileUserPage = () => {
       <div className="infoUser container">
         <div className="infoEdit">
           <h3 className="name">Nome: {userInfo.name}</h3>
-          <img src={PencilBlack} alt="" />
+          <Modal
+              title="Editar usuário"
+              button={<img src={PencilBlack} alt="" />}
+            >
+              <ModalUser data={userInfo} />
+            </Modal>
         </div>
         <div className="historicDonates">
           <img src={Historic} alt="" />
