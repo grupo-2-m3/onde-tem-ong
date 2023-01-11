@@ -6,29 +6,32 @@ import { ModalStyled } from "./ModalStyled";
 interface iOpenModal {
   children: React.ReactNode;
   title: string;
-  button?:string | React.ReactNode;
+  button?: string | React.ReactNode;
 }
 
-export function Modal({ children,title,button }: iOpenModal) {
+export function Modal({ children, title, button }: iOpenModal) {
   const [modal, setModal] = useState(false);
-  if(typeof(button)==='object'){
-  return (
+  if (typeof button === "object") {
+    return (
       <ModalStyled>
-        <button className="withoutBorder" onClick={() => setModal(true)}>{ button}</button>
+        <button className="withoutBorder" onClick={() => setModal(true)}>
+          {button}
+        </button>
         <ModalBody titulo={title} modalIsOpen={modal} setModalOpen={setModal}>
-        {children}
+          {children}
         </ModalBody>
       </ModalStyled>
     );
-  }
-  else{
+  } else {
     return (
       <ModalStyled>
-      <Button styled={'empty'} onClick={() => setModal(true)}>{ button||title}</Button>
-      <ModalBody titulo={title} modalIsOpen={modal} setModalOpen={setModal}>
-      {children}
-      </ModalBody>
-    </ModalStyled>
-    )
+        <Button styled={"empty"} onClick={() => setModal(true)}>
+          {button || title}
+        </Button>
+        <ModalBody titulo={title} modalIsOpen={modal} setModalOpen={setModal}>
+          {children}
+        </ModalBody>
+      </ModalStyled>
+    );
   }
 }
