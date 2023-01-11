@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
     setLoading(true);
     try {
       const response = await api.post("/login", data);
-      navigate("/profile");
+      navigate("/dashboard");
       localStorage.setItem("@token", response.data.accessToken);
       localStorage.setItem("@id", response.data.user.id);
       setUserInfo(response.data.user);

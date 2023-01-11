@@ -23,7 +23,7 @@ const DashboardVisitorPage = () => {
       }}
     >
       <HeaderFull
-        linkText={userInfo.id ? "Dashboard ONGs" : "Registre-se"}
+        linkText={userInfo.id ? "ONGs" : "Registre-se"}
         linkTo={userInfo.id ? "/dashboard" : "/register"}
       />
 

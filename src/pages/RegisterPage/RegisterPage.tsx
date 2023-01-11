@@ -103,7 +103,7 @@ const RegisterPage = () => {
                 >
                   <Input
                     styledColor="Withe"
-                    label="NOME - USUÁRIO OU ONG"
+                    label="NOME - DOADOR OU ONG"
                     src={PencilLight}
                     id="name"
                     type="text"
@@ -170,7 +170,7 @@ const RegisterPage = () => {
                     styledColor="placeholderInputRegister"
                     className="inputRadio"
                     src={UserLight}
-                    label="Usuário"
+                    label="Doador"
                     id="user"
                     type="radio"
                     value="user"
@@ -181,7 +181,7 @@ const RegisterPage = () => {
                     styledColor="placeholderInputRegister"
                     className="inputRadio"
                     src={UserLight}
-                    label="CEO ONG"
+                    label="ONG"
                     id="ownerOng"
                     type="radio"
                     value="ownerOng"
