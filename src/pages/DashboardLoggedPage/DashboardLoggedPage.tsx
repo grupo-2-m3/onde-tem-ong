@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { RiFilterOffFill, RiFilterFill } from "react-icons/ri";
 import Button from "../../components/Button/Button";
@@ -7,6 +7,8 @@ import { api } from "../../services/api";
 import { StyledDashboard } from "./styled";
 import notFoundImg from "../../assets/imgs/magnifier.jpg";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
+import { UserContext } from "../../contexts/UserContext/UserContext";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export interface iOng {
   avatar: string;
@@ -22,34 +24,27 @@ export interface iOng {
 const DashboardLoggedPage = () => {
   const [filterState, setfilterState] = useState<boolean>(false);
   const [ongs, setOngs] = useState<iOng[]>([]);
-  const [totalOngs, setTotalOngs] = useState<iOng[]>([]);
   const [auxOngs, setAuxOngs] = useState<iOng[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
+  const { setUserLoading, userLoading } = useContext(UserContext);
   const ref = useRef<HTMLDivElement | null>(null);
-
   let mockOngs: iOng[];
   let filterCategories: string[] = [];
   let filters: string[] = [];
-
   if (ongs) {
-    mockOngs = totalOngs;
+    mockOngs = ongs;
     filterCategories = mockOngs.map((e) => e.category);
     filters = filterCategories.filter((e, i, arr) => {
       return arr.indexOf(e) === i;
     });
   }
-
-  async function getOngs(page: number, keyword: string) {
-    try {
-      const response = await api.get<iOng[]>(`/ongs`);
-      setTotalOngs(response.data);
-    } catch {}
+  async function getOngs(page: number) {
+    setUserLoading(true);
     try {
       const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=8`);
       const filteredOngs = response.data.filter((e) => e.userType !== "user");
-
       if (!response.data || !response) {
         return;
       }
@@ -64,9 +59,9 @@ const DashboardLoggedPage = () => {
     } catch (err) {
       console.error(err);
     } finally {
+      setUserLoading(false);
     }
   }
-
   function handleFilterButton(event: React.MouseEvent<HTMLElement>) {
     let target = event.target as HTMLElement;
     if (target.innerHTML === "Todos") {
@@ -81,7 +76,6 @@ const DashboardLoggedPage = () => {
     setNotFound(false);
     setSearchValue("");
   }
-
   function handleSearchSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     let found: iOng[] | undefined = [];
@@ -98,7 +92,6 @@ const DashboardLoggedPage = () => {
     }
     setSearchValue("");
   }
-
   const options = useMemo(() => {
     return {
       root: null,
@@ -117,12 +110,12 @@ const DashboardLoggedPage = () => {
       current && observer.observe(current);
     };
   }, [ref, options]);
-
   useEffect(() => {
     const token = localStorage.getItem("@token");
     if (token) {
-      getOngs(page, "");
+      getOngs(page);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   return (
@@ -221,6 +214,7 @@ const DashboardLoggedPage = () => {
                   })}
               </>
             </ul>
+            {userLoading && <AiOutlineLoading3Quarters className="loading" />}
             <div style={{ height: "35px" }} ref={ref}></div>
           </section>
         </div>
