@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import imagesBackground from "../../assets/imgs/imagesBackground.svg";
 
 interface iStyledDashboardVisitorPage {
   Imagen: {
@@ -9,6 +10,17 @@ interface iStyledDashboardVisitorPage {
 export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage>`
   width: 100%;
   height: 100%;
+
+  .backgroundCarousel {
+    background: rgba(0, 0, 0, 0.3);
+    background-image: url(${imagesBackground});
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   .boxCarousel {
     width: 100%;
