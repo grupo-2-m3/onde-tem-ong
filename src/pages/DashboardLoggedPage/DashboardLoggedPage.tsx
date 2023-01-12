@@ -43,7 +43,7 @@ const DashboardLoggedPage = () => {
   async function getOngs(page: number) {
     setUserLoading(true);
     try {
-      const response = await api.get<iOng[]>(`/users?_page=${page}&_limit=8`);
+      const response = await api.get<iOng[]>(`/users`);
       const filteredOngs = response.data.filter((e) => e.userType !== "user");
       if (!response.data || !response) {
         return;
@@ -116,7 +116,7 @@ const DashboardLoggedPage = () => {
       getOngs(page);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, []);
 
   return (
     <>
