@@ -59,7 +59,7 @@ export const ModalDonate = ({ ongId, ongName, ongAvatar }: iProps) => {
 
       toast.success("Doação realizada com sucesso!");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setUserLoading(false);
     }

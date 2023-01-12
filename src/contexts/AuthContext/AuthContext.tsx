@@ -119,9 +119,9 @@ export const AuthProvider = ({ children }: iAuthProvider) => {
       });
       const responseData: iUserInfo = response.data;
       setUserInfo(responseData);
-      toast.success("perfil atualizado com sucesso");
-    } catch (err) {
-      console.log(err);
+      toast.success("Perfil atualizado com sucesso!");
+    } catch (error) {
+      console.error(error);
     } finally {
       setLoadingUpdateUser(false);
     }

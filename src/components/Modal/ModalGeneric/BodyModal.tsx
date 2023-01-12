@@ -58,6 +58,6 @@ export const ModalBody = ({
         </motion.div>
       </ModalBodyStyled>
     );
-  }
+  };
   return <></>;
 };
