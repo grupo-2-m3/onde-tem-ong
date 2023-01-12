@@ -23,8 +23,10 @@ const DashboardVisitorPage = () => {
       />
 
       <div>
-        <div className="boxCarousel">
-          <Carousel />
+        <div className="backgroundCarousel">
+          <div className="boxCarousel">
+            <Carousel />
+          </div>
         </div>
         <div className="information">
           <ListCardInfo />
