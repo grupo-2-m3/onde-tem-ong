@@ -17,7 +17,6 @@ const ProfileUserPage = () => {
   const { userDonate, getDonateUser } = useContext(UserContext);
   const [click, setClick] = useState(true);
   const [viewTotal, setViewTotal] = useState(true);
-  console.log(userDonate);
 
   const totalPrice = userDonate.reduce((acc, value) => {
     return acc + Number(value.value);
