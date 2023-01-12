@@ -10,12 +10,14 @@ import NoUser from "../../assets/imgs/noUser.svg";
 import { Modal } from "../../components/Modal/ModalGeneric/Modal";
 import { ModalUser } from "../../components/Modal/ModalUser/ModalUser";
 import { MdOutlineAttachMoney as MoneyTotal } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const ProfileUserPage = () => {
   const { userInfo } = useContext(AuthContext);
   const { userDonate, getDonateUser } = useContext(UserContext);
   const [click, setClick] = useState(true);
   const [viewTotal, setViewTotal] = useState(true);
+  console.log(userDonate);
 
   const totalPrice = userDonate.reduce((acc, value) => {
     return acc + Number(value.value);
@@ -62,36 +64,48 @@ const ProfileUserPage = () => {
             )}
           </div>
         </div>
-        <ul>
-          {userDonate?.map((donate, index) => (
-            <li className="donationCard" key={index}>
-              {donate.ong.avatar === "" ? (
-                <img className="imgOng" src={NoUser} alt="" />
-              ) : (
-                <img className="imgOng" src={donate.ong.avatar} alt="" />
-              )}
-              <div className="infoOng">
-                <div>
-                  <h3>{donate.ong.name}</h3>
-                  <p>
-                    {new Intl.NumberFormat("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
-                    }).format(donate.value)}
-                  </p>
-                </div>
-                <span className={`spanBio ${click && "vanish"}`}>
-                  {`${donate.ong.bio} `}
-                </span>
-                {donate.ong.bio!.length > 100 && (
-                  <button className="seeMore" onClick={() => setClick(!click)}>
-                    {click ? "Ver mais" : "Ver menos"}
-                  </button>
+        {userDonate.length === 0 ? (
+          <div className="noDonate">
+            <h4>Você ainda não realizou nenhuma doação!</h4>
+            <Link to={"/dashboard"} className="goToProfile">
+              Clique aqui para realizar sua primeira doação
+            </Link>
+          </div>
+        ) : (
+          <ul>
+            {userDonate.map((donate, index) => (
+              <li className="donationCard" key={index}>
+                {donate.ong.avatar === "" ? (
+                  <img className="imgOng" src={NoUser} alt="" />
+                ) : (
+                  <img className="imgOng" src={donate.ong.avatar} alt="" />
                 )}
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="infoOng">
+                  <div>
+                    <h3>{donate.ong.name}</h3>
+                    <p>
+                      {new Intl.NumberFormat("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      }).format(donate.value)}
+                    </p>
+                  </div>
+                  <span className={`spanBio ${click && "vanish"}`}>
+                    {`${donate.ong.bio} `}
+                  </span>
+                  {donate.ong.bio!.length > 100 && (
+                    <button
+                      className="seeMore"
+                      onClick={() => setClick(!click)}
+                    >
+                      {click ? "Ver mais" : "Ver menos"}
+                    </button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </StyledProfileUser>
   );
