@@ -17,6 +17,8 @@ export const StyledProfileUser = styled.div`
   .infoEdit,
   .historicDonates,
   li {
+    padding: 20px;
+    gap: 10px;
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -36,6 +38,7 @@ export const StyledProfileUser = styled.div`
   }
 
   .imgOng {
+    margin: 10px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -44,10 +47,6 @@ export const StyledProfileUser = styled.div`
   .donationCard:hover {
     background: var(--Color-terciary);
     border: 1px solid var(--Color-primary);
-  }
-
-  .donationCard:hover > .imgOng {
-    border-radius: 5%;
   }
 
   .infoOng {
@@ -98,6 +97,31 @@ export const StyledProfileUser = styled.div`
     .money {
       width: 30px;
       height: 30px;
+    }
+  }
+  .noDonate {
+    background-color: var(--Color-terciary);
+    padding: 20px;
+    margin-top: 30px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .historicDonates {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  @media (max-width: 375px) {
+    .infoOng {
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   }
 `;
