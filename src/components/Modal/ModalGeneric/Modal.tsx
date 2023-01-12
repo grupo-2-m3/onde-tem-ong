@@ -33,5 +33,5 @@ export function Modal({ children, title, button }: iOpenModal) {
         </ModalBody>
       </ModalStyled>
     );
-  }
-}
+  };
+};

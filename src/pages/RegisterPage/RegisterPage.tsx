@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Input from "../../components/Input/Input";
 import { StyledRegisterPage } from "./StyledRegisterPage";
-
 import UserLight from "../../assets/imgs/User Light.svg";
 import PasswordLight from "../../assets/imgs/Password Light.svg";
 import PencilLight from "../../assets/imgs/Pencil Light.svg";

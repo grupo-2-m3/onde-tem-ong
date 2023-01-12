@@ -3,7 +3,7 @@ import OndeTemOng from "../../assets/imgs/ondeTemOng.svg";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import noUser from "../../assets/imgs/noUser.svg";
 import { StyledHeaderFull } from "./StyledHeaderFull";
-import { Link, LinkProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import { motion } from "framer-motion";
 

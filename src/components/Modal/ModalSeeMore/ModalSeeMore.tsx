@@ -27,8 +27,6 @@ export const ModalSeeMore = ({ ongId, imageHandler }: iPropsModalSeeMore) => {
     }
   };
 
-  console.log(historic);
-
   useEffect(() => {
     getInfoOng(ongId);
     getHistoric();

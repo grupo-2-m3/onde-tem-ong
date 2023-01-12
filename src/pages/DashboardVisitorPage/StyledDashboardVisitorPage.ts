@@ -13,7 +13,7 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
   .backgroundCarousel {
     background: rgba(0, 0, 0, 0.3);
-    background-image: url(${imagesBackground});
+    background-image: url("assets/Background.png");
     height: 85vh;
     display: flex;
     align-items: center;

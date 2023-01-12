@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { api } from "../../services/api";
-import { AuthContext } from "../AuthContext/AuthContext";
+
 
 interface iUserProvider {
   children: React.ReactNode;
@@ -74,7 +74,7 @@ export const UserProvider = ({ children }: iUserProvider) => {
       const response = await api.get(`/users/${ongId}`);
       setOng(response.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setUserLoading(false);
     }

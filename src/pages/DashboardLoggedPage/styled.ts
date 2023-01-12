@@ -185,6 +185,7 @@ export const StyledDashboard = styled.main`
   @media (min-width: 768px) {
     .categoriesDiv {
       flex-direction: row;
+      max-width: 700px;
     }
 
     .ongsList {

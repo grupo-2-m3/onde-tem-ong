@@ -1,26 +1,21 @@
 import { useContext } from "react";
-
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import {
   AuthContext,
   iLoginData,
 } from "../../contexts/AuthContext/AuthContext";
-
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Error } from "../../components/Input/StyledInput";
 import { StyledLink } from "../../components/StyledLink/StyledLink";
-
 import User from "../../assets/imgs/User.svg";
 import Logo from "../../assets/imgs/Logo.svg";
 import UpLeft from "../../assets/imgs/Up Left.svg";
 import Password from "../../assets/imgs/Password.svg";
-
 import { StyledLoginPage } from "./StyledLoginPage";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
