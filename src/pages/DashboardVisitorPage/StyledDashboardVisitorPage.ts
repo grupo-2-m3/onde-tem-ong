@@ -103,6 +103,20 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
 
     margin-top: 90px;
 
+    a {
+      text-decoration: none;
+
+      color: var(--Black);
+
+      width: 30px;
+      height: 30px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
     div {
       width: 100%;
       display: flex;
@@ -196,11 +210,6 @@ export const StyledDashboardVisitorPage = styled.div<iStyledDashboardVisitorPage
       position: absolute;
 
       bottom: 50%;
-
-      svg {
-        width: 100%;
-        height: 100%;
-      }
     }
     .right {
       right: 0px;

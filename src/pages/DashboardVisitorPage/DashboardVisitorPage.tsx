@@ -7,9 +7,10 @@ import { useContext } from "react";
 import HeaderFull from "../../components/HeaderFull/HeaderFull";
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 import Carousel from "./Carousel/Carousel";
+import { Link } from "react-router-dom";
 
 const DashboardVisitorPage = () => {
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, navigate } = useContext(AuthContext);
 
   return (
     <StyledDashboardVisitorPage
@@ -33,9 +34,9 @@ const DashboardVisitorPage = () => {
           <footer>
             <div>
               <div>
-                <button>
+                <a href={"https://github.com/grupo-2-m3/onde-tem-ong"}>
                   <AiOutlineGithub />
-                </button>
+                </a>
                 <button className="blue">
                   <BsFacebook />
                 </button>
