@@ -1,9 +1,4 @@
 import OndeTemOng from "../../assets/imgs/ondeTemOng2.svg";
-import vetor from "../../assets/imgs/vectorPrimario.svg";
-import vetor3 from "../../assets/imgs/vectorTerciario.svg";
-import vetor2 from "../../assets/imgs/vectorSecundario.svg";
-import home from "../../assets/imgs/home.svg";
-import blurDash from "../../assets/imgs/blurDashBord.svg";
 import { ListCardInfo } from "./ListCardsInfo/ListCardInfo";
 import { AiOutlineGithub, AiFillLinkedin } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
@@ -30,7 +25,6 @@ const DashboardVisitorPage = () => {
       <div>
         <div className="boxCarousel">
           <Carousel />
-
         </div>
         <div className="information">
           <ListCardInfo />

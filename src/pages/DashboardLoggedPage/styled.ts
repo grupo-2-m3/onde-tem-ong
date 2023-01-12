@@ -21,6 +21,12 @@ export const StyledDashboard = styled.main`
     flex-direction: column;
   }
 
+  .ongsSection > .loading {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+  }
+
   .ongsSection > div {
   }
   .searchSection {
